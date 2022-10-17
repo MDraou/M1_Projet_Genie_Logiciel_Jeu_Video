@@ -1,5 +1,8 @@
 package physicpackage;
 
-public class PhysicEngine {
+import java.util.ArrayList;
+import java.util.List;
 
+public class PhysicEngine {
+    List<PhysicalEntity> physicalEntities = new ArrayList<>();
 }
