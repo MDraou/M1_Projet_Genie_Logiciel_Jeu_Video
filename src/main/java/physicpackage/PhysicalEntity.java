@@ -1,21 +1,14 @@
 package physicpackage;
 
 public class PhysicalEntity {
-    public final double ACCELERATION = 3; // 3m/s^2
-    public double speed = 0;
-    public Vector vector;
+    private Vector2D vector2d;
 
-    public PhysicalEntity(Vector Vector) {
-        this.vector = Vector;
+    public PhysicalEntity(Vector2D vector2d) {
+        this.vector2d = vector2d;
     }
 
-    public void move() {
-        // TODO
+    public void update() {
+        vector2d.update();
     }
 
-    // Calcule la surface de contact de l'objet entity
-    public boolean calculateSurface() {
-        // TODO
-        return false;
-    }
 }
