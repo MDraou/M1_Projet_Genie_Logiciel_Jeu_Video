@@ -7,6 +7,10 @@ public class PhysicalEntity {
         this.vector2d = vector2d;
     }
 
+    public Vector2D getVector2d() {
+        return this.vector2d;
+    }
+
     public void update() {
         vector2d.update();
     }
