@@ -28,8 +28,10 @@ public class TestVector2D {
     @Test
     void testUpdate() {
         Vector2D vector = new Vector2D(10);
-        vector.setPosition(new Point2D(12, 5));
-
+        vector.setPosition(new Point2D(12, -5));
+        vector.update();
+        assertEquals(vector.getPosition().getX(), 120);
+        assertEquals(vector.getPosition().getY(), -50);
     }
 
 }
