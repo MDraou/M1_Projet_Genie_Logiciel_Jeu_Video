@@ -11,6 +11,22 @@ import physicpackage.Vector2D;
 public class TestVector2D {
 
     @Test
+    void testGetSpeed() {
+        Vector2D vector2d = new Vector2D(5);
+        assertEquals(vector2d.getSpeed(), 5);
+        assertNotEquals(vector2d.getSpeed(), 6);
+    }
+
+    @Test
+    void testSetSpeed() {
+        Vector2D vector2d = new Vector2D(5);
+        vector2d.setSpeed(8);
+        assertEquals(vector2d.getSpeed(), 8);
+        vector2d.setSpeed(-5);
+        assertEquals(vector2d.getSpeed(), -5);
+    }
+
+    @Test
     void testGetPosition() {
         Vector2D vector2d = new Vector2D(5);
         assertEquals(vector2d.getPosition().getX(), 0);

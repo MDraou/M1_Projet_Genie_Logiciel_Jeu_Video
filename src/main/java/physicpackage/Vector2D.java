@@ -18,6 +18,14 @@ public class Vector2D {
         this.position = point;
     }
 
+    public double getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(double newSpeed) {
+        this.speed = newSpeed;
+    }
+
     // on doit créer un controller qui permet de définir que si l'on appuie sur une
     // touche alors un mouvement apparait
     public void update(/* Controller controller */) {
