@@ -14,8 +14,8 @@ public class Surface {
     }
 
     public boolean isInContact(Point2D contactPoint) {
-        if (contactPoint.getX() <= bottomRightPoint.getX() || contactPoint.getX() >= topLeftPoint.getX()
-                || contactPoint.getY() <= bottomRightPoint.getY() || contactPoint.getY() >= topLeftPoint.getY())
+        if (topLeftPoint.getX() <= contactPoint.getX() && contactPoint.getX() <= bottomRightPoint.getX()
+                && topLeftPoint.getY() <= contactPoint.getY() && contactPoint.getY() <= bottomRightPoint.getY())
             return true;
         return false;
     }
