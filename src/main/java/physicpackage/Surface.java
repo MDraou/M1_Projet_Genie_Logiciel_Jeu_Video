@@ -1,5 +1,7 @@
 package physicpackage;
 
+import java.awt.geom.Point2D;
+
 public class Surface {
     /*
      * La forme choisi pour l'instant est un rectangle, mais on réfléchira à plus

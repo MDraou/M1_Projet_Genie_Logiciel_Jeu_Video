@@ -1,12 +1,14 @@
 package physicpackage;
 
+import java.awt.geom.Point2D;
+
 public class Vector2D {
     private Point2D position;
     private double speed;
 
     public Vector2D(double speed) {
         // initialisé à x=0 et y=0, réflechir à ou doit pop le player
-        this.position = new Point2D(0, 0);
+        this.position = new Point2D.Double(0, 0);
         this.speed = speed;
     }
 
@@ -39,7 +41,7 @@ public class Vector2D {
          * if (controller.isRight())
          * position.add(new Point2D(1, 0));
          */
-        position.multiply(speed);
+        position.setLocation(position.getX() * speed, position.getY() * speed);
     }
 
 }
