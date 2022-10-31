@@ -1,6 +1,7 @@
 package graphic;
 
 import java.util.HashMap;
+import java.awt.geom.Point2D;
 
 public class GraphicEngine {
     private final HashMap<Integer, GraphicEntity> graphicEntities = new HashMap<>();
@@ -15,7 +16,7 @@ public class GraphicEngine {
     }
 
     public void createEntity(int id, int coordX, int coordY, String path) {
-        graphicEntities.put(id, new GraphicEntity(path, new Point2D(coordX, coordY)));
+        graphicEntities.put(id, new GraphicEntity(path, new Point2D.Double(coordX, coordY)));
     }
 
     public GraphicEntity getEntity(int id) {

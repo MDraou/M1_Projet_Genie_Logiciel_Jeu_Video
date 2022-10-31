@@ -1,6 +1,7 @@
 package graphic;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
 import java.text.MessageFormat;
@@ -28,7 +29,7 @@ public class GraphicEntity extends JPanel {
   public GraphicEntity(String path, int coordX, int coordY) {
     logger.debug("Construct a MyJavaPanel");
     createImage(path);
-    this.coordinates = new Point2D(coordX, coordY);
+    this.coordinates = new Point2D.Double(coordX, coordY);
   }
 
   private void createImage(String path) {
@@ -40,7 +41,7 @@ public class GraphicEntity extends JPanel {
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    g.drawImage(image, coordinates.getX(), coordinates.getY(), null);
+    g.drawImage(image, (int) coordinates.getX(), (int) coordinates.getY(), null);
   }
 
   public void setCoordinates(Point2D newCoordinates) {
@@ -48,7 +49,7 @@ public class GraphicEntity extends JPanel {
   }
 
   public void setCoordinates(int newCoordX, int newCoordY) {
-    coordinates = new Point2D(newCoordX, newCoordY);
+    coordinates = new Point2D.Double(newCoordX, newCoordY);
   }
 
   public void rotate(double angle) {
