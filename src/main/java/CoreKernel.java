@@ -1,6 +1,12 @@
 import physicpackage.PhysicEngine;
+import physicpackage.PhysicalEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoreKernel {
+    private static int currentId = 0;
+    private List<Integer> listId = new ArrayList<>();
     private PhysicEngine physicEngine;
     //private GraphicEngine graphicEngine;
 
@@ -18,13 +24,18 @@ public class CoreKernel {
 
     }
 
-    public int createGraphicEntity() { //Image image
-
-        return 0;
+    public void createEntity() { //memoriser les IDs correspondant à certain objet
+        createPhysicEntity();
+        createGraphicEntity();
+        listId.add(currentId);
+        currentId++;
     }
 
-    public int createPhysicEntity() {
+    private void createGraphicEntity() { //Image image
 
-        return 0;
+    }
+
+    private void createPhysicEntity() {
+        physicEngine.addPhysicalEntity(new PhysicalEntity(null, currentId));
     }
 }
