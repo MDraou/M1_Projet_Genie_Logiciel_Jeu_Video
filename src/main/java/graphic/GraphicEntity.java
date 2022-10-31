@@ -1,6 +1,7 @@
 package graphic;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
@@ -62,21 +63,21 @@ public class GraphicEntity extends JPanel {
   }
 
   public void rotate(double angle) {
-    double radian = Math.toRadians(angle), sin = Math.abs(Math.sin(radian)), cos = Math.abs(Math.cos(radian));
-
-    int newWidth = (int) Math.floor((double) image.getWidth() * cos + (double) image.getHeight() * sin);
-    int newHeight = (int) Math.floor((double) image.getHeight() * cos + (double) image.getWidth() * sin);
-
-    BufferedImage rotatedImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-
-    Graphics2D graphics = rotatedImage.createGraphics();
-
-    graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-
-    graphics.translate((newWidth - image.getWidth()) / 2, (newHeight - image.getHeight()) / 2);
-    // rotation around the center point
-    graphics.rotate(radian, (double) (image.getWidth() / 2), (double) (image.getHeight() / 2));
-    graphics.drawImage(image, 0, 0, null);
-    graphics.dispose();
+    if (angle < 0) {
+      angle = 360 + (angle % 360);
+    }
+    final boolean r180 = angle == 180;
+    if (angle != 90 && !r180 && angle != 270)
+      throw new IllegalArgumentException("Invalid angle.");
+    final int w = r180 ? image.getWidth() : image.getHeight();
+    final int h = r180 ? image.getHeight() : image.getWidth();
+    final int type = image.getType() == BufferedImage.TYPE_CUSTOM ? BufferedImage.TYPE_INT_ARGB : image.getType();
+    final BufferedImage rotated = new BufferedImage(w, h, type);
+    final Graphics2D graphic = rotated.createGraphics();
+    graphic.rotate(Math.toRadians(angle), w / 2d, h / 2d);
+    final int offset = r180 ? 0 : (w - h) / 2;
+    graphic.drawImage(image, null, offset, -offset);
+    graphic.dispose();
+    image = rotated;
   }
 }
