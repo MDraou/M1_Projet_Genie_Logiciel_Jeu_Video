@@ -1,15 +1,18 @@
 package physicpackage;
 
 import java.awt.geom.Point2D;
+import java.util.Vector;
 
-public class Vector2D {
+public class Transition {
     private Point2D position;
-    private double speed;
+    private Vector<Double> speed;
 
-    public Vector2D(double speed) {
+    public Transition(Point2D position, double x, double y) {
         // initialisé à x=0 et y=0, réflechir à ou doit pop le player
-        this.position = new Point2D.Double(0, 0);
-        this.speed = speed;
+        this.position = position;
+        this.speed = new Vector<>();
+        speed.add(x);
+        speed.add(y);
     }
 
     public Point2D getPosition() {
@@ -20,12 +23,14 @@ public class Vector2D {
         this.position = point;
     }
 
-    public double getSpeed() {
+    public Vector<Double> getSpeed() {
         return this.speed;
     }
 
-    public void setSpeed(double newSpeed) {
-        this.speed = newSpeed;
+    public void setSpeed(double x, double y) {
+        speed.set(0, x);
+        speed.set(1, y);
+
     }
 
     // on doit créer un controller qui permet de définir que si l'on appuie sur une
@@ -41,7 +46,7 @@ public class Vector2D {
          * if (controller.isRight())
          * position.add(new Point2D(1, 0));
          */
-        position.setLocation(position.getX() * speed, position.getY() * speed);
+        position = new Point2D.Double(position.getX() + speed.elementAt(0), position.getY() + speed.elementAt(1));
     }
 
 }

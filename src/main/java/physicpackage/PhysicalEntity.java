@@ -1,18 +1,18 @@
 package physicpackage;
 
 public class PhysicalEntity {
-    private Vector2D vector2d;
+    private Transition transition;
 
-    public PhysicalEntity(Vector2D vector2d) {
-        this.vector2d = vector2d;
+    public PhysicalEntity(Transition transition) {
+        this.transition = transition;
     }
 
-    public Vector2D getVector2d() {
-        return this.vector2d;
+    public Transition getTransition() {
+        return this.transition;
     }
 
     public void update() {
-        vector2d.update();
+        transition.update();
     }
 
 }

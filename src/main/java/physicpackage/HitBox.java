@@ -2,7 +2,7 @@ package physicpackage;
 
 import java.awt.geom.Point2D;
 
-public class Surface {
+public class HitBox {
     /*
      * La forme choisi pour l'instant est un rectangle, mais on réfléchira à plus
      * précis plus tard
@@ -10,7 +10,7 @@ public class Surface {
     private Point2D topLeftPoint;
     private Point2D bottomRightPoint;
 
-    public Surface(Point2D topLeftPoint, Point2D bottomRightPoint) {
+    public HitBox(Point2D topLeftPoint, Point2D bottomRightPoint) {
         this.topLeftPoint = topLeftPoint;
         this.bottomRightPoint = bottomRightPoint;
     }

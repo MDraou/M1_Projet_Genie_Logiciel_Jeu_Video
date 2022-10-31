@@ -1,32 +1,31 @@
 package testphysicPackage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
-
 import java.awt.geom.Point2D;
+
 import physicpackage.PhysicalEntity;
-import physicpackage.Vector2D;
+import physicpackage.Transition;
 
 public class TestPhysicalEntity {
 
     @Test
-    void testGetVector2d() {
-        PhysicalEntity physicalEntity = new PhysicalEntity(new Vector2D(6));
-        Vector2D vector2d = physicalEntity.getVector2d();
-        assertEquals(vector2d.getSpeed(), 6);
-        assertEquals(vector2d.getPosition().getX(), 0);
-        assertEquals(vector2d.getPosition().getY(), 0);
+    void testGetTransition() {
+        PhysicalEntity physicalEntity = new PhysicalEntity(new Transition(new Point2D.Double(), 6, 0));
+        Transition transition = physicalEntity.getTransition();
+        assertEquals(transition.getSpeed().elementAt(0), 6);
+        assertEquals(transition.getPosition().getX(), 0);
+        assertEquals(transition.getPosition().getY(), 0);
     }
 
     @Test
     void testUpdate() {
-        Vector2D vector = new Vector2D(10);
-        PhysicalEntity physicalEntity = new PhysicalEntity(vector);
-        physicalEntity.getVector2d().setPosition(new Point2D.Double(4, -3));
+        Transition transition = new Transition(new Point2D.Double(), 36, -27);
+        PhysicalEntity physicalEntity = new PhysicalEntity(transition);
+        physicalEntity.getTransition().setPosition(new Point2D.Double(4, -3));
         physicalEntity.update();
-        assertEquals(physicalEntity.getVector2d().getPosition().getX(), 40);
-        assertEquals(physicalEntity.getVector2d().getPosition().getY(), -30);
-
+        assertEquals(physicalEntity.getTransition().getPosition().getX(), 40);
+        assertEquals(physicalEntity.getTransition().getPosition().getY(), -30);
     }
+
 }
