@@ -1,12 +1,9 @@
 package graphic;
 
-import java.io.Serial;
 import javax.swing.JFrame;
+import java.awt.*;
 
 public class Window extends JFrame {
-
-  @Serial
-  private static final long serialVersionUID = 42L;
 
   public Window(int width, int height, String title) {
     setTitle(title);
@@ -19,10 +16,9 @@ public class Window extends JFrame {
     setVisible(true);
   }
 
-  public void add(GraphicEntity entity) {
-  }
-
-  public static void main(String[] args) {
-    new Window(400, 400, "Game").start();
+  public Component add(Component component, int index) {
+    super.add(component, index);
+    super.validate();
+    return component;
   }
 }
