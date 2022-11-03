@@ -1,30 +1,34 @@
 package sample;
 
 import java.io.Serial;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 
 /**
  * An extended version of javax.swing.JFrame containing a panel to draw images.
  */
-public class MyJavaFrame extends JFrame {
+public class Window extends JFrame {
 
   @Serial
   private static final long serialVersionUID = 42L;
+
   /**
    * Constructs a new visible frame.
    */
-
-  public MyJavaFrame() {
-    setTitle("Main window");
-    setSize(400, 400);
+  public Window(String name, int width, int height) {
+    setTitle(name);
+    setSize(width, height);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    add(new MyJavaPanel());
+  }
+
+  public void start() {
     setVisible(true);
   }
 
   public static void main(String[] args) {
-    new MyJavaFrame();
+    Window window = new Window("Penguin", 500, 500);
+    window.add(new Panel());
+    window.start();
   }
 }
