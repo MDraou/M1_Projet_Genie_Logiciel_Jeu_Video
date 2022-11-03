@@ -34,6 +34,10 @@ public class GraphicPanel extends JPanel {
     repaint();
   }
 
+  public Point2D getCoordinates() {
+    return coordinates;
+  }
+
   public void setGraphicEntity(GraphicEntity entity) {
     this.graphicEntity = entity;
     repaint();
