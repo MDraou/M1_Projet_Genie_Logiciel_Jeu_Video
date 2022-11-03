@@ -1,9 +1,12 @@
 package sample;
 
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.Serial;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -13,18 +16,21 @@ import org.apache.logging.log4j.Logger;
 /**
  * An extension of javax.swing.JFrame that can draw images.
  */
-public class MyJavaPanel extends JPanel {
+public class Panel extends JPanel {
   @Serial
   private static final long serialVersionUID = 4242L;
+
+  private final HashMap<Image, Point2D> components = new HashMap<>();
   private transient BufferedImage image;
+  private final Logger logger = LogManager.getLogger(this.getClass());
 
   /**
    * Constructs a new panel that draw an image.
    */
 
-  public MyJavaPanel() {
-    Logger logger = LogManager.getLogger(this.getClass());
-    logger.debug("Construct a MyJavaPanel");
+  public Panel() {
+
+    logger.debug("Construct a Panel");
     String path = "image.png";
     if (logger.isDebugEnabled()) {
       String message = MessageFormat.format("Loading image at path {0}", path);
