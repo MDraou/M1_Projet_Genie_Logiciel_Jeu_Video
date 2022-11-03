@@ -1,10 +1,12 @@
 package physicpackage;
 
+import CoreKernel.Engine;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhysicEngine {
-    private List<PhysicalEntity> physicalEntities = new ArrayList<>();
+public class PhysicEngine implements Engine {
+    private final List<PhysicalEntity> physicalEntities = new ArrayList<>();
 
     public void addPhysicalEntity(PhysicalEntity physicalEntity) {
         physicalEntities.add(physicalEntity);
@@ -15,8 +17,6 @@ public class PhysicEngine {
     }
 
     public void update() {
-        for (PhysicalEntity physicalEntity : physicalEntities) {
-            physicalEntity.update();
-        }
+        for (PhysicalEntity physicalEntity : physicalEntities) physicalEntity.update();
     }
 }

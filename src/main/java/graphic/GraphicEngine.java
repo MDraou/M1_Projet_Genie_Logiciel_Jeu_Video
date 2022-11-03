@@ -1,10 +1,12 @@
 package graphic;
 
+import CoreKernel.Engine;
+
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.awt.geom.Point2D;
 
-public class GraphicEngine {
+public class GraphicEngine implements Engine {
     private final HashMap<Integer, GraphicPanel> graphicEntities = new HashMap<>();
     private final Window window;
 
@@ -44,4 +46,8 @@ public class GraphicEngine {
         return graphicEntities.get(id);
     }
 
+    @Override
+    public void update() {
+
+    }
 }

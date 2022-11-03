@@ -1,3 +1,6 @@
+package CoreKernel;
+
+import graphic.GraphicEngine;
 import physicpackage.PhysicEngine;
 import physicpackage.PhysicalEntity;
 
@@ -8,7 +11,7 @@ public class CoreKernel {
     private static int currentId = 0;
     private List<Integer> listId = new ArrayList<>();
     private PhysicEngine physicEngine;
-    //private GraphicEngine graphicEngine;
+    private GraphicEngine graphicEngine;
 
 
     public CoreKernel(PhysicEngine physicEngine) {
