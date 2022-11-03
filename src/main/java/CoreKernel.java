@@ -27,8 +27,7 @@ public class CoreKernel {
     public void createEntity() { //memoriser les IDs correspondant à certain objet
         createPhysicEntity();
         createGraphicEntity();
-        listId.add(currentId);
-        currentId++;
+        listId.add(currentId++);
     }
 
     private void createGraphicEntity() { //Image image
