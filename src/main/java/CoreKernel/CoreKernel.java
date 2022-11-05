@@ -35,11 +35,13 @@ public class CoreKernel {
         graphicEngine.launch();
     }
 
-    public void createEntity(Point2D coordinate, String path, Dimension2D dimension2D) { //memoriser les IDs correspondant à certain objet
+    public int createEntity(Point2D coordinate, String path, Dimension2D dimension2D) { //memoriser les IDs correspondant à certain objet
         createPhysicEntity(coordinate, dimension2D);
         createGraphicEntity(coordinate, path, dimension2D);
         listId.add(currentId);
+        int id = currentId;
         currentId++;
+        return id;
     }
 
     private void createGraphicEntity(Point2D coordinate, String path, Dimension2D dimension2D) { //Image image
@@ -49,4 +51,5 @@ public class CoreKernel {
     private void createPhysicEntity(Point2D coordinate, Dimension2D dimension2D) {
         physicEngine.addPhysicalEntity(new PhysicalEntity(new Transition(coordinate), currentId, dimension2D));
     }
+
 }

@@ -18,6 +18,8 @@ public class PhysicEngine implements Engine {
 
     @Override
     public void update() {
-        for (PhysicalEntity physicalEntity : physicalEntities) physicalEntity.update();
+        for (PhysicalEntity physicalEntity : physicalEntities) {
+            Move.move(physicalEntity, physicalEntities);
+        }
     }
 }
