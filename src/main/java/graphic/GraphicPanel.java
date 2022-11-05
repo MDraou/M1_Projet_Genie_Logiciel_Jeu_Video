@@ -21,7 +21,7 @@ public class GraphicPanel extends JPanel {
   @Override
   protected void paintComponent(Graphics graphic) {
     super.paintComponent(graphic);
-    graphic.drawImage(graphicEntity.getSprite(), (int) coordinates.getX(), (int) coordinates.getY(), null);
+    graphic.drawImage(graphicEntity.getSprite(), (int) coordinates.getX(), (int) coordinates.getY(), (int) graphicEntity.getWidth(), (int) graphicEntity.getHeight(),null);
   }
 
   public void setCoordinates(Point2D newCoordinates) {

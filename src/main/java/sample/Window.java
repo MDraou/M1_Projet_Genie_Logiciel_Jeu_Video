@@ -1,5 +1,9 @@
 package sample;
 
+import CoreKernel.CoreKernel;
+import graphic.GraphicEngine;
+import physicpackage.PhysicEngine;
+
 import java.io.Serial;
 import javax.swing.*;
 
@@ -27,8 +31,7 @@ public class Window extends JFrame {
   }
 
   public static void main(String[] args) {
-    Window window = new Window("Penguin", 500, 500);
-    window.add(new Panel());
-    window.start();
+    CoreKernel coreKernel = new CoreKernel(new PhysicEngine(), new GraphicEngine(400, 400, "OISEAU"));
+    coreKernel.start();
   }
 }

@@ -15,6 +15,13 @@ public class Transition {
         speed.add(y);
     }
 
+    public Transition(Point2D position) {
+        this.position = position;
+        speed = new Vector<>();
+        speed.add(0.0);
+        speed.add(0.0);
+    }
+
     public Point2D getPosition() {
         return position;
     }

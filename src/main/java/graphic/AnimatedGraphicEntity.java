@@ -26,6 +26,16 @@ public class AnimatedGraphicEntity implements GraphicEntity {
 
     }
 
+    @Override
+    public double getWidth() {
+        return 0;
+    }
+
+    @Override
+    public double getHeight() {
+        return 0;
+    }
+
     public void start() {
         if (!stopped || frames.size() == 0) return;
         stopped = false;

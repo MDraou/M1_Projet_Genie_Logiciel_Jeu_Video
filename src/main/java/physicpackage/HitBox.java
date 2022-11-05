@@ -7,18 +7,27 @@ public class HitBox {
      * La forme choisi pour l'instant est un rectangle, mais on réfléchira à plus
      * précis plus tard
      */
-    private Point2D topLeftPoint;
-    private Point2D bottomRightPoint;
+    private Point2D coordinates;
+    private double width;
+    private double height;
 
-    public HitBox(Point2D topLeftPoint, Point2D bottomRightPoint) {
-        this.topLeftPoint = topLeftPoint;
-        this.bottomRightPoint = bottomRightPoint;
+    public HitBox(Point2D coordinates, double width, double height) {
+        this.coordinates = coordinates;
+        this.width = width;
+        this.height = height;
     }
 
-    public boolean isInContact(Point2D contactPoint) {
-        if (topLeftPoint.getX() <= contactPoint.getX() && contactPoint.getX() <= bottomRightPoint.getX()
-                && topLeftPoint.getY() <= contactPoint.getY() && contactPoint.getY() <= bottomRightPoint.getY())
-            return true;
-        return false;
+    public boolean isInContact(PhysicalEntity physicalEntity) {
+        HitBox foreignHitBox = physicalEntity.getHitBox();
+
+        return coordinates.getX() <= foreignHitBox.coordinates.getX() + foreignHitBox.width
+                && coordinates.getX() + width >= foreignHitBox.coordinates.getX()
+                && coordinates.getY() <= foreignHitBox.coordinates.getY() + foreignHitBox.height
+                && coordinates.getY() + height >= foreignHitBox.coordinates.getY();
     }
+    
+    public void update(Point2D coordinates) {
+        this.coordinates = coordinates;
+    }
+
 }
