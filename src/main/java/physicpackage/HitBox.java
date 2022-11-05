@@ -15,6 +15,7 @@ public class HitBox {
         this.bottomRightPoint = bottomRightPoint;
     }
 
+
     public boolean isInContact(Point2D contactPoint) {
         if (topLeftPoint.getX() <= contactPoint.getX() && contactPoint.getX() <= bottomRightPoint.getX()
                 && topLeftPoint.getY() <= contactPoint.getY() && contactPoint.getY() <= bottomRightPoint.getY())
