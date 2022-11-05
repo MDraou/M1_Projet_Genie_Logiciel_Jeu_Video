@@ -28,6 +28,10 @@ public class CoreKernel {
 
     public void update() {
         physicEngine.update();
+        for (int id = 0 ; id < currentId ; id++) {
+            Point2D point = physicEngine.getPhysicalEntity(id).getTransition().getPosition();
+            graphicEngine.getEntity(id).setCoordinates((int) point.getX(),(int) point.getY());
+        }
         graphicEngine.update();
     }
 
