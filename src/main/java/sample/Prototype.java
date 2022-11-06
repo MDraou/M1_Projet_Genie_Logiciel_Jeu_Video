@@ -25,7 +25,19 @@ public class Prototype {
 
         coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getTransition().setSpeed(2,0);
         coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getTransition().setSpeed(1,0);
-        while (true) {
+        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getTransition().getSpeed().elementAt(0) != 0) {
+            coreKernel.update();
+            Thread.sleep(25);
+        }
+        coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getTransition().setSpeed(0,-1);
+        coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getTransition().setSpeed(0,1);
+        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getTransition().getSpeed().elementAt(1) != 0) {
+            coreKernel.update();
+            Thread.sleep(25);
+        }
+        coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getTransition().setSpeed(-1,1);
+        coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getTransition().setSpeed(-1,-1);
+        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getTransition().getSpeed().elementAt(1) != 0) {
             coreKernel.update();
             Thread.sleep(25);
         }
