@@ -16,6 +16,7 @@ public class Window extends JFrame {
     setVisible(true);
   }
 
+  @Override
   public Component add(Component component, int index) {
     super.add(component, index);
     super.validate();

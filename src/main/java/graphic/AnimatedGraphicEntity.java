@@ -58,7 +58,7 @@ public class AnimatedGraphicEntity implements GraphicEntity {
         this.currentFrame = 0;
     }
 
-    private void addFrame(BufferedImage frame, int duration) {
+    public void addFrame(BufferedImage frame, int duration) {
         if (duration <= 0) {
             System.err.println("Invalid duration: " + duration);
             throw new RuntimeException("Invalid duration: " + duration);
