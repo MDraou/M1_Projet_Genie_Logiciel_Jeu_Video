@@ -39,7 +39,7 @@ test {
 }
 
 application {
-    mainClass = 'sample.MyJavaFrame'
+    mainClass = 'sample.Prototype.java'
 }
 
 tasks.named('jar') {
