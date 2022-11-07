@@ -7,7 +7,6 @@ import physicpackage.PhysicEngine;
 import java.io.Serial;
 import javax.swing.*;
 
-
 /**
  * An extended version of javax.swing.JFrame containing a panel to draw images.
  */

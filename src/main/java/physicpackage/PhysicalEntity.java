@@ -5,30 +5,33 @@ import java.awt.geom.Point2D;
 
 public class PhysicalEntity {
     private int id;
-    private Transition transition;
+    private PhysicalInformations physicalInformations;
     private HitBox hitBox;
 
-    public PhysicalEntity(Transition transition, int id, Dimension2D dimension) {
-        this.transition = transition;
+    public PhysicalEntity(PhysicalInformations physicalInformations, int id, Dimension2D dimension) {
+        this.physicalInformations = physicalInformations;
         Point2D bottomRightPoint = new Point2D.Double();
-        bottomRightPoint.setLocation(transition.getPosition().getX() + dimension.getWidth(), transition.getPosition().getY() + dimension.getHeight());
-        this.hitBox = new HitBox(transition.getPosition(), dimension.getWidth(), dimension.getHeight());
+        bottomRightPoint.setLocation(physicalInformations.getPosition().getX() + dimension.getWidth(),
+                physicalInformations.getPosition().getY() + dimension.getHeight());
+        this.hitBox = new HitBox(physicalInformations.getPosition(), dimension.getWidth(), dimension.getHeight());
         this.id = id;
     }
 
-    public HitBox getHitBox() { return hitBox; }
+    public HitBox getHitBox() {
+        return hitBox;
+    }
 
     public int getID() {
         return this.id;
     }
 
-    public Transition getTransition() {
-        return this.transition;
+    public PhysicalInformations getPhysicalInformations() {
+        return this.physicalInformations;
     }
 
     public void update() {
-        transition.update();
-        hitBox.update(transition.getPosition());
+        physicalInformations.update();
+        hitBox.update(physicalInformations.getPosition());
     }
 
 }

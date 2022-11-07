@@ -3,11 +3,11 @@ package physicpackage;
 import java.awt.geom.Point2D;
 import java.util.Vector;
 
-public class Transition {
+public class PhysicalInformations {
     private Point2D position;
     private Vector<Double> speed;
 
-    public Transition(Point2D position, double x, double y) {
+    public PhysicalInformations(Point2D position, double x, double y) {
         // initialisé à x=0 et y=0, réflechir à ou doit pop le player
         this.position = position;
         this.speed = new Vector<>();
@@ -15,7 +15,7 @@ public class Transition {
         speed.add(y);
     }
 
-    public Transition(Point2D position) {
+    public PhysicalInformations(Point2D position) {
         this.position = position;
         speed = new Vector<>();
         speed.add(0.0);
