@@ -30,8 +30,8 @@ public class PhysicalInformations {
     }
 
     public void setSpeed(double x, double y) {
-        speed.set(0, x);
-        speed.set(1, y);
+        speed.setX(x);
+        speed.setY(y);
 
     }
 
