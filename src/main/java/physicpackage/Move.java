@@ -9,7 +9,7 @@ public class Move {
             if (entity != currentEntity && entity.getHitBox().intersects(currentEntity)) {
                 // System.out.println(entity.getHitBox().isInContact(currentEntity));
                 double posX = entity.getPhysicalInformations().getPosition().getX()
-                        - entity.getPhysicalInformations().getSpeed().elementAt(0);
+                        - entity.getPhysicalInformations().getSpeed().getX();
                 double posY = entity.getPhysicalInformations().getPosition().getY()
                         - entity.getPhysicalInformations().getSpeed().elementAt(1);
                 entity.getPhysicalInformations().setPosition(new Point2D.Double(posX, posY));
