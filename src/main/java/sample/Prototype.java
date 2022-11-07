@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
 
 public class Prototype {
     public static void main(String[] args) throws InterruptedException {
-        CoreKernel coreKernel = new CoreKernel(new PhysicEngine(), new GraphicEngine(700, 700, "OISEAU"));
+        CoreKernel coreKernel = new CoreKernel(700, 700, "OISEAU");
         coreKernel.start();
         Dimension2D dimension = new Dimension(70, 70);
         int idTux = coreKernel.createEntity(new Point2D.Double(150, 150), "image.png", dimension);
@@ -23,24 +23,24 @@ public class Prototype {
         coreKernel.createEntity(new Point2D.Double(0.0, 0.0), "wall_v.png", dimensionVWall);
         coreKernel.createEntity(new Point2D.Double(600, 0.0), "wall_v.png", dimensionVWall);
 
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getPhysicalInformations().setSpeed(2, 0);
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getPhysicalInformations().setSpeed(1, 0);
-        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getPhysicalInformations().getSpeed()
-                .elementAt(0) != 0) {
+        coreKernel.getPhysicEngine().getEntity(idTux).getPhysicalInformations().setSpeed(2, 0);
+        coreKernel.getPhysicEngine().getEntity(idTux2).getPhysicalInformations().setSpeed(1, 0);
+        while (coreKernel.getPhysicEngine().getEntity(idTux).getPhysicalInformations().getSpeed()
+                .getX() != 0) {
             coreKernel.update();
             Thread.sleep(25);
         }
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getPhysicalInformations().setSpeed(0, -1);
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getPhysicalInformations().setSpeed(0, 1);
-        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getPhysicalInformations().getSpeed()
-                .elementAt(1) != 0) {
+        coreKernel.getPhysicEngine().getEntity(idTux).getPhysicalInformations().setSpeed(0, -1);
+        coreKernel.getPhysicEngine().getEntity(idTux2).getPhysicalInformations().setSpeed(0, 1);
+        while (coreKernel.getPhysicEngine().getEntity(idTux2).getPhysicalInformations().getSpeed()
+                .getY() != 0) {
             coreKernel.update();
             Thread.sleep(25);
         }
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux).getPhysicalInformations().setSpeed(-1, 1);
-        coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getPhysicalInformations().setSpeed(-1, -1);
-        while (coreKernel.getPhysicEngine().getPhysicalEntity(idTux2).getPhysicalInformations().getSpeed()
-                .elementAt(1) != 0) {
+        coreKernel.getPhysicEngine().getEntity(idTux).getPhysicalInformations().setSpeed(-1, 1);
+        coreKernel.getPhysicEngine().getEntity(idTux2).getPhysicalInformations().setSpeed(-1, -1);
+        while (coreKernel.getPhysicEngine().getEntity(idTux2).getPhysicalInformations().getSpeed()
+                .getY() != 0) {
             coreKernel.update();
             Thread.sleep(25);
         }

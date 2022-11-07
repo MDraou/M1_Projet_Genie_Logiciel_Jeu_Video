@@ -14,7 +14,7 @@ public class TestPhysicalEntity {
         PhysicalEntity physicalEntity = new PhysicalEntity(new PhysicalInformations(new Point2D.Double(), 6, 0), 0,
                 null);
         PhysicalInformations physicalInformations = physicalEntity.getPhysicalInformations();
-        assertEquals(physicalInformations.getSpeed().elementAt(0), 6);
+        assertEquals(physicalInformations.getSpeed().getX(), 6);
         assertEquals(physicalInformations.getPosition().getX(), 0);
         assertEquals(physicalInformations.getPosition().getY(), 0);
     }

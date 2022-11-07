@@ -30,7 +30,7 @@ public class Window extends JFrame {
   }
 
   public static void main(String[] args) {
-    CoreKernel coreKernel = new CoreKernel(new PhysicEngine(), new GraphicEngine(400, 400, "OISEAU"));
+    CoreKernel coreKernel = new CoreKernel(400, 400, "OISEAU");
     coreKernel.start();
   }
 }

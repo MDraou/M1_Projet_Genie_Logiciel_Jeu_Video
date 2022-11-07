@@ -17,9 +17,9 @@ public class CoreKernel {
     private PhysicEngine physicEngine;
     private GraphicEngine graphicEngine;
 
-    public CoreKernel(PhysicEngine physicEngine, GraphicEngine graphicEngine) {
-        this.physicEngine = physicEngine;
-        this.graphicEngine = graphicEngine;
+    public CoreKernel(int width, int height, String windowName) {
+        this.physicEngine = new PhysicEngine();
+        this.graphicEngine = new GraphicEngine(width, height, windowName);
     }
 
     public PhysicEngine getPhysicEngine() {
@@ -33,11 +33,12 @@ public class CoreKernel {
     public void update() {
         physicEngine.update();
         for (int id = 0; id < currentId; id++) {
-            Point2D point = physicEngine.getPhysicalEntity(id).getPhysicalInformations().getPosition();
+            Point2D point = physicEngine.getEntity(id).getPhysicalInformations().getPosition();
             graphicEngine.getEntity(id).setCoordinates((int) point.getX(), (int) point.getY());
         }
         graphicEngine.update();
     }
+
 
     public void start() {
         graphicEngine.launch();
@@ -45,21 +46,11 @@ public class CoreKernel {
 
     public int createEntity(Point2D coordinate, String path, Dimension2D dimension2D) { // memoriser les IDs
                                                                                         // correspondant à certain objet
-        createPhysicEntity(coordinate, dimension2D);
-        createGraphicEntity(coordinate, path, dimension2D);
+        physicEngine.addPhysicalEntity(new PhysicalEntity(new PhysicalInformations(coordinate), currentId, dimension2D));
+        graphicEngine.createStaticEntity(currentId, coordinate, Sprite.loadSprite(path), dimension2D);
         listId.add(currentId);
         int id = currentId;
         currentId++;
         return id;
     }
-
-    private void createGraphicEntity(Point2D coordinate, String path, Dimension2D dimension2D) { // Image image
-        graphicEngine.createStaticEntity(currentId, coordinate, Sprite.loadSprite(path), dimension2D);
-    }
-
-    private void createPhysicEntity(Point2D coordinate, Dimension2D dimension2D) {
-        physicEngine
-                .addPhysicalEntity(new PhysicalEntity(new PhysicalInformations(coordinate), currentId, dimension2D));
-    }
-
 }

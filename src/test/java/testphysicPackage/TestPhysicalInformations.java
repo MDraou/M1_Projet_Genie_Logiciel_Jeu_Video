@@ -13,19 +13,19 @@ public class TestPhysicalInformations {
     @Test
     void testGetSpeed() {
         PhysicalInformations physicalInformations = new PhysicalInformations(new Point2D.Double(), 5.0, 3.0);
-        assertEquals(physicalInformations.getSpeed().elementAt(0), 5.0);
-        assertEquals(physicalInformations.getSpeed().elementAt(1), 3.0);
+        assertEquals(physicalInformations.getSpeed().getX(), 5.0);
+        assertEquals(physicalInformations.getSpeed().getY(), 3.0);
     }
 
     @Test
     void testSetSpeed() {
         PhysicalInformations physicalInformations = new PhysicalInformations(new Point2D.Double(), 0.0, 8.0);
         physicalInformations.setSpeed(6, 4);
-        assertEquals(physicalInformations.getSpeed().elementAt(0), 6.0);
-        assertEquals(physicalInformations.getSpeed().elementAt(1), 4.0);
+        assertEquals(physicalInformations.getSpeed().getX(), 6.0);
+        assertEquals(physicalInformations.getSpeed().getY(), 4.0);
         physicalInformations.setSpeed(3, -5);
-        assertEquals(physicalInformations.getSpeed().elementAt(0), 3.0);
-        assertEquals(physicalInformations.getSpeed().elementAt(1), -5.0);
+        assertEquals(physicalInformations.getSpeed().getX(), 3.0);
+        assertEquals(physicalInformations.getSpeed().getY(), -5.0);
     }
 
     @Test
