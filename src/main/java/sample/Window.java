@@ -7,7 +7,6 @@ import physicpackage.PhysicEngine;
 import java.io.Serial;
 import javax.swing.*;
 
-
 /**
  * An extended version of javax.swing.JFrame containing a panel to draw images.
  */
@@ -31,7 +30,7 @@ public class Window extends JFrame {
   }
 
   public static void main(String[] args) {
-    CoreKernel coreKernel = new CoreKernel(new PhysicEngine(), new GraphicEngine(400, 400, "OISEAU"));
+    CoreKernel coreKernel = new CoreKernel(400, 400, "OISEAU");
     coreKernel.start();
   }
 }

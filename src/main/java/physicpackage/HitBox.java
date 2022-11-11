@@ -17,7 +17,7 @@ public class HitBox {
         this.height = height;
     }
 
-    public boolean isInContact(PhysicalEntity physicalEntity) {
+    public boolean intersects(PhysicalEntity physicalEntity) {
         HitBox foreignHitBox = physicalEntity.getHitBox();
 
         return coordinates.getX() <= foreignHitBox.coordinates.getX() + foreignHitBox.width
@@ -25,7 +25,7 @@ public class HitBox {
                 && coordinates.getY() <= foreignHitBox.coordinates.getY() + foreignHitBox.height
                 && coordinates.getY() + height >= foreignHitBox.coordinates.getY();
     }
-    
+
     public void update(Point2D coordinates) {
         this.coordinates = coordinates;
     }

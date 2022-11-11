@@ -1,5 +1,7 @@
 package graphic;
 
+import CoreKernel.Entity;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;

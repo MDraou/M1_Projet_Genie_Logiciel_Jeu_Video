@@ -1,13 +1,14 @@
 package graphic;
 
 import CoreKernel.Engine;
+import CoreKernel.Entity;
 
 import java.awt.geom.Dimension2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.awt.geom.Point2D;
 
-public class GraphicEngine implements Engine {
+public class GraphicEngine implements IGraphicEngine {
     private final HashMap<Integer, GraphicPanel> graphicEntities = new HashMap<>();
     private final Window window;
 
@@ -55,8 +56,11 @@ public class GraphicEngine implements Engine {
     public void launch() {
         window.start();
     }
+
     @Override
     public void update() {
 
     }
+
+
 }
