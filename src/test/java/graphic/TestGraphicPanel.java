@@ -9,7 +9,7 @@ public class TestGraphicPanel {
     @Test
     public void Test() throws InterruptedException {
         Window window = new Window(500, 500, "Penguin");
-        GraphicEntity entity = new StaticGraphicEntity(Sprite.loadSprite("image.png"));
+        GraphicEntity entity = new StaticGraphicEntity(Sprite.loadSprite("image.png"), null);
 
         GraphicPanel panel_1 = new GraphicPanel(0, 0);
         panel_1.setGraphicEntity(entity);
