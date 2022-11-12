@@ -1,9 +1,9 @@
 package kernel;
 
 import graphic.GraphicIdentity;
-import physic.PhysicIdentity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import physic.PhysicIdentity;
 
 import java.io.IOException;
 import java.text.MessageFormat;

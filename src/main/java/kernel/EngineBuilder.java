@@ -1,9 +1,9 @@
 package kernel;
 
 import graphic.GraphicEngine;
-import physic.PhysicEngine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import physic.PhysicEngine;
 
 import java.text.MessageFormat;
 
