@@ -1,47 +1,23 @@
 package graphic;
 
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.awt.geom.Point2D;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class GraphicEngine {
-    private final HashMap<Integer, GraphicPanel> graphicEntities = new HashMap<>();
+public class GraphicEngine implements IGraphicEngine {
+
     private final Window window;
+    private static final Logger logger = LogManager.getLogger(GraphicEngine.class);
 
-    public GraphicEngine(int width, int height, String name) {
-        window = new Window(width, height, name);
+    public GraphicEngine(String name, int width, int height, int nbLayer) {
+        window = new Window(name, width, height, nbLayer);
     }
 
-    public void createAnimatedEntity(int id, Point2D coordinates, int duration, BufferedImage... sprites) {
-        GraphicPanel panel = new GraphicPanel(coordinates);
-        panel.setGraphicEntity(new AnimatedGraphicEntity(sprites, duration));
-        graphicEntities.put(id, panel);
-        window.validate();
+    @Override
+    public Window getWindow() {
+        return window;
     }
 
-    public void createAnimatedEntity(int id, int coordX, int coordY, int duration, BufferedImage... sprites) {
-        GraphicPanel panel = new GraphicPanel(coordX, coordY);
-        panel.setGraphicEntity(new AnimatedGraphicEntity(sprites, duration));
-        graphicEntities.put(id, panel);
-        window.validate();
+    public void update() {
+        window.update();
     }
-
-    public void createStaticEntity(int id, Point2D coordinates, BufferedImage sprite) {
-        GraphicPanel panel = new GraphicPanel(coordinates);
-        panel.setGraphicEntity(new StaticGraphicEntity(sprite));
-        graphicEntities.put(id, panel);
-        window.validate();
-    }
-
-    public void createStaticEntity(int id, int coordX, int coordY, BufferedImage sprite) {
-        GraphicPanel panel = new GraphicPanel(coordX, coordY);
-        panel.setGraphicEntity(new StaticGraphicEntity(sprite));
-        graphicEntities.put(id, panel);
-        window.validate();
-    }
-
-    public GraphicPanel getEntity(int id) {
-        return graphicEntities.get(id);
-    }
-
 }
