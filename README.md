@@ -1,6 +1,8 @@
-# Projet 
+# Projet Engine
 
 Modèle basique de projet gradle pour interface graphique avec `swing`.
+
+Le lien du dépôt : https://etulab.univ-amu.fr/m18001353/game-engine-template.git
 
 Les commandes gradle les plus utiles :
 
@@ -19,6 +21,8 @@ Le fichier `build.gradle` contient la configuration du projet avec notamment la 
 
 Le projet est configuré (via le fichier `.gitlab-ci.yml`) pour produire un jar et lancer les tests sur le serveur à chaque *push*.
 
+La javadoc est `javadoc/index.html`
+
 ## Copyrights
 
-Image provenant de [Larry Ewing](lewing@isc.tamu.edu) and The GIMP
+Projet fait par Cyril ARTAUD, Meryem DRAOU, Alonso MARINAS, Gaspard ROUYER et Adrien VIDAL.

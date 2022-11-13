@@ -2,26 +2,50 @@ package physic;
 
 import java.util.HashMap;
 
+/**
+ * A collection of physic identities.
+ */
 public class PhysicCollection {
 
     private final HashMap<String, IPhysicIdentity> identities = new HashMap<>();
 
-    public void put(String id, IPhysicIdentity entity) {
-        identities.put(id, entity);
+    /**
+     * Put an entity in the collection.
+     * @param entity -> the entity to put
+     */
+    public void put(IPhysicIdentity entity) {
+        identities.put(entity.getId(), entity);
     }
 
+    /**
+     * Remove the entity represented by the id from the collection.
+     * @param id -> the entity's id to remove
+     */
     public void remove(String id) {
         identities.remove(id);
     }
 
+    /**
+     * Return the entity represented by the id from the collection.
+     * @param id -> the entity's id to return
+     * @return the entity wanted
+     */
     public IPhysicIdentity get(String id) {
         return identities.get(id);
     }
 
+    /**
+     * DCheck if the entity represented by the id is contains in the collection.
+     * @param id -> the entity's id to check
+     * @return true if the entity is contains in the collection. Return false if not
+     */
     public boolean contain(String id) {
         return identities.containsKey(id);
     }
 
+    /**
+     * Check if the hitboxes intersect another hitbox and update their speed vector.
+     */
     public void update() {
         for (IPhysicIdentity currentEntity : identities.values()) {
             Vector speed = currentEntity.getSpeed();
@@ -37,6 +61,4 @@ public class PhysicCollection {
             }
         }
     }
-
-
 }

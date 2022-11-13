@@ -1,8 +1,20 @@
 package graphic;
 
-import kernel.Identity;
+import kernel.IIdentity;
 
-public interface IGraphicIdentity extends Identity {
+/**
+ * The interface representing the graphic identities.
+ */
+public interface IGraphicIdentity extends IIdentity {
+
+    /**
+     * Return its sprite.
+     * @return its sprite
+     */
     Sprite getSprite();
+    /**
+     * Return its layer's number.
+     * @return its layer's number
+     */
     int getLayer();
 }

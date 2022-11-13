@@ -2,8 +2,8 @@ package sample;
 
 import kernel.*;
 
-public class Prototype {
 
+public class Prototype {
     public static void main(String[] args) {
         EngineManager engineManager = new EngineManager();
         EntityManager entityManager = new EntityManager();
