@@ -2,21 +2,28 @@ package graphic;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestWindow {
-    Window window = new Window(500, 500, "Window");
+class TestWindow {
 
     @Test
-    public void addTest() {
-        assertEquals(window.getContentPane().getComponents().length, 0);
-        window.add(new GraphicPanel(0, 0));
-        assertEquals(window.getContentPane().getComponents().length, 1);
+    void addIdentityAndGetIdentity() throws IOException {
+        Window window = new Window("test",100,100,5);
+        GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
+        window.addIdentity(identity);
+        assertEquals(identity,window.getIdentity("id"));
     }
 
     @Test
-    public void startTest() {
-        window.start();
-        assertTrue(window.isVisible());
+    void removeIdentity() throws IOException {
+        Window window = new Window("test",100,100,5);
+        GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
+        window.addIdentity(identity);
+        assertEquals(identity,window.getIdentity("id"));
+        window.removeIdentity("id");
+        assertNotEquals(identity,window.getIdentity("id"));
     }
+
 }
