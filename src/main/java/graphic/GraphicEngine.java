@@ -38,4 +38,9 @@ public class GraphicEngine implements IGraphicEngine {
     public void update() {
         window.update();
     }
+
+    @Override
+    public void start() {
+        window.start();
+    }
 }

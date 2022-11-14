@@ -1,8 +1,6 @@
 package physic;
 
-import kernel.Directions;
-
-import java.io.IOException;
+import kernel.Direction;
 
 /**
  * An entity's identity which represent the physic of this entity.
@@ -57,7 +55,7 @@ public class PhysicIdentity implements IPhysicIdentity {
      * @param direction -> the vector's direction
      */
     @Override
-    public void setSpeed(int speed, Directions direction) {
+    public void setSpeed(int speed, Direction direction) {
         switch (direction) {
             case UP -> this.speed.set(this.speed.getX(), -speed);
             case DOWN -> this.speed.set(this.speed.getX(), speed);

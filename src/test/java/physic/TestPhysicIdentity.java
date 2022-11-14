@@ -1,6 +1,6 @@
 package physic;
 
-import kernel.Directions;
+import kernel.Direction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,10 +25,10 @@ class TestPhysicIdentity {
         PhysicIdentity identity = new PhysicIdentity("id",0,0,10,10,0);
         assertEquals(0, identity.getSpeed().getX());
         assertEquals(0, identity.getSpeed().getY());
-        identity.setSpeed(1, Directions.RIGHT);
+        identity.setSpeed(1, Direction.RIGHT);
         assertEquals(1, identity.getSpeed().getX());
         assertEquals(0, identity.getSpeed().getY());
-        identity.setSpeed(1, Directions.UP);
+        identity.setSpeed(1, Direction.UP);
         assertEquals(1, identity.getSpeed().getX());
         assertEquals(-1, identity.getSpeed().getY());
     }

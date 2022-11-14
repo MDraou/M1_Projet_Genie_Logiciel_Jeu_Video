@@ -11,4 +11,5 @@ public interface IGraphicEngine extends Engine {
      * @return the window
      */
     Window getWindow();
+    void start();
 }

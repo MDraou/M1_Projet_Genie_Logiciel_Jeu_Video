@@ -66,6 +66,6 @@ public class EngineManager {
      * Start the engines.
      */
     protected void start() {
-        if (graphic != null) graphic.getWindow().start();
+        if (graphic != null) graphic.start();
     }
 }

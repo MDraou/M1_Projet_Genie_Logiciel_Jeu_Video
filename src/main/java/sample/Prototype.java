@@ -34,7 +34,7 @@ public class Prototype {
 
         try { Thread.sleep(1000); } catch (InterruptedException e) { throw new RuntimeException(e); }
 
-        core.process(new MoveStrategy(Directions.RIGHT, 2), "penguin");
+        core.process(new MoveStrategy(Direction.RIGHT, 2), "penguin");
 
     }
 }

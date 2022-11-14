@@ -5,7 +5,7 @@ package kernel;
  */
 public class MoveStrategy implements IStrategy {
 
-    private final Directions direction;
+    private final Direction direction;
     private final int speed;
 
     /**
@@ -13,7 +13,7 @@ public class MoveStrategy implements IStrategy {
      * @param direction -> the movement's direction
      * @param speed -> the movement's speed
      */
-    public MoveStrategy(Directions direction, int speed) {
+    public MoveStrategy(Direction direction, int speed) {
         this.direction = direction;
         this.speed = speed;
     }

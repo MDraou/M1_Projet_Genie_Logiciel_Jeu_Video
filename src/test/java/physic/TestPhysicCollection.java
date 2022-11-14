@@ -1,6 +1,6 @@
 package physic;
 
-import kernel.Directions;
+import kernel.Direction;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,7 +37,7 @@ class TestPhysicCollection {
     void update() {
         PhysicIdentity identity = new PhysicIdentity("id",0,0,0,0,0);
         PhysicCollection physicCollection = new PhysicCollection();
-        identity.setSpeed(1, Directions.RIGHT);
+        identity.setSpeed(1, Direction.RIGHT);
         physicCollection.put(identity);
         physicCollection.update();
         assertEquals(1, identity.getHitbox().getX());

@@ -24,7 +24,7 @@ class TestCore {
         entityManager.add(entity);
         engineManager.addEntity(entity);
         Core core = new Core(engineManager,entityManager);
-        core.process(new MoveStrategy(Directions.DOWN,3),"id");
+        core.process(new MoveStrategy(Direction.DOWN,3),"id");
         assertEquals(3, entity.getPhysic().getSpeed().getY());
     }
 

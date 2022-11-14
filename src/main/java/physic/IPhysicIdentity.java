@@ -1,6 +1,6 @@
 package physic;
 
-import kernel.Directions;
+import kernel.Direction;
 import kernel.IIdentity;
 
 /**
@@ -25,7 +25,7 @@ public interface IPhysicIdentity extends IIdentity {
      * @param speed -> the vector's norm
      * @param direction -> the vector's direction
      */
-    void setSpeed(int speed, Directions direction);
+    void setSpeed(int speed, Direction direction);
 
     /**
      * Stop the identity's movement.
