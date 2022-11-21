@@ -1,24 +1,21 @@
 package kernel;
 
 
-import graphic.IGraphicEngine;
-import physic.IPhysicEngine;
+import java.util.ArrayList;
 
 /**
  * The engine's manager.
  */
 public class EngineManager {
 
-    private IGraphicEngine graphic = null;
-    private IPhysicEngine physic = null;
+    private final ArrayList<Engine> engines = new ArrayList<>();
 
     /**
      * Add an entity to the engines.
      * @param entity -> the entity to add
      */
     protected void addEntity(Entity entity) {
-        if (entity.getGraphic() != null) graphic.getWindow().addIdentity(entity.getGraphic());
-        if (entity.getPhysic() != null) physic.getCollection().put(entity.getPhysic());
+        for (Engine engine : engines) engine.addEntity(entity);
     }
 
     /**
@@ -31,41 +28,31 @@ public class EngineManager {
     }
 
     /**
-     * Set the graphic engine.
-     * @param graphic -> the new graphic engine.
+     * Add an engine.
+     * @param engine the new engine.
      */
-    protected void setGraphic(IGraphicEngine graphic) {
-        this.graphic = graphic;
-    }
-
-    /**
-     * Set the physic engine.
-     * @param physic -> the new physic engine.
-     */
-    protected void setPhysic(IPhysicEngine physic) {
-        this.physic = physic;
+    protected void addEngine(Engine engine) {
+        this.engines.add(engine);
     }
 
     /**
      * Remove the engines.
      */
     public void clear() {
-        graphic = null;
-        physic = null;
+        engines.clear();
     }
 
     /**
      * Update the engines.
      */
     protected void update() {
-        if (graphic != null) graphic.update();
-        if (physic != null) physic.update();
+        for (Engine engine: engines) engine.update();
     }
 
     /**
      * Start the engines.
      */
     protected void start() {
-        if (graphic != null) graphic.start();
+        for (Engine engine: engines) engine.start();
     }
 }

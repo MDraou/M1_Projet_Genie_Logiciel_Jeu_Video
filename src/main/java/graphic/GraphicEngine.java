@@ -1,15 +1,14 @@
 package graphic;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import kernel.Engine;
+import kernel.Entity;
 
 /**
  * An engine which update the window.
  */
-public class GraphicEngine implements IGraphicEngine {
+public class GraphicEngine implements Engine {
 
     private final Window window;
-    private static final Logger logger = LogManager.getLogger(GraphicEngine.class);
 
     /**
      * The graphic engine constructor. Initialize the window with a name, width, height and a number of layers.
@@ -22,13 +21,14 @@ public class GraphicEngine implements IGraphicEngine {
         window = new Window(name, width, height, nbLayer);
     }
 
-    /**
-     * Return the graphic engine window.
-     * @return the window
-     */
     @Override
-    public Window getWindow() {
-        return window;
+    public void addEntity(Entity entity) {
+        window.addIdentity(entity.getGraphic());
+    }
+
+    @Override
+    public void remove(String id) {
+        window.removeIdentity(id);
     }
 
     /**

@@ -80,13 +80,6 @@ public class Core implements Runnable {
     }
 
     /**
-     * Start the core.
-     */
-    public synchronized void start() {
-        new Thread(this).start();
-    }
-
-    /**
      * Run the core and update the engines and the entities every 1000 / fps milliseconds.
      */
     @Override
@@ -96,7 +89,7 @@ public class Core implements Runnable {
             engineManager.update();
             entityManager.update();
             try { Thread.sleep(1000 / fps); }
-            catch (InterruptedException e) { throw new RuntimeException(e); }
+            catch (InterruptedException e) { System.exit(1); }
         }
     }
 }

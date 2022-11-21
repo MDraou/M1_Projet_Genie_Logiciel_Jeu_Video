@@ -10,11 +10,9 @@ import java.text.MessageFormat;
 /**
  * The engine manager's builder. Create the engines needed.
  */
-public class EngineBuilder implements IEngineBuilder {
+public class EngineBuilder {
 
     private final EngineManager manager;
-
-    private static final Logger logger = LogManager.getLogger(EngineBuilder.class);
 
     /**
      * The engine builder constructor.
@@ -27,7 +25,6 @@ public class EngineBuilder implements IEngineBuilder {
     /**
      * Clear the engine manager.
      */
-    @Override
     public void reset() {
         manager.clear();
     }
@@ -40,15 +37,13 @@ public class EngineBuilder implements IEngineBuilder {
      * @param nbLayer -> the window's number of layers
      */
     public void buildGraphicEngine(String name, int width, int height, int nbLayer) {
-        if (logger.isDebugEnabled()) logger.debug(MessageFormat.format("Creating graphic engine...", (Object) null));
-        manager.setGraphic(new GraphicEngine(name, width, height, nbLayer));
+        manager.addEngine(new GraphicEngine(name, width, height, nbLayer));
     }
 
     /**
      * Build a physic engine and add it to the engine manager.
      */
     public void buildPhysicEngine() {
-        if (logger.isDebugEnabled()) logger.debug(MessageFormat.format("Creating physic engine...", (Object) null));
-        manager.setPhysic(new PhysicEngine());
+        manager.addEngine(new PhysicEngine());
     }
 }

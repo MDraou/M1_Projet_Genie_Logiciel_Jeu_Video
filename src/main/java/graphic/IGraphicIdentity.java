@@ -5,7 +5,7 @@ import kernel.IIdentity;
 /**
  * The interface representing the graphic identities.
  */
-public interface IGraphicIdentity extends IIdentity {
+public interface IGraphicIdentity {
 
     /**
      * Return its sprite.
@@ -17,4 +17,6 @@ public interface IGraphicIdentity extends IIdentity {
      * @return its layer's number
      */
     int getLayer();
+
+    String getId();
 }

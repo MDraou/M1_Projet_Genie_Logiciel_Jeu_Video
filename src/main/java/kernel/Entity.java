@@ -6,7 +6,7 @@ import physic.IPhysicIdentity;
 /**
  * The entity containing the identities needed.
  */
-public class Entity implements IEntity {
+public class Entity {
 
     private final String id;
     private IGraphicIdentity graphic = null;
@@ -24,7 +24,7 @@ public class Entity implements IEntity {
      * Return the graphic identity.
      * @return the graphic identity
      */
-    protected IGraphicIdentity getGraphic() {
+    public IGraphicIdentity getGraphic() {
         return graphic;
     }
 
@@ -32,7 +32,7 @@ public class Entity implements IEntity {
      * Return the physic identity.
      * @return the physic identity
      */
-    protected IPhysicIdentity getPhysic() {
+    public IPhysicIdentity getPhysic() {
         return physic;
     }
 
@@ -55,7 +55,6 @@ public class Entity implements IEntity {
     /**
      * Remove all the entity.
      */
-    @Override
     public void clear() {
         graphic = null;
         physic = null;
@@ -80,7 +79,6 @@ public class Entity implements IEntity {
      * Return the id of this entity.
      * @return the id of this entity
      */
-    @Override
     public String getId() {
         return id;
     }

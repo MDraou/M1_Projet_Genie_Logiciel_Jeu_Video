@@ -6,7 +6,7 @@ import kernel.IIdentity;
 /**
  * The interface representing the physic identities.
  */
-public interface IPhysicIdentity extends IIdentity {
+public interface IPhysicIdentity  {
 
     /**
      * Return its hitbox.
@@ -31,4 +31,6 @@ public interface IPhysicIdentity extends IIdentity {
      * Stop the identity's movement.
      */
     void stop();
+
+    String getId();
 }

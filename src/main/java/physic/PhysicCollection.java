@@ -35,7 +35,7 @@ public class PhysicCollection {
     }
 
     /**
-     * DCheck if the entity represented by the id is contains in the collection.
+     * Check if the entity represented by the id is contains in the collection.
      * @param id -> the entity's id to check
      * @return true if the entity is contains in the collection. Return false if not
      */
