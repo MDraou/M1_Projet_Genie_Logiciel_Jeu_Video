@@ -1,18 +1,11 @@
 package physic;
 
 import kernel.Direction;
-import kernel.IIdentity;
 
 /**
  * The interface representing the physic identities.
  */
-public interface IPhysicIdentity  {
-
-    /**
-     * Return its hitbox.
-     * @return its hitbox
-     */
-    IHitbox getHitbox();
+public interface IMovementController {
 
     /**
      * Return its speed represented by a vector.
@@ -33,4 +26,14 @@ public interface IPhysicIdentity  {
     void stop();
 
     String getId();
+
+    boolean intersects(IMovementController controller);
+
+    Integer getX();
+    Integer getY();
+    Integer getWidth();
+    Integer getHeight();
+    Integer getLayer();
+    void setCoordinates(int x, int y);
+    void resize(int width, int height);
 }

@@ -3,18 +3,18 @@ package physic;
 import java.util.HashMap;
 
 /**
- * A collection of physic identities.
+ * A collection of physic controllers.
  */
 public class PhysicCollection {
 
-    private final HashMap<String, IPhysicIdentity> identities = new HashMap<>();
+    private final HashMap<String, IMovementController> controllers = new HashMap<>();
 
     /**
      * Put an entity in the collection.
      * @param entity -> the entity to put
      */
-    public void put(IPhysicIdentity entity) {
-        identities.put(entity.getId(), entity);
+    public void put(IMovementController entity) {
+        controllers.put(entity.getId(), entity);
     }
 
     /**
@@ -22,7 +22,7 @@ public class PhysicCollection {
      * @param id -> the entity's id to remove
      */
     public void remove(String id) {
-        identities.remove(id);
+        controllers.remove(id);
     }
 
     /**
@@ -30,8 +30,8 @@ public class PhysicCollection {
      * @param id -> the entity's id to return
      * @return the entity wanted
      */
-    public IPhysicIdentity get(String id) {
-        return identities.get(id);
+    public IMovementController get(String id) {
+        return controllers.get(id);
     }
 
     /**
@@ -40,21 +40,20 @@ public class PhysicCollection {
      * @return true if the entity is contains in the collection. Return false if not
      */
     public boolean contain(String id) {
-        return identities.containsKey(id);
+        return controllers.containsKey(id);
     }
 
     /**
      * Check if the hitboxes intersect another hitbox and update their speed vector.
      */
     public void update() {
-        for (IPhysicIdentity currentEntity : identities.values()) {
-            Vector speed = currentEntity.getSpeed();
+        for (IMovementController controller : controllers.values()) {
+            Vector speed = controller.getSpeed();
             if (speed.getX() == 0 && speed.getY() == 0) continue;
-            IHitbox hitbox = currentEntity.getHitbox();
-            for (IPhysicIdentity checkedEntity : identities.values()) {
-                if (currentEntity != checkedEntity && hitbox.intersects(checkedEntity.getHitbox())) {
-                   hitbox.moveTo(hitbox.getX() - speed.getX(), hitbox.getY() - speed.getY());
-                    currentEntity.stop();
+            for (IMovementController foreignController : controllers.values()) {
+                if (controller != foreignController && controller.intersects(foreignController)) {
+                   controller.moveTo(hitbox.getX() - speed.getX(), hitbox.getY() - speed.getY());
+                    controller.stop();
                     break;
                 }
                 hitbox.moveTo(hitbox.getX() + speed.getX(), hitbox.getY() + speed.getY());

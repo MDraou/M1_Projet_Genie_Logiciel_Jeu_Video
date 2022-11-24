@@ -10,9 +10,9 @@ import java.util.HashMap;
 public class Layer extends JPanel {
 
     /**
-     * A HashMap of the graphic identities.
+     * A HashMap of the graphic sprites.
      */
-    private final HashMap<String, IGraphicIdentity> identities = new HashMap<>();
+    private final HashMap<String, ISprite> sprites = new HashMap<>();
 
     /**
      * The layer's constructor. Make the layer background opaque
@@ -28,8 +28,7 @@ public class Layer extends JPanel {
     @Override
     protected void paintComponent(Graphics graphic) {
         super.paintComponent(graphic);
-        for (IGraphicIdentity identity : identities.values()) {
-            Sprite sprite = identity.getSprite();
+        for (ISprite sprite : sprites.values()) {
             graphic.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight(), null);
         }
     }
@@ -38,8 +37,8 @@ public class Layer extends JPanel {
      * Put a graphic identity in the layer.
      * @param identity -> the graphic identity to put
      */
-    public void put(IGraphicIdentity identity) {
-        identities.put(identity.getId(), identity);
+    public void put(String id, ISprite sprite) {
+        sprites.put(id, sprite);
     }
 
     /**
@@ -47,7 +46,7 @@ public class Layer extends JPanel {
      * @param id -> the graphic identity's id
      */
     public void remove(String id) {
-        identities.remove(id);
+        sprites.remove(id);
     }
 
     /**
@@ -55,8 +54,8 @@ public class Layer extends JPanel {
      * @param id -> the graphic identity's id
      * @return the graphic identity wanted
      */
-    public IGraphicIdentity get(String id) {
-        return identities.get(id);
+    public ISprite get(String id) {
+        return sprites.get(id);
     }
 
     /**
@@ -65,6 +64,6 @@ public class Layer extends JPanel {
      * @return the graphic identity wanted
      */
     public boolean contain(String id) {
-        return identities.containsKey(id);
+        return sprites.containsKey(id);
     }
 }

@@ -8,9 +8,9 @@ import java.util.Objects;
 /**
  * A sprite which represent an image with coordinates and size.
  */
-public class Sprite {
+public class Sprite implements ISprite {
     private volatile BufferedImage image;
-    private volatile int x, y, width, height;
+    private volatile Integer x, y, width, height;
 
     /**
      * The sprite's constructor. Throws an IOException if the image it's not found.
@@ -23,7 +23,7 @@ public class Sprite {
      */
     public Sprite(String spritePath, int x, int y, int width, int height) throws IOException {
         this.x = x; this.y = y; this.width = width; this.height = height;
-        this.image = ImageIO.read(Objects.requireNonNull(GraphicIdentity.class.getResource(spritePath)));
+        this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath)));
     }
 
     /**
@@ -31,6 +31,7 @@ public class Sprite {
      * @param width -> its new width
      * @param height -> its new height
      */
+    @Override
     public void resize(int width, int height) {
         this.width = width; this.height = height;
     }
@@ -40,7 +41,8 @@ public class Sprite {
      * @param x -> the new x coordinate
      * @param y -> the new y coordinate
      */
-    public void moveTo(int x, int y) {
+    @Override
+    public void setCoordinates(int x, int y) {
         this.x = x; this.y = y;
     }
 
@@ -49,15 +51,17 @@ public class Sprite {
      * @param spritePath -> the new image's path
      * @throws IOException when its can't load image
      */
+    @Override
     public void changeImage(String spritePath) throws IOException {
-        this.image = ImageIO.read(Objects.requireNonNull(GraphicIdentity.class.getResource(spritePath)));
+        this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath)));
     }
 
     /**
      * Return the x coordinate.
      * @return the x coordinate
      */
-    public int getX() {
+    @Override
+    public Integer getX() {
         return x;
     }
 
@@ -65,7 +69,8 @@ public class Sprite {
      * Return the y coordinate.
      * @return the y coordinate
      */
-    public int getY() {
+    @Override
+    public Integer getY() {
         return y;
     }
 
@@ -73,7 +78,8 @@ public class Sprite {
      * Return the width
      * @return the width
      */
-    public int getWidth() {
+    @Override
+    public Integer getWidth() {
         return width;
     }
 
@@ -81,7 +87,8 @@ public class Sprite {
      * Return the height
      * @return the height
      */
-    public int getHeight() {
+    @Override
+    public Integer getHeight() {
         return height;
     }
 
@@ -89,6 +96,7 @@ public class Sprite {
      * Return a BufferedImage representing the image.
      * @return a BufferedImage representing the image
      */
+    @Override
     public BufferedImage getImage() {
         return image;
     }

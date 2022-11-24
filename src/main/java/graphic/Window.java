@@ -42,10 +42,10 @@ public class Window extends JFrame {
 
     /**
      * Add a graphic identity to the window.
-     * @param identity -> a graphic identity to show on the window
+     * @param sprite a sprite to show on the window
      */
-    public void addIdentity(IGraphicIdentity identity) {
-        layers.get(identity.getLayer()).put(identity);
+    public void addIdentity(String id, Sprite sprite, int layer) {
+        layers.get(layer).put(id, sprite);
     }
 
     /**
@@ -61,10 +61,10 @@ public class Window extends JFrame {
      * @param id -> the graphic identity's id
      * @return the graphic identity represented by the id
      */
-    public IGraphicIdentity getIdentity(String id) {
-        IGraphicIdentity identity = null;
-        for (Layer layer : layers) if (layer.contain(id)) { identity = layer.get(id); break;}
-        return identity;
+    public ISprite getIdentity(String id) {
+        ISprite sprite = null;
+        for (Layer layer : layers) if (layer.contain(id)) { sprite = layer.get(id); break;}
+        return sprite;
     }
 
     /**

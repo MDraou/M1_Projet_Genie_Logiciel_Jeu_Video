@@ -2,26 +2,24 @@ package physic;
 
 import kernel.Direction;
 
+import java.util.Objects;
+
 /**
  * An entity's identity which represent the physic of this entity.
  */
-public class PhysicIdentity implements IPhysicIdentity {
+public class MovementController implements IMovementController {
 
     private final String id;
-    private final IHitbox hitbox;
     private final Vector speed = new Vector(0, 0);
+
+    private volatile Integer x, y, width, height, layer;
 
     /**
      * The physic identity's constructor. Create a Hitbox object with the parameters.
      * @param id -> its entity's id
-     * @param x -> the x coordinate
-     * @param y -> the y coordinate
-     * @param width -> its width
-     * @param height -> its height
-     * @param layer -> its layer's number
      */
-    public PhysicIdentity(String id, int x, int y, int width, int height, int layer) {
-        this.id = id; this.hitbox = new RectangularHitbox(x, y, width, height, layer);
+    public MovementController(String id, int x, int y, int width, int height, int layer) {
+        this.id = id; this.x = x; this.y = y; this.width = width; this.height = height; this.layer = layer;
     }
 
     /**
@@ -30,15 +28,6 @@ public class PhysicIdentity implements IPhysicIdentity {
      */
     @Override
     public Vector getSpeed() { return speed; }
-
-    /**
-     * Return its hitbox.
-     * @return its hitbox
-     */
-    @Override
-    public IHitbox getHitbox() {
-        return hitbox;
-    }
 
     /**
      * Returns its entity's id.
@@ -70,5 +59,47 @@ public class PhysicIdentity implements IPhysicIdentity {
      */
     public void stop() {
         this.speed.set(0, 0);
+    }
+
+    @Override
+    public boolean intersects(IMovementController controller) {
+        return Objects.equals(layer, controller.getLayer())
+                && x < controller.getX() + controller.getWidth() && x + width > controller.getX()
+                && y < controller.getY() + controller.getHeight() && y + height > controller.getY();
+    }
+
+    @Override
+    public Integer getX() {
+        return this.x;
+    }
+
+    @Override
+    public Integer getY() {
+        return this.y;
+    }
+
+    @Override
+    public Integer getWidth() {
+        return this.width;
+    }
+
+    @Override
+    public Integer getHeight() {
+        return this.height;
+    }
+
+    @Override
+    public Integer getLayer() {
+        return this.layer;
+    }
+
+    @Override
+    public void setCoordinates(int x, int y) {
+        this.x = x;
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        this.width = width; this.height = height;
     }
 }
