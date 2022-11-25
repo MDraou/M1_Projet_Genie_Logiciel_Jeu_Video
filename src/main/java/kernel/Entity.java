@@ -1,7 +1,9 @@
 package kernel;
 
-import graphic.IGraphicIdentity;
-import physic.IMovementController;
+import graphic.ISprite;
+import physic.IMovementsController;
+
+import java.awt.geom.Point2D;
 
 /**
  * The entity containing the identities needed.
@@ -9,8 +11,8 @@ import physic.IMovementController;
 public class Entity {
 
     private final String id;
-    private IGraphicIdentity graphic = null;
-    private IMovementController physic = null;
+    private ISprite sprite = null;
+    private IMovementsController controller = null;
     private int x, y, layer;
 
     /**
@@ -22,51 +24,49 @@ public class Entity {
     }
 
     /**
-     * Return the graphic identity.
-     * @return the graphic identity
+     * Return the sprite identity.
+     * @return the sprite identity
      */
     // IGraphicIdentity getGraphic() {
-    //    return graphic;
+    //    return sprite;
     //}
 
     /**
-     * Return the physic identity.
-     * @return the physic identity
+     * Return the controller identity.
+     * @return the controller identity
      */
     //public IMovementController getPhysic() {
-    //    return physic;
+    //    return controller;
     //}
 
     /**
-     * Set a graphic identity to the entity.
-     * @param graphic -> the new graphic identity
+     * Set a sprite identity to the entity.
+     * @param sprite -> the new sprite identity
      */
-    protected void setGraphic(IGraphicIdentity graphic) {
-        this.graphic = graphic;
+    protected void setSprite(ISprite sprite) {
+        this.sprite = sprite;
     }
 
     /**
-     * Set a physic identity to the entity.
-     * @param physic -> the new physic identity
+     * Set a controller identity to the entity.
+     * @param controller -> the new controller identity
      */
-    protected void setPhysic(IMovementController physic) {
-        this.physic = physic;
+    protected void setController(IMovementsController controller) {
+        this.controller = controller;
     }
 
     /**
      * Remove all the entity.
      */
     public void clear() {
-        graphic = null;
-        physic = null;
+        sprite = null;
+        controller = null;
     }
 
     /**
      * Update the engines between them.
      */
-    protected void update() {
-        if (graphic != null) graphic.getSprite().moveTo(physic.getHitbox().getX(), physic.getHitbox().getY());
-    }
+    protected void update() {}
 
     /**
      * Accept a visitor.

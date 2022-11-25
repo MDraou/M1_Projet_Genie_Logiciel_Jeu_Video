@@ -11,7 +11,7 @@ public class Window extends JFrame {
     /**
      * The ArrayList of the Layer.
      */
-    private final ArrayList<Layer> layers = new ArrayList<>();
+    private final ArrayList<GraphicLayer> layers = new ArrayList<>();
 
     /**
      * The Window constructor. Initialize the window with a name, width, height and a number of layers.
@@ -27,7 +27,7 @@ public class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         for (int i = 0; i < nbLayer; i++) {
-            Layer layer = new Layer();
+            GraphicLayer layer = new GraphicLayer();
             layers.add(layer);
             super.add(layer);
         }
@@ -44,7 +44,7 @@ public class Window extends JFrame {
      * Add a graphic identity to the window.
      * @param sprite a sprite to show on the window
      */
-    public void addIdentity(String id, Sprite sprite, int layer) {
+    public void addSprite(String id, ISprite sprite, int layer) {
         layers.get(layer).put(id, sprite);
     }
 
@@ -52,8 +52,8 @@ public class Window extends JFrame {
      * remove a graphic identity from the window.
      * @param id -> the graphic identity's id to remove from the window
      */
-    public void removeIdentity(String id) {
-        for (Layer layer : layers) if (layer.contain(id)) { layer.remove(id); return ; }
+    public void removeSprite(String id) {
+        for (GraphicLayer layer : layers) if (layer.contain(id)) { layer.remove(id); return ; }
     }
 
     /**
@@ -61,9 +61,9 @@ public class Window extends JFrame {
      * @param id -> the graphic identity's id
      * @return the graphic identity represented by the id
      */
-    public ISprite getIdentity(String id) {
+    public ISprite getSprite(String id) {
         ISprite sprite = null;
-        for (Layer layer : layers) if (layer.contain(id)) { sprite = layer.get(id); break;}
+        for (GraphicLayer layer : layers) if (layer.contain(id)) { sprite = layer.get(id); break;}
         return sprite;
     }
 
@@ -71,7 +71,7 @@ public class Window extends JFrame {
      * Update the window.
      */
     public void update() {
-        for (Layer layer : layers) layer.repaint();
+        for (GraphicLayer layer : layers) layer.repaint();
         validate();
     }
 }

@@ -2,24 +2,30 @@ package physic;
 
 import kernel.Direction;
 
+import java.awt.geom.Point2D;
 import java.util.Objects;
 
 /**
  * An entity's identity which represent the physic of this entity.
  */
-public class MovementController implements IMovementController {
+public class MovementsController implements IMovementsController {
 
     private final String id;
     private final Vector speed = new Vector(0, 0);
 
     private volatile Integer x, y, width, height, layer;
 
+    private final boolean isBouncing;
+
     /**
      * The physic identity's constructor. Create a Hitbox object with the parameters.
      * @param id -> its entity's id
      */
-    public MovementController(String id, int x, int y, int width, int height, int layer) {
-        this.id = id; this.x = x; this.y = y; this.width = width; this.height = height; this.layer = layer;
+    public MovementsController(String id, int x, int y, int width, int height, int layer, boolean isBouncing) {
+        this.id = id; this.x = x; this.y = y;
+        this.width = width; this.height = height;
+        this.layer = layer;
+        this.isBouncing = isBouncing;
     }
 
     /**
@@ -54,6 +60,11 @@ public class MovementController implements IMovementController {
         }
     }
 
+    @Override
+    public void setSpeed(int vx, int vy) {
+        this.speed.set(vx, vy);
+    }
+
     /**
      * Stop the identity's movement.
      */
@@ -62,10 +73,8 @@ public class MovementController implements IMovementController {
     }
 
     @Override
-    public boolean intersects(IMovementController controller) {
-        return Objects.equals(layer, controller.getLayer())
-                && x < controller.getX() + controller.getWidth() && x + width > controller.getX()
-                && y < controller.getY() + controller.getHeight() && y + height > controller.getY();
+    public boolean intersects(int x, int y, int width, int height) {
+        return this.x < x + width && this.x + this.width > x && this.y < y + height && this.y + this.height > y;
     }
 
     @Override
@@ -95,11 +104,21 @@ public class MovementController implements IMovementController {
 
     @Override
     public void setCoordinates(int x, int y) {
-        this.x = x;
+        this.x = x; this.y = y;
     }
 
     @Override
     public void resize(int width, int height) {
         this.width = width; this.height = height;
+    }
+
+    @Override
+    public Point2D.Double getNextCoordinates() {
+        return new Point2D.Double(this.x + this.speed.getX(), this.y + this.speed.getY());
+    }
+
+    @Override
+    public boolean isBouncing() {
+        return this.isBouncing;
     }
 }

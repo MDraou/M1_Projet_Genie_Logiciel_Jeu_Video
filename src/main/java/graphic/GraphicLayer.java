@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * A JPanel object representing a layer of a window.
  */
-public class Layer extends JPanel {
+public class GraphicLayer extends JPanel {
 
     /**
      * A HashMap of the graphic sprites.
@@ -17,7 +17,7 @@ public class Layer extends JPanel {
     /**
      * The layer's constructor. Make the layer background opaque
      */
-    public Layer() {
+    public GraphicLayer() {
         this.setOpaque(false);
     }
 
@@ -34,8 +34,9 @@ public class Layer extends JPanel {
     }
 
     /**
-     * Put a graphic identity in the layer.
-     * @param identity -> the graphic identity to put
+     * Put a sprite in the layer.
+     * @param id the
+     * @param sprite the sprite to put
      */
     public void put(String id, ISprite sprite) {
         sprites.put(id, sprite);

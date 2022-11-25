@@ -2,10 +2,12 @@ package physic;
 
 import kernel.Direction;
 
+import java.awt.geom.Point2D;
+
 /**
  * The interface representing the physic identities.
  */
-public interface IMovementController {
+public interface IMovementsController {
 
     /**
      * Return its speed represented by a vector.
@@ -20,6 +22,8 @@ public interface IMovementController {
      */
     void setSpeed(int speed, Direction direction);
 
+    void setSpeed(int vx, int vy);
+
     /**
      * Stop the identity's movement.
      */
@@ -27,7 +31,7 @@ public interface IMovementController {
 
     String getId();
 
-    boolean intersects(IMovementController controller);
+    boolean intersects(int x, int y, int width, int height);
 
     Integer getX();
     Integer getY();
@@ -36,4 +40,6 @@ public interface IMovementController {
     Integer getLayer();
     void setCoordinates(int x, int y);
     void resize(int width, int height);
+    Point2D.Double getNextCoordinates();
+    boolean isBouncing();
 }

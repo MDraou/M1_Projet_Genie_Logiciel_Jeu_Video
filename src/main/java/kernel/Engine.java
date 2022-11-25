@@ -3,7 +3,7 @@ package kernel;
 /**
  * The interface representing the engines.
  */
-public interface Engine {
+public interface Engine<T> {
 
     /**
      * Update the engine.
@@ -11,5 +11,5 @@ public interface Engine {
     void update();
     void start();
     void remove(String id);
-    void addEntity(Entity entity);
+    void add(String id, T element, int layer);
 }

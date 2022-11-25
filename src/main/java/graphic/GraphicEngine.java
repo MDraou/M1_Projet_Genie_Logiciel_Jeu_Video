@@ -1,12 +1,11 @@
 package graphic;
 
 import kernel.Engine;
-import kernel.Entity;
 
 /**
  * An engine which update the window.
  */
-public class GraphicEngine implements Engine {
+public class GraphicEngine implements Engine<ISprite> {
 
     private final Window window;
 
@@ -22,13 +21,13 @@ public class GraphicEngine implements Engine {
     }
 
     @Override
-    public void addEntity(Entity entity) {
-        window.addIdentity(entity.getGraphic());
+    public void add(String id, ISprite sprite, int layer) {
+        window.addSprite(id, sprite, layer);
     }
 
     @Override
     public void remove(String id) {
-        window.removeIdentity(id);
+        window.removeSprite(id);
     }
 
     /**

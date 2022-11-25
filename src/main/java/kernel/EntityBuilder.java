@@ -1,12 +1,9 @@
 package kernel;
 
 import graphic.GraphicIdentity;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import physic.PhysicIdentity;
 
 import java.io.IOException;
-import java.text.MessageFormat;
 
 /**
  * The entities' builder. Create the identities needed.
@@ -41,7 +38,7 @@ public class EntityBuilder {
      */
     public void buildGraphicIdentity(String spritePath, int x, int y, int width, int height, int layer) {
         if (entity == null) return ;
-        try { entity.setGraphic(new GraphicIdentity(entity.getId(), spritePath, x, y, width, height, layer)); }
+        try { entity.setSprite(new GraphicIdentity(entity.getId(), spritePath, x, y, width, height, layer)); }
         catch (IOException ignored) {}
     }
 
@@ -55,6 +52,6 @@ public class EntityBuilder {
      */
     public void buildPhysicIdentity(int x, int y, int width, int height, int layer) {
         if (entity == null) return ;
-        entity.setPhysic(new PhysicIdentity(entity.getId(), x, y, width, height, layer));
+        entity.setController(new PhysicIdentity(entity.getId(), x, y, width, height, layer));
     }
 }

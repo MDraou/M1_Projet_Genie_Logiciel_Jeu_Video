@@ -40,6 +40,10 @@ public class Vector {
         this.x = x; this.y = y;
     }
 
+    public boolean isNull() {
+        return this.x == 0 && this.y == 0;
+    }
+
     /**
      * Return a String representation of the vector.
      * @return a String representation of the vector
