@@ -1,10 +1,12 @@
-package physic;
+package engine.physic;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A 2D vector.
  */
 public class Vector {
-    private volatile double x, y;
+    private final AtomicReference<Double> x, y;
 
     /**
      * The vector's constructor.
@@ -12,7 +14,7 @@ public class Vector {
      * @param y -> the y coordinate
      */
     public Vector(double x, double y) {
-        this.x = x; this.y = y;
+        this.x = new AtomicReference<>(x); this.y = new AtomicReference<>(y);
     }
 
     /**
@@ -20,7 +22,7 @@ public class Vector {
      * @return the x coordinate
      */
     public double getX() {
-        return x;
+        return x.get();
     }
 
     /**
@@ -28,7 +30,7 @@ public class Vector {
      * @return the y coordinate
      */
     public double getY() {
-        return y;
+        return y.get();
     }
 
     /**
@@ -37,11 +39,11 @@ public class Vector {
      * @param y -> the new y coordinate
      */
     public void set(double x, double y) {
-        this.x = x; this.y = y;
+        this.x.set(x); this.y.set(y);
     }
 
     public boolean isNull() {
-        return this.x == 0.0 && this.y == 0.0;
+        return this.x.get() == 0.0 && this.y.get() == 0.0;
     }
 
     /**
@@ -50,6 +52,6 @@ public class Vector {
      */
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return "(" + x.get() + ", " + y.get() + ")";
     }
 }

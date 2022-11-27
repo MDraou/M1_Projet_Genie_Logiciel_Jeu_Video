@@ -1,9 +1,12 @@
 package kernel;
 
-import graphic.GraphicEngine;
+import engine.graphic.GraphicEngine;
+import engine.kernel.Core;
+import engine.kernel.Entity;
+import engine.kernel.MoveStrategy;
 import graphic.GraphicIdentity;
 import org.junit.jupiter.api.Test;
-import physic.PhysicEngine;
+import engine.physic.PhysicEngine;
 import physic.PhysicIdentity;
 
 import java.io.IOException;

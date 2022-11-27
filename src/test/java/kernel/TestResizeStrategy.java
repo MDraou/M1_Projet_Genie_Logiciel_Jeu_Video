@@ -1,12 +1,13 @@
 package kernel;
 
+import engine.kernel.Entity;
+import engine.kernel.IStrategy;
+import engine.kernel.ResizeStrategy;
 import graphic.GraphicIdentity;
 import org.junit.jupiter.api.Test;
 import physic.PhysicIdentity;
 
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TestResizeStrategy {
 

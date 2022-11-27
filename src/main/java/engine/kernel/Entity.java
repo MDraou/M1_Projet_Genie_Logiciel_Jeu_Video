@@ -1,9 +1,8 @@
-package kernel;
+package engine.kernel;
 
-import graphic.ISprite;
-import physic.IMovementsController;
-
-import java.awt.geom.Point2D;
+import engine.Point;
+import engine.graphic.ISprite;
+import engine.physic.IMovementsController;
 
 /**
  * The entity containing the identities needed.
@@ -13,7 +12,7 @@ public class Entity {
     private final String id;
     private ISprite sprite = null;
     private IMovementsController controller = null;
-    private final Point2D.Double coords;
+    private final Point coords;
     private int layer;
 
     /**
@@ -21,7 +20,7 @@ public class Entity {
      * @param id -> the id of the entity
      */
     public Entity(String id, int x, int y, int layer) {
-        this.id = id; coords = new Point2D.Double(x, y); this.layer = layer;
+        this.id = id; coords = new Point(x, y); this.layer = layer;
     }
 
     /**
@@ -68,8 +67,8 @@ public class Entity {
      * Update the engines between them.
      */
     protected void update() {
-        Point2D.Double nextCoords = controller.getNextCoordinates();
-        this.setCoordinates((int) nextCoords.getX(), (int) nextCoords.getY());
+        Point nextCoords = controller.getNextCoordinates();
+        this.setCoordinates(nextCoords.getX(), nextCoords.getY());
     }
 
 
@@ -81,7 +80,7 @@ public class Entity {
         return id;
     }
 
-    public Point2D.Double getCoordinates() {
+    public Point getCoordinates() {
         return this.coords;
     }
 

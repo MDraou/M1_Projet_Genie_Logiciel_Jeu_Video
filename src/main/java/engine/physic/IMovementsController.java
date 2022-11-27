@@ -1,6 +1,6 @@
-package physic;
+package engine.physic;
 
-import java.awt.geom.Point2D;
+import engine.Point;
 
 /**
  * The interface representing the physic identities.
@@ -27,7 +27,7 @@ public interface IMovementsController {
     int getWidth();
     int getHeight();
     void resize(int width, int height);
-    Point2D.Double getNextCoordinates();
+    Point getNextCoordinates();
 
     boolean intersectInX(IMovementsController controller);
     boolean intersectInY(IMovementsController controller);

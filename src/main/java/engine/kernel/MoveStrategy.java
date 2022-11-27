@@ -1,4 +1,4 @@
-package kernel;
+package engine.kernel;
 
 /**
  * The strategy to move an entity to a direction.

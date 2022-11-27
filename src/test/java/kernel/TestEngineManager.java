@@ -1,8 +1,9 @@
 package kernel;
 
-import graphic.GraphicEngine;
+import engine.graphic.GraphicEngine;
+import engine.kernel.Entity;
 import org.junit.jupiter.api.Test;
-import physic.PhysicEngine;
+import engine.physic.PhysicEngine;
 
 import static org.junit.jupiter.api.Assertions.*;
 

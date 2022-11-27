@@ -1,9 +1,10 @@
 package kernel;
 
+import engine.kernel.Entity;
+import engine.kernel.IStrategy;
+import engine.kernel.MoveStrategy;
 import org.junit.jupiter.api.Test;
 import physic.PhysicIdentity;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TestMoveStrategy {
 

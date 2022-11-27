@@ -1,12 +1,7 @@
 package gameplay;
 
-import kernel.Engine;
-import kernel.Entity;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class InputEngine implements KeyListener{
 

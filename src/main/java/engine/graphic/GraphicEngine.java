@@ -1,7 +1,7 @@
-package graphic;
+package engine.graphic;
 
-import kernel.Engine;
-import kernel.Visitor;
+import engine.kernel.Visitor;
+import engine.kernel.Engine;
 
 /**
  * An engine which update the window.
