@@ -25,7 +25,7 @@ public class Core implements Runnable {
 
     /**
      * Add an entity.
-     * @param entity -> the entity to add
+     * @param entity the entity to add
      */
     public void addEntity(Entity entity) {
         Visitor visitor = new AddEntityVisitor(entity);
@@ -35,19 +35,23 @@ public class Core implements Runnable {
 
     /**
      * Remove an entity.
-     * @param id -> the entity's id to remove
+     * @param id the entity's id to remove
      */
     public void removeEntity(String id) {
         for (Engine engine : engines) engine.remove(id);
         entities.remove(id);
     }
 
+    /**
+     * Add a engine
+     * @param engine the engine to add
+     */
     public void addEngine(Engine engine) {
         engines.add(engine);
     }
 
     /**
-     * Clear the entity manager and the engine manager.
+     * Clear the entities and the engines.
      */
     public void clear() {
         entities.clear();
@@ -56,7 +60,7 @@ public class Core implements Runnable {
 
     /**
      * Set the number of frame per second.
-     * @param fps -> the number of frame per second
+     * @param fps the number of frame per second
      */
     public void setFps(int fps) {
         this.fps = fps;

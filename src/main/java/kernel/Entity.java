@@ -18,7 +18,7 @@ public class Entity {
 
     /**
      * The entity's constructor.
-     * @param id -> the id of the entity
+     * @param id the id of the entity
      */
     public Entity(String id, int x, int y, int layer) {
         this.id = id; coords = new Point2D.Double(x, y); this.layer = layer;
@@ -42,7 +42,7 @@ public class Entity {
 
     /**
      * Set a sprite identity to the entity.
-     * @param sprite -> the new sprite identity
+     * @param sprite the new sprite identity
      */
     protected void setSprite(ISprite sprite) {
         this.sprite = sprite;
@@ -50,7 +50,7 @@ public class Entity {
 
     /**
      * Set a controller identity to the entity.
-     * @param controller -> the new controller identity
+     * @param controller the new controller identity
      */
     protected void setController(IMovementsController controller) {
         this.controller = controller;
@@ -81,21 +81,34 @@ public class Entity {
         return id;
     }
 
+    /**
+     * Return the coordinates of this entity.
+     * @return the coordinates of this entity
+     */
     public Point2D.Double getCoordinates() {
         return this.coords;
     }
 
+    /**
+     * Change the coordinates of the entity.
+     * @param x the new x coordinates
+     * @param y the new y coordinates
+     */
     public void setCoordinates(int x, int y) {
         this.coords.setLocation(x, y);
     }
 
+    /**
+     * Return the layer of the entity
+     * @return the layer of the entity
+     */
     public int getLayer() {
         return this.layer;
     }
 
     /**
      * Execute the strategy put in argument on the entity represented by the id.
-     * @param strategy -> the strategy to execute
+     * @param strategy the strategy to execute
      */
     public void process(IStrategy strategy) {
         strategy.execute(this);

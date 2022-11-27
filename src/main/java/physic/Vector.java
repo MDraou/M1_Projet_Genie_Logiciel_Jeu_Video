@@ -8,38 +8,42 @@ public class Vector {
 
     /**
      * The vector's constructor.
-     * @param x -> the x coordinate
-     * @param y -> the y coordinate
+     * @param x the x value
+     * @param y the y value
      */
     public Vector(double x, double y) {
         this.x = x; this.y = y;
     }
 
     /**
-     * Return the x coordinate.
-     * @return the x coordinate
+     * Return the x value.
+     * @return the x value
      */
     public double getX() {
         return x;
     }
 
     /**
-     * Return the y coordinate.
-     * @return the y coordinate
+     * Return the y value.
+     * @return the y value
      */
     public double getY() {
         return y;
     }
 
     /**
-     * Set the coordinates.
-     * @param x -> the new x coordinate
-     * @param y -> the new y coordinate
+     * Set the value.
+     * @param x the new x value
+     * @param y the new y value
      */
     public void set(double x, double y) {
         this.x = x; this.y = y;
     }
 
+    /**
+     * test if the values of x and y is 0.
+     * @return true if the value of x and y is 0
+     */
     public boolean isNull() {
         return this.x == 0.0 && this.y == 0.0;
     }

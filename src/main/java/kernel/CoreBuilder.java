@@ -27,10 +27,10 @@ public class CoreBuilder {
 
     /**
      * Build a graphic engine and add it to the engine manager.
-     * @param name -> the name of the window
-     * @param width -> the window's width
-     * @param height -> the window's height
-     * @param nbLayer -> the window's number of layers
+     * @param name the name of the window
+     * @param width the window's width
+     * @param height the window's height
+     * @param nbLayer the window's number of layers
      */
     public void buildGraphicEngine(String name, int width, int height, int nbLayer) {
         core.addEngine(new GraphicEngine(name, width, height, nbLayer));

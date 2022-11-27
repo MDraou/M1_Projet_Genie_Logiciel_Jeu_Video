@@ -8,8 +8,8 @@ public class ResizeStrategy implements IStrategy {
 
     /**
      * The strategy's constructor.
-     * @param width -> the new width
-     * @param height -> the new height
+     * @param width the new width
+     * @param height the new height
      */
     public ResizeStrategy(int width, int height) {
         this.width = width; this.height = height;
@@ -17,7 +17,7 @@ public class ResizeStrategy implements IStrategy {
 
     /**
      * Execute the strategy.
-     * @param entity -> the entity which the strategy is executed on.
+     * @param entity the entity which the strategy is executed on.
      */
     @Override
     public void execute(Entity entity) {

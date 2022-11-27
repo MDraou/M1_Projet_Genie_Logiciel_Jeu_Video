@@ -16,7 +16,7 @@ class TestCore {
     void process() {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setPhysic(physicIdentity);
+        entity.setController(physicIdentity);
         EngineManager engineManager = new EngineManager();
         EntityManager entityManager = new EntityManager();
         PhysicEngine physicEngine = new PhysicEngine();
@@ -32,9 +32,9 @@ class TestCore {
     void addEntity() throws IOException {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setPhysic(physicIdentity);
+        entity.setController(physicIdentity);
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
-        entity.setGraphic(graphicIdentity);
+        entity.setSprite(graphicIdentity);
         EngineManager engineManager = new EngineManager();
         EntityManager entityManager = new EntityManager();
         PhysicEngine physicEngine = new PhysicEngine();
@@ -52,9 +52,9 @@ class TestCore {
     void removeEntity() throws IOException {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setPhysic(physicIdentity);
+        entity.setController(physicIdentity);
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
-        entity.setGraphic(graphicIdentity);
+        entity.setSprite(graphicIdentity);
         EngineManager engineManager = new EngineManager();
         EntityManager entityManager = new EntityManager();
         PhysicEngine physicEngine = new PhysicEngine();

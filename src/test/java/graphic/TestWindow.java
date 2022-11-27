@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class TestWindow {
 
     @Test
@@ -13,7 +11,7 @@ class TestWindow {
         Window window = new Window("test",100,100,5);
         GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
         window.addIdentity(identity);
-        assertEquals(identity,window.getIdentity("id"));
+        assertEquals(identity,window.getSprite("id"));
     }
 
     @Test
@@ -21,9 +19,9 @@ class TestWindow {
         Window window = new Window("test",100,100,5);
         GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
         window.addIdentity(identity);
-        assertEquals(identity,window.getIdentity("id"));
-        window.removeIdentity("id");
-        assertNotEquals(identity,window.getIdentity("id"));
+        assertEquals(identity,window.getSprite("id"));
+        window.removeSprite("id");
+        assertNotEquals(identity,window.getSprite("id"));
     }
 
 }

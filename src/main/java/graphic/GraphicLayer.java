@@ -43,16 +43,16 @@ public class GraphicLayer extends JPanel {
     }
 
     /**
-     * Remove a graphic identity representing by the id from the layer.
-     * @param id -> the graphic identity's id
+     * Remove a sprite representing by the id from the layer.
+     * @param id the graphic identity's id
      */
     public void remove(String id) {
         sprites.remove(id);
     }
 
     /**
-     * Return a graphic identity representing by the id from the layer.
-     * @param id -> the graphic identity's id
+     * Return a sprite representing by the id from the layer.
+     * @param id the graphic identity's id
      * @return the graphic identity wanted
      */
     public ISprite get(String id) {
@@ -60,8 +60,8 @@ public class GraphicLayer extends JPanel {
     }
 
     /**
-     * Return true if the graphic identity representing by the id is in the layer. Return false otherwise.
-     * @param id -> the graphic identity's id
+     * Return true if the sprite representing by the id is in the layer. Return false otherwise.
+     * @param id the graphic identity's id
      * @return the graphic identity wanted
      */
     public boolean contain(String id) {

@@ -10,12 +10,12 @@ public interface Visitor {
 
     /**
      * Visit an engine.
-     * @param engine -> the engine to visit
+     * @param engine the engine to visit
      */
     void visit(GraphicEngine engine);
     /**
      * Visit an engine.
-     * @param engine -> the engine to visit
+     * @param engine the engine to visit
      */
     void visit(PhysicEngine engine);
 }

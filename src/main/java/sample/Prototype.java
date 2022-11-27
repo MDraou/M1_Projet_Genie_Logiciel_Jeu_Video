@@ -17,32 +17,32 @@ public class Prototype {
         Entity penguin = new Entity("penguin", 100, 100, 0);
 
         entityBuilder.setEntity(penguin);
-        entityBuilder.buildGraphicIdentity("image.png", 50, 50);
-        entityBuilder.buildPhysicIdentity(50, 50);
+        entityBuilder.buildSprite("image.png", 50, 50);
+        entityBuilder.buildMovementController(50, 50);
 
         Entity rightWall = new Entity("rightWall", 480,0, 0);
 
         entityBuilder.setEntity(rightWall);
-        entityBuilder.buildGraphicIdentity("wall_v.png",10,500);
-        entityBuilder.buildPhysicIdentity(10, 500);
+        entityBuilder.buildSprite("wall_v.png",10,500);
+        entityBuilder.buildMovementController(10, 500);
 
         Entity leftWall = new Entity("leftWall", 0,0, 0);
 
         entityBuilder.setEntity(leftWall);
-        entityBuilder.buildGraphicIdentity("wall_v.png",10,500);
-        entityBuilder.buildPhysicIdentity(10, 500);
+        entityBuilder.buildSprite("wall_v.png",10,500);
+        entityBuilder.buildMovementController(10, 500);
 
         Entity topWall = new Entity("topWall", 0,0, 0);
 
         entityBuilder.setEntity(topWall);
-        entityBuilder.buildGraphicIdentity("wall_h.png",500, 10);
-        entityBuilder.buildPhysicIdentity(500, 10);
+        entityBuilder.buildSprite("wall_h.png",500, 10);
+        entityBuilder.buildMovementController(500, 10);
 
         Entity bottomWall = new Entity("bottomWall", 0,480, 0);
 
         entityBuilder.setEntity(bottomWall);
-        entityBuilder.buildGraphicIdentity("wall_h.png",500, 10);
-        entityBuilder.buildPhysicIdentity(500, 10);
+        entityBuilder.buildSprite("wall_h.png",500, 10);
+        entityBuilder.buildMovementController(500, 10);
 
         core.addEntity(rightWall);
         core.addEntity(leftWall);
