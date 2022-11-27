@@ -58,18 +58,17 @@ public class Prototype {
 
         while (true) {
             Point2D.Double pCoords = penguin.getCoordinates();
-            if (pCoords.getX() + 50 == rightWall.getCoordinates().getX()) {
-                speedX += 0.5;
-                speedY += 0.5;
+            if (pCoords.getX() + 51 >= rightWall.getCoordinates().getX()) {
+                speedX += 0.5; speedY += 0.5;
                 penguin.process(new MoveStrategy(-speedX, speedY));
             }
-            if (pCoords.getX() == leftWall.getCoordinates().getX() + 20) {
-                speedX += 0.5;
-                speedY += 0.5;
-                penguin.process(new MoveStrategy(speedX, speedY));
-            }
-            if (pCoords.getY() == topWall.getCoordinates().getY() + 20) penguin.process(new MoveStrategy(speedX, -speedY));
-            if (pCoords.getY() + 50 == bottomWall.getCoordinates().getY()) penguin.process(new MoveStrategy(speedX, speedY));
+//            if (pCoords.getX() == leftWall.getCoordinates().getX() + 20) {
+//                speedX += 0.5;
+//                speedY += 0.5;
+//                penguin.process(new MoveStrategy(speedX, speedY));
+//            }
+//            if (pCoords.getY() == topWall.getCoordinates().getY() + 20) penguin.process(new MoveStrategy(speedX, -speedY));
+//            if (pCoords.getY() + 50 == bottomWall.getCoordinates().getY()) penguin.process(new MoveStrategy(speedX, speedY));
         }
 
     }
