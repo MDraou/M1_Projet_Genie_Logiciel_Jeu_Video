@@ -14,13 +14,13 @@ class TestEntity {
     @Test
     void getGraphic() {
         Entity entity = new Entity("id");
-        assertNull(entity.getGraphic());
+        assertNull(entity.getSprite());
     }
 
     @Test
     void getPhysic() {
         Entity entity = new Entity("id");
-        assertNull(entity.getPhysic());
+        assertNull(entity.getMovementController());
     }
 
     @Test
@@ -28,7 +28,7 @@ class TestEntity {
         Entity entity = new Entity("id");
         GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
         entity.setSprite(identity);
-        assertEquals(identity, entity.getGraphic());
+        assertEquals(identity, entity.getSprite());
     }
 
     @Test
@@ -36,7 +36,7 @@ class TestEntity {
         Entity entity = new Entity("id");
         PhysicIdentity identity = new PhysicIdentity("id",0,0,10,10,0);
         entity.setController(identity);
-        assertEquals(identity, entity.getPhysic());
+        assertEquals(identity, entity.getMovementController());
     }
 
     @Test
@@ -47,8 +47,8 @@ class TestEntity {
         PhysicIdentity physicIdentity = new PhysicIdentity("id",0,0,10,10,0);
         entity.setController(physicIdentity);
         entity.clear();
-        assertNull(entity.getPhysic());
-        assertNull(entity.getGraphic());
+        assertNull(entity.getMovementController());
+        assertNull(entity.getSprite());
     }
 
     @Test
@@ -59,8 +59,8 @@ class TestEntity {
         PhysicIdentity physicIdentity = new PhysicIdentity("id",10,20,10,10,0);
         entity.setController(physicIdentity);
         entity.update();
-        assertEquals(entity.getGraphic().getSprite().getX(), entity.getPhysic().getHitbox().getX());
-        assertEquals(entity.getGraphic().getSprite().getY(), entity.getPhysic().getHitbox().getY());
+        assertEquals(entity.getSprite().getSprite().getX(), entity.getMovementController().getHitbox().getX());
+        assertEquals(entity.getSprite().getSprite().getY(), entity.getMovementController().getHitbox().getY());
     }
 
     @Test

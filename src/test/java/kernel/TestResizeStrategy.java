@@ -20,9 +20,9 @@ class TestResizeStrategy {
         entity.setSprite(graphicIdentity);
         IStrategy strategy = new ResizeStrategy(3, 5);
         strategy.execute(entity);
-        assertEquals(3, entity.getPhysic().getHitbox().getWidth());
-        assertEquals(5, entity.getPhysic().getHitbox().getHeight());
-        assertEquals(3, entity.getGraphic().getSprite().getWidth());
-        assertEquals(5, entity.getGraphic().getSprite().getHeight());
+        assertEquals(3, entity.getMovementController().getHitbox().getWidth());
+        assertEquals(5, entity.getMovementController().getHitbox().getHeight());
+        assertEquals(3, entity.getSprite().getSprite().getWidth());
+        assertEquals(5, entity.getSprite().getSprite().getHeight());
     }
 }

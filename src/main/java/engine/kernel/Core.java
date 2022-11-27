@@ -28,7 +28,7 @@ public class Core implements Runnable {
      * @param entity the entity to add
      */
     public void addEntity(Entity entity) {
-        Visitor visitor = new AddEntityVisitor(entity);
+        Visitor visitor = new EngineVisitor(entity);
         for (Engine engine : engines) engine.accept(visitor);
         entities.put(entity.getId(), entity);;
     }

@@ -28,7 +28,7 @@ class TestCore {
         engineManager.addEntity(entity);
         Core core = new Core(engineManager,entityManager);
         core.process(new MoveStrategy(Direction.DOWN,3),"id");
-        assertEquals(3, entity.getPhysic().getSpeed().getY());
+        assertEquals(3, entity.getMovementController().getSpeed().getY());
     }
 
     @Test
@@ -47,8 +47,8 @@ class TestCore {
         Core core = new Core(engineManager,entityManager);
         core.addEntity(entity);
         assertEquals(entity, entityManager.get("id"));
-        assertEquals(entity.getPhysic(), physicEngine.getCollection().get("id"));
-        assertEquals(entity.getGraphic(), graphicEngine.getWindow().getIdentity("id"));
+        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
     }
 
     @Test
@@ -67,8 +67,8 @@ class TestCore {
         Core core = new Core(engineManager,entityManager);
         core.addEntity(entity);
         assertEquals(entity, entityManager.get("id"));
-        assertEquals(entity.getPhysic(), physicEngine.getCollection().get("id"));
-        assertEquals(entity.getGraphic(), graphicEngine.getWindow().getIdentity("id"));
+        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
         core.removeEntity("id");
         assertNull(entityManager.get("id"));
         assertNull(physicEngine.getCollection().get("id"));

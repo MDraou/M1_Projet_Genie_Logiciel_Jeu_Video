@@ -3,7 +3,7 @@ package engine.kernel;
 import engine.graphic.GraphicEngine;
 import engine.physic.PhysicEngine;
 
-public class AddEntityVisitor implements Visitor {
+public class EngineVisitor implements Visitor {
 
     private final Entity entity;
 
@@ -11,7 +11,7 @@ public class AddEntityVisitor implements Visitor {
      * Memorize the entity to add.
      * @param entity the entity to add
      */
-    public AddEntityVisitor(Entity entity) {
+    public EngineVisitor(Entity entity) {
         this.entity = entity;
     }
 
@@ -21,7 +21,7 @@ public class AddEntityVisitor implements Visitor {
      */
     @Override
     public void visit(GraphicEngine engine) {
-        engine.add(entity.getId(), entity.getGraphic(), entity.getLayer());
+        engine.add(entity.getId(), entity.getSprite(), entity.getLayer());
     }
 
     /**
@@ -30,6 +30,6 @@ public class AddEntityVisitor implements Visitor {
      */
     @Override
     public void visit(PhysicEngine engine) {
-        engine.add(entity.getId(), entity.getPhysic(), entity.getLayer());
+        engine.add(entity.getId(), entity.getMovementController(), entity.getLayer());
     }
 }

@@ -27,7 +27,7 @@ public class Entity {
      * Return the sprite identity.
      * @return the sprite identity
      */
-     protected ISprite getGraphic() {
+     protected ISprite getSprite() {
         return sprite;
     }
 
@@ -35,7 +35,7 @@ public class Entity {
      * Return the controller identity.
      * @return the controller identity
      */
-    protected IMovementsController getPhysic() {
+    protected IMovementsController getMovementController() {
         return controller;
     }
 

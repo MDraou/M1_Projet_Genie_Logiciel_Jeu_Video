@@ -22,6 +22,6 @@ public class MoveStrategy implements IStrategy {
      */
     @Override
     public void execute(Entity entity) {
-        entity.getPhysic().setSpeed(vx, vy);
+        entity.getMovementController().setSpeed(vx, vy);
     }
 }
