@@ -14,8 +14,10 @@ public class PhysicEngine implements Engine<IMovementsController> {
     private final ArrayList<HashMap<String, IMovementsController>> layers = new ArrayList<>();
 
     /**
-     * Add a graphic identity to the window.
+     * Add a movement controller to the window.
+     * @param id the id associate
      * @param controller a Movements controller
+     * @param layer the layer associate
      */
     @Override
     public void add(String id, IMovementsController controller, int layer) {
@@ -25,7 +27,7 @@ public class PhysicEngine implements Engine<IMovementsController> {
 
     /**
      * remove a graphic identity from the window.
-     * @param id -> the graphic identity's id to remove from the window
+     * @param id the movement controller's id to remove from the window
      */
     @Override
     public void remove(String id) {
@@ -35,8 +37,8 @@ public class PhysicEngine implements Engine<IMovementsController> {
 
     /**
      * Return a graphic identity from the window if it's contain or null if not.
-     * @param id -> the graphic identity's id
-     * @return the graphic identity represented by the id
+     * @param id the graphic identity's id
+     * @return the movement controller represented by the id
      */
     public IMovementsController getController(String id) {
         for (HashMap<String, IMovementsController> layer : layers)
@@ -44,6 +46,9 @@ public class PhysicEngine implements Engine<IMovementsController> {
         return null;
     }
 
+    /**
+     *
+     */
     @Override
     public void start() {
 

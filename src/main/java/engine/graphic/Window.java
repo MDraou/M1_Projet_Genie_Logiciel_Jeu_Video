@@ -15,10 +15,10 @@ public class Window extends JFrame {
 
     /**
      * The Window constructor. Initialize the window with a name, width, height and a number of layers.
-     * @param name -> the window's name
-     * @param width -> the window's width
-     * @param height -> the window's height
-     * @param nbLayer -> the window's number of layers
+     * @param name the window's name
+     * @param width the window's width
+     * @param height the window's height
+     * @param nbLayer the window's number of layers
      */
     public Window(String name, int width, int height, int nbLayer) {
         setTitle(name);
@@ -41,8 +41,10 @@ public class Window extends JFrame {
     }
 
     /**
-     * Add a graphic identity to the window.
+     * Add a spirte to a layer.
+     * @param id the id of the entity associate with the sprite
      * @param sprite a sprite to show on the window
+     * @param layer the layer of the sprite
      */
     public void addSprite(String id, ISprite sprite, int layer) {
         layers.get(layer).put(id, sprite);
@@ -50,16 +52,16 @@ public class Window extends JFrame {
 
     /**
      * remove a graphic identity from the window.
-     * @param id -> the graphic identity's id to remove from the window
+     * @param id the sprite's id to remove from the window
      */
     public void removeSprite(String id) {
         for (GraphicLayer layer : layers) if (layer.contain(id)) { layer.remove(id); return ; }
     }
 
     /**
-     * Return a graphic identity from the window if it's contain or null if not.
-     * @param id -> the graphic identity's id
-     * @return the graphic identity represented by the id
+     * Return a sprite from a layer if it's contain or null if not.
+     * @param id the graphic identity's id
+     * @return the sprite represented by the id
      */
     public ISprite getSprite(String id) {
         ISprite sprite = null;

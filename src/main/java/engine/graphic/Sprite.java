@@ -18,8 +18,9 @@ public class Sprite implements ISprite {
 
     /**
      * The sprite's constructor. Throws an IOException if the image it's not found.
-     * @param spritePath -> its image's path
-
+     * @param spritePath its image's path
+     * @param coords the coordinate of the sprite
+     * @param dimension the size of the sprite
      * @throws IOException when its can't load image
      */
     public Sprite(String spritePath, Point coords, Dimension dimension) throws IOException {
@@ -29,8 +30,8 @@ public class Sprite implements ISprite {
 
     /**
      * Resize the image.
-     * @param width -> its new width
-     * @param height -> its new height
+     * @param width its new width
+     * @param height its new height
      */
     @Override
     public void resize(int width, int height) {
@@ -39,8 +40,8 @@ public class Sprite implements ISprite {
 
     /**
      * Move the image to another location.
-     * @param x -> the new x coordinate
-     * @param y -> the new y coordinate
+     * @param x the new x coordinate
+     * @param y the new y coordinate
      */
     @Override
     public void setCoordinates(int x, int y) {
@@ -49,7 +50,7 @@ public class Sprite implements ISprite {
 
     /**
      * Change the sprite's image. Throws an IOException if the image it's not found.
-     * @param spritePath -> the new image's path
+     * @param spritePath the new image's path
      * @throws IOException when its can't load image
      */
     @Override

@@ -27,7 +27,7 @@ class TestEntity {
     void setGraphic() throws IOException {
         Entity entity = new Entity("id");
         GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
-        entity.setGraphic(identity);
+        entity.setSprite(identity);
         assertEquals(identity, entity.getGraphic());
     }
 
@@ -35,7 +35,7 @@ class TestEntity {
     void setPhysic() {
         Entity entity = new Entity("id");
         PhysicIdentity identity = new PhysicIdentity("id",0,0,10,10,0);
-        entity.setPhysic(identity);
+        entity.setController(identity);
         assertEquals(identity, entity.getPhysic());
     }
 
@@ -43,9 +43,9 @@ class TestEntity {
     void clear() throws IOException {
         Entity entity = new Entity("id");
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
-        entity.setGraphic(graphicIdentity);
+        entity.setSprite(graphicIdentity);
         PhysicIdentity physicIdentity = new PhysicIdentity("id",0,0,10,10,0);
-        entity.setPhysic(physicIdentity);
+        entity.setController(physicIdentity);
         entity.clear();
         assertNull(entity.getPhysic());
         assertNull(entity.getGraphic());
@@ -55,9 +55,9 @@ class TestEntity {
     void update() throws IOException {
         Entity entity = new Entity("id");
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
-        entity.setGraphic(graphicIdentity);
+        entity.setSprite(graphicIdentity);
         PhysicIdentity physicIdentity = new PhysicIdentity("id",10,20,10,10,0);
-        entity.setPhysic(physicIdentity);
+        entity.setController(physicIdentity);
         entity.update();
         assertEquals(entity.getGraphic().getSprite().getX(), entity.getPhysic().getHitbox().getX());
         assertEquals(entity.getGraphic().getSprite().getY(), entity.getPhysic().getHitbox().getY());

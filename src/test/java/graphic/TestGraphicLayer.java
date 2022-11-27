@@ -6,11 +6,11 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestLayer {
+class TestGraphicLayer {
 
     @Test
     void putAndGet() throws IOException {
-        Layer layer = new Layer();
+        GraphicLayer layer = new GraphicLayer();
         GraphicIdentity identity = new GraphicIdentity("id", "",0,0,10,10,0);
         layer.put(identity);
         assertEquals(identity, layer.get("id"));
@@ -18,7 +18,7 @@ class TestLayer {
 
     @Test
     void remove() throws IOException {
-        Layer layer = new Layer();
+        GraphicLayer layer = new GraphicLayer();
         GraphicIdentity identity = new GraphicIdentity("id", "",0,0,10,10,0);
         layer.put(identity);
         assertEquals(identity, layer.get("id"));
@@ -28,7 +28,7 @@ class TestLayer {
 
     @Test
     void contain() throws IOException {
-        Layer layer = new Layer();
+        GraphicLayer layer = new GraphicLayer();
         GraphicIdentity identity = new GraphicIdentity("id", "",0,0,10,10,0);
         layer.put(identity);
         assertTrue(layer.contain("id"));
