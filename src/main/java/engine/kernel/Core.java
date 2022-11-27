@@ -1,4 +1,4 @@
-package kernel;
+package engine.kernel;
 
 import java.util.ArrayList;
 import java.util.HashMap;

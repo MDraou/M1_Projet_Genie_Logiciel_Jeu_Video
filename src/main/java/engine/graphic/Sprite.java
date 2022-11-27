@@ -1,9 +1,9 @@
-package graphic;
+package engine.graphic;
+
+import engine.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.Dimension2D;
-import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class Sprite implements ISprite {
     private volatile BufferedImage image;
-    private final Point2D.Double coords;
+    private final Point coords;
     private final Dimension dimension;
 
     /**
@@ -23,7 +23,7 @@ public class Sprite implements ISprite {
      * @param dimension the size of the sprite
      * @throws IOException when its can't load image
      */
-    public Sprite(String spritePath, Point2D.Double coords, Dimension dimension) throws IOException {
+    public Sprite(String spritePath, Point coords, Dimension dimension) throws IOException {
         this.coords = coords; this.dimension = dimension;
         this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath)));
     }
@@ -64,7 +64,7 @@ public class Sprite implements ISprite {
      */
     @Override
     public int getX() {
-        return (int) this.coords.getX();
+        return this.coords.getX();
     }
 
     /**
@@ -73,7 +73,7 @@ public class Sprite implements ISprite {
      */
     @Override
     public int getY() {
-        return (int) this.coords.getY();
+        return this.coords.getY();
     }
 
     /**

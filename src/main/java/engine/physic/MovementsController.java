@@ -1,7 +1,9 @@
-package physic;
+package engine.physic;
+
+
+import engine.Point;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 /**
  * An entity's identity which represent the physic of this entity.
@@ -10,7 +12,7 @@ public class MovementsController implements IMovementsController {
 
     private final String id;
     private final Vector speed = new Vector(0, 0);
-    private final Point2D.Double coords;
+    private final Point coords;
     private final Dimension dimension;
 
     private volatile IMovementsController fCtrl = null;
@@ -21,7 +23,7 @@ public class MovementsController implements IMovementsController {
      * @param coords the coordinates of the entity in the physique
      * @param dimension the dimension of the hitbox
      */
-    public MovementsController(String id, Point2D.Double coords, Dimension dimension) {
+    public MovementsController(String id, Point coords, Dimension dimension) {
         this.id = id;
         this.coords = coords;
         this.dimension = dimension;
@@ -66,7 +68,7 @@ public class MovementsController implements IMovementsController {
      */
     @Override
     public int getX() {
-        return (int) this.coords.getX();
+        return this.coords.getX();
     }
 
     /**
@@ -75,7 +77,7 @@ public class MovementsController implements IMovementsController {
      */
     @Override
     public int getY() {
-        return (int) this.coords.getY();
+        return this.coords.getY();
     }
 
     /**
@@ -111,8 +113,8 @@ public class MovementsController implements IMovementsController {
      * @return the next coordinates
      */
     @Override
-    public Point2D.Double getNextCoordinates() {
-        Point2D.Double newCoords = new Point2D.Double(this.getX() + speed.getX(), this.getY() + speed.getY());
+    public Point getNextCoordinates() {
+        Point newCoords = new Point((int) (this.getX() + speed.getX()), (int) (this.getY() + speed.getY()));
         if (fCtrl == null) return newCoords;
         if (speed.getX() == 0) {
             if (this.getX() + this.getWidth() < fCtrl.getX()) newCoords.setLocation(fCtrl.getX() - this.getWidth(), this.getY());

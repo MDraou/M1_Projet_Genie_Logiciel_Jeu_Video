@@ -1,5 +1,6 @@
 package kernel;
 
+import engine.kernel.Entity;
 import graphic.GraphicIdentity;
 import org.junit.jupiter.api.Test;
 import physic.PhysicIdentity;

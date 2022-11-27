@@ -1,7 +1,7 @@
-package kernel;
+package engine.kernel;
 
-import graphic.GraphicEngine;
-import physic.PhysicEngine;
+import engine.graphic.GraphicEngine;
+import engine.physic.PhysicEngine;
 
 /**
  * The interface representing the visitors.

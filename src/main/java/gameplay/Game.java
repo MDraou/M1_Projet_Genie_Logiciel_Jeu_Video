@@ -1,6 +1,6 @@
 package gameplay;
 
-import kernel.Core;
+import engine.kernel.Core;
 
 public class Game {
     Core kernel;

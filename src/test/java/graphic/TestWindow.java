@@ -1,5 +1,6 @@
 package graphic;
 
+import engine.graphic.Window;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

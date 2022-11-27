@@ -1,7 +1,7 @@
-package kernel;
+package engine.kernel;
 
-import graphic.Sprite;
-import physic.MovementsController;
+import engine.graphic.Sprite;
+import engine.physic.MovementsController;
 
 import java.awt.*;
 import java.io.IOException;

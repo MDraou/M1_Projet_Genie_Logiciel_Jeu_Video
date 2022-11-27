@@ -1,4 +1,4 @@
-package kernel;
+package engine.kernel;
 
 /**
  * The interface representing the engines.

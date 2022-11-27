@@ -1,9 +1,9 @@
 package graphic;
 
+import engine.graphic.Sprite;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;

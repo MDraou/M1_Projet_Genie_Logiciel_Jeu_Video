@@ -2,7 +2,7 @@ package physic;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import physic.Vector;
+import engine.physic.Vector;
 
 public class TestVector {
 

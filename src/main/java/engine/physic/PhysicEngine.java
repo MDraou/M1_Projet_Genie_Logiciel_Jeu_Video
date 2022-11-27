@@ -1,7 +1,7 @@
-package physic;
+package engine.physic;
 
-import kernel.Engine;
-import kernel.Visitor;
+import engine.kernel.Engine;
+import engine.kernel.Visitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
