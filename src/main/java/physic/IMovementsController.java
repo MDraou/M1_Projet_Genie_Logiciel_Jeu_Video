@@ -1,7 +1,5 @@
 package physic;
 
-import kernel.Direction;
-
 import java.awt.geom.Point2D;
 
 /**
@@ -15,14 +13,7 @@ public interface IMovementsController {
      */
     Vector getSpeed();
 
-    /**
-     * Set the speed represented by a vector.
-     * @param speed -> the vector's norm
-     * @param direction -> the vector's direction
-     */
-    void setSpeed(int speed, Direction direction);
-
-    void setSpeed(int vx, int vy);
+    void setSpeed(double vx, double vy);
 
     /**
      * Stop the identity's movement.
@@ -31,15 +22,14 @@ public interface IMovementsController {
 
     String getId();
 
-    boolean intersects(int x, int y, int width, int height);
-
-    Integer getX();
-    Integer getY();
-    Integer getWidth();
-    Integer getHeight();
-    Integer getLayer();
-    void setCoordinates(int x, int y);
+    int getX();
+    int getY();
+    int getWidth();
+    int getHeight();
     void resize(int width, int height);
     Point2D.Double getNextCoordinates();
-    boolean isBouncing();
+
+    boolean intersectInX(IMovementsController controller);
+    boolean intersectInY(IMovementsController controller);
+    void setNeighbor(IMovementsController fCtrl);
 }

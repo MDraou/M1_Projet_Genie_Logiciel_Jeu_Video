@@ -5,17 +5,10 @@ package kernel;
  */
 public class MoveStrategy implements IStrategy {
 
-    private final Direction direction;
-    private final int speed;
+    private final double vx, vy;
 
-    /**
-     * The strategy's constructor.
-     * @param direction -> the movement's direction
-     * @param speed -> the movement's speed
-     */
-    public MoveStrategy(Direction direction, int speed) {
-        this.direction = direction;
-        this.speed = speed;
+    public MoveStrategy(double vx, double vy) {
+        this.vx = vx; this.vy = vy;
     }
 
     /**
@@ -24,6 +17,6 @@ public class MoveStrategy implements IStrategy {
      */
     @Override
     public void execute(Entity entity) {
-        entity.getPhysic().setSpeed(speed, direction);
+        entity.getPhysic().setSpeed(vx, vy);
     }
 }

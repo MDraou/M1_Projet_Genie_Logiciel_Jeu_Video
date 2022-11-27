@@ -1,6 +1,7 @@
 package graphic;
 
 import kernel.Engine;
+import kernel.Visitor;
 
 /**
  * An engine which update the window.
@@ -41,5 +42,10 @@ public class GraphicEngine implements Engine<ISprite> {
     @Override
     public void start() {
         window.start();
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

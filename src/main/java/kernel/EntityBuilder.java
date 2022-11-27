@@ -1,8 +1,9 @@
 package kernel;
 
-import graphic.GraphicIdentity;
-import physic.PhysicIdentity;
+import graphic.Sprite;
+import physic.MovementsController;
 
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -30,28 +31,22 @@ public class EntityBuilder {
     /**
      * Create a graphic identity and add it to the entity.
      * @param spritePath -> the image's path
-     * @param x -> the x coordinate
-     * @param y -> the x coordinate
      * @param width -> the image's width
      * @param height -> the image's height
-     * @param layer -> the identity layer
      */
-    public void buildGraphicIdentity(String spritePath, int x, int y, int width, int height, int layer) {
+    public void buildGraphicIdentity(String spritePath, int width, int height) {
         if (entity == null) return ;
-        try { entity.setSprite(new GraphicIdentity(entity.getId(), spritePath, x, y, width, height, layer)); }
+        try { entity.setSprite(new Sprite(spritePath, entity.getCoordinates(), new Dimension(width, height))); }
         catch (IOException ignored) {}
     }
 
     /**
      * Create a physic identity and add it to the entity.
-     * @param x -> the x coordinate
-     * @param y -> the x coordinate
      * @param width -> the hitbox's width
      * @param height -> the hitbox's height
-     * @param layer -> the identity layer
      */
-    public void buildPhysicIdentity(int x, int y, int width, int height, int layer) {
+    public void buildPhysicIdentity(int width, int height) {
         if (entity == null) return ;
-        entity.setController(new PhysicIdentity(entity.getId(), x, y, width, height, layer));
+        entity.setController(new MovementsController(entity.getId(), entity.getCoordinates(), new Dimension(width, height)));
     }
 }

@@ -1,8 +1,8 @@
 package physic;
 
 import kernel.Engine;
+import kernel.Visitor;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -56,15 +56,23 @@ public class PhysicEngine implements Engine<IMovementsController> {
     public void update() {
         for (HashMap<String, IMovementsController> layer : layers)
             for (IMovementsController ctrl : layer.values()) {
-                Vector speed = ctrl.getSpeed();
-                if (speed.isNull()) continue;
-                Point2D.Double nCoords = ctrl.getNextCoordinates();
+                if (ctrl.getSpeed().isNull()) continue;
                 for (IMovementsController fCtrl : layer.values()) {
                     if (ctrl == fCtrl) continue ;
-                    if (fCtrl.intersects((int) nCoords.getX(), (int) nCoords.getY(), ctrl.getWidth(), ctrl.getHeight()))
-                        if (ctrl.isBouncing())
-                    else ctrl.setCoordinates((int) nCoords.getX(), (int) nCoords.getY());
+                    if (ctrl.intersectInX(fCtrl)) {
+                        ctrl.setSpeed(0, ctrl.getSpeed().getY());
+                        ctrl.setNeighbor(fCtrl);
+                    }
+                    if (ctrl.intersectInY(fCtrl)) {
+                        ctrl.setSpeed(ctrl.getSpeed().getX(), 0);
+                        ctrl.setNeighbor(fCtrl);
+                    }
                 }
             }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

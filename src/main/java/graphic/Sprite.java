@@ -1,6 +1,9 @@
 package graphic;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.geom.Dimension2D;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
@@ -10,19 +13,17 @@ import java.util.Objects;
  */
 public class Sprite implements ISprite {
     private volatile BufferedImage image;
-    private volatile Integer x, y, width, height;
+    private final Point2D.Double coords;
+    private final Dimension dimension;
 
     /**
      * The sprite's constructor. Throws an IOException if the image it's not found.
      * @param spritePath -> its image's path
-     * @param x -> the x coordinate
-     * @param y -> the y coordinate
-     * @param width -> its width
-     * @param height -> its height
+
      * @throws IOException when its can't load image
      */
-    public Sprite(String spritePath, int x, int y, int width, int height) throws IOException {
-        this.x = x; this.y = y; this.width = width; this.height = height;
+    public Sprite(String spritePath, Point2D.Double coords, Dimension dimension) throws IOException {
+        this.coords = coords; this.dimension = dimension;
         this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath)));
     }
 
@@ -33,7 +34,7 @@ public class Sprite implements ISprite {
      */
     @Override
     public void resize(int width, int height) {
-        this.width = width; this.height = height;
+        this.dimension.setSize(width, height);
     }
 
     /**
@@ -43,7 +44,7 @@ public class Sprite implements ISprite {
      */
     @Override
     public void setCoordinates(int x, int y) {
-        this.x = x; this.y = y;
+        this.coords.setLocation(x, y);
     }
 
     /**
@@ -61,8 +62,8 @@ public class Sprite implements ISprite {
      * @return the x coordinate
      */
     @Override
-    public Integer getX() {
-        return x;
+    public int getX() {
+        return (int) this.coords.getX();
     }
 
     /**
@@ -70,8 +71,8 @@ public class Sprite implements ISprite {
      * @return the y coordinate
      */
     @Override
-    public Integer getY() {
-        return y;
+    public int getY() {
+        return (int) this.coords.getY();
     }
 
     /**
@@ -79,8 +80,8 @@ public class Sprite implements ISprite {
      * @return the width
      */
     @Override
-    public Integer getWidth() {
-        return width;
+    public int getWidth() {
+        return this.dimension.width;
     }
 
     /**
@@ -88,8 +89,8 @@ public class Sprite implements ISprite {
      * @return the height
      */
     @Override
-    public Integer getHeight() {
-        return height;
+    public int getHeight() {
+        return this.dimension.height;
     }
 
     /**

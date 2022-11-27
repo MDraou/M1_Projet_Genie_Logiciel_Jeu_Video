@@ -13,31 +13,32 @@ public class Entity {
     private final String id;
     private ISprite sprite = null;
     private IMovementsController controller = null;
-    private int x, y, layer;
+    private final Point2D.Double coords;
+    private int layer;
 
     /**
      * The entity's constructor.
      * @param id -> the id of the entity
      */
     public Entity(String id, int x, int y, int layer) {
-        this.id = id; this.x = x; this.y = y; this.layer = layer;
+        this.id = id; coords = new Point2D.Double(x, y); this.layer = layer;
     }
 
     /**
      * Return the sprite identity.
      * @return the sprite identity
      */
-    // IGraphicIdentity getGraphic() {
-    //    return sprite;
-    //}
+     protected ISprite getGraphic() {
+        return sprite;
+    }
 
     /**
      * Return the controller identity.
      * @return the controller identity
      */
-    //public IMovementController getPhysic() {
-    //    return controller;
-    //}
+    protected IMovementsController getPhysic() {
+        return controller;
+    }
 
     /**
      * Set a sprite identity to the entity.
@@ -66,15 +67,11 @@ public class Entity {
     /**
      * Update the engines between them.
      */
-    protected void update() {}
-
-    /**
-     * Accept a visitor.
-     * @param visitor -> the visitor to accept
-     */
-    protected void accept(IVisitor visitor) {
-        visitor.visit(this);
+    protected void update() {
+        Point2D.Double nextCoords = controller.getNextCoordinates();
+        this.setCoordinates((int) nextCoords.getX(), (int) nextCoords.getY());
     }
+
 
     /**
      * Return the id of this entity.
@@ -84,11 +81,23 @@ public class Entity {
         return id;
     }
 
-    public int getX() { return this.x; }
-
-    public int getY() { return this.y; }
+    public Point2D.Double getCoordinates() {
+        return this.coords;
+    }
 
     public void setCoordinates(int x, int y) {
-        this.x = x; this.y = y;
+        this.coords.setLocation(x, y);
+    }
+
+    public int getLayer() {
+        return this.layer;
+    }
+
+    /**
+     * Execute the strategy put in argument on the entity represented by the id.
+     * @param strategy -> the strategy to execute
+     */
+    public void process(IStrategy strategy) {
+        strategy.execute(this);
     }
 }

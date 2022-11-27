@@ -4,14 +4,14 @@ package physic;
  * A 2D vector.
  */
 public class Vector {
-    private volatile int x, y;
+    private volatile double x, y;
 
     /**
      * The vector's constructor.
      * @param x -> the x coordinate
      * @param y -> the y coordinate
      */
-    public Vector(int x, int y) {
+    public Vector(double x, double y) {
         this.x = x; this.y = y;
     }
 
@@ -19,7 +19,7 @@ public class Vector {
      * Return the x coordinate.
      * @return the x coordinate
      */
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -27,7 +27,7 @@ public class Vector {
      * Return the y coordinate.
      * @return the y coordinate
      */
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -36,12 +36,12 @@ public class Vector {
      * @param x -> the new x coordinate
      * @param y -> the new y coordinate
      */
-    public void set(int x, int y) {
+    public void set(double x, double y) {
         this.x = x; this.y = y;
     }
 
     public boolean isNull() {
-        return this.x == 0 && this.y == 0;
+        return this.x == 0.0 && this.y == 0.0;
     }
 
     /**

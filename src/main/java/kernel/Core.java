@@ -1,41 +1,26 @@
 package kernel;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * The engines' core. Manage the refreshment of the engines.
  */
+@SuppressWarnings("rawtypes")
 public class Core implements Runnable {
 
-    private final EngineManager engineManager;
-    private final EntityManager entityManager;
+    private final ArrayList<Engine> engines = new ArrayList<>();
+    private final HashMap<String, Entity> entities = new HashMap<>();
     private volatile boolean isRunning = false;
     private volatile int fps = 30;
-
-    /**
-     * The core's constructor.
-     * @param engineManager -> the manager of the engines
-     * @param entityManager -> the manager of the entities
-     */
-    public Core(EngineManager engineManager, EntityManager entityManager) {
-        this.entityManager = entityManager;
-        this.engineManager = engineManager;
-    }
 
     /**
      * Start the engines and the core.
      */
     public void launch() {
-        engineManager.start();
+        for (Engine engine : engines) engine.start();
         isRunning = true;
         new Thread(this).start();
-    }
-
-    /**
-     * Execute the strategy put in argument on the entity represented by the id.
-     * @param strategy -> the strategy to execute
-     * @param id -> the entity's id
-     */
-    public void process(IStrategy strategy, String id) {
-        strategy.execute(entityManager.get(id));
     }
 
     /**
@@ -43,8 +28,9 @@ public class Core implements Runnable {
      * @param entity -> the entity to add
      */
     public void addEntity(Entity entity) {
-        entityManager.add(entity);
-        engineManager.addEntity(entity);
+        Visitor visitor = new AddEntityVisitor(entity);
+        for (Engine engine : engines) engine.accept(visitor);
+        entities.put(entity.getId(), entity);;
     }
 
     /**
@@ -52,16 +38,20 @@ public class Core implements Runnable {
      * @param id -> the entity's id to remove
      */
     public void removeEntity(String id) {
-        entityManager.remove(id);
-        engineManager.removeEntity(id);
+        for (Engine engine : engines) engine.remove(id);
+        entities.remove(id);
+    }
+
+    public void addEngine(Engine engine) {
+        engines.add(engine);
     }
 
     /**
      * Clear the entity manager and the engine manager.
      */
     public void clear() {
-        entityManager.clear();
-        engineManager.clear();
+        entities.clear();
+        engines.clear();
     }
 
     /**
@@ -86,9 +76,11 @@ public class Core implements Runnable {
     @SuppressWarnings("BusyWait")
     public void run() {
         while (isRunning) {
-            engineManager.update();
-            entityManager.update();
-            try { Thread.sleep(1000 / fps); }
+            long start = System.nanoTime();
+            for (Engine engine : engines) engine.update();
+            for (Entity entity: entities.values()) entity.update();
+            long time = (1000 / fps) - (System.nanoTime() - start) / 1_000_000;
+            try { Thread.sleep(time > 0 ? time : 0); }
             catch (InterruptedException e) { System.exit(1); }
         }
     }

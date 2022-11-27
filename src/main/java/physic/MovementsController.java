@@ -1,9 +1,7 @@
 package physic;
 
-import kernel.Direction;
-
+import java.awt.*;
 import java.awt.geom.Point2D;
-import java.util.Objects;
 
 /**
  * An entity's identity which represent the physic of this entity.
@@ -12,20 +10,19 @@ public class MovementsController implements IMovementsController {
 
     private final String id;
     private final Vector speed = new Vector(0, 0);
+    private final Point2D.Double coords;
+    private final Dimension dimension;
 
-    private volatile Integer x, y, width, height, layer;
-
-    private final boolean isBouncing;
+    private volatile IMovementsController fCtrl = null;
 
     /**
      * The physic identity's constructor. Create a Hitbox object with the parameters.
      * @param id -> its entity's id
      */
-    public MovementsController(String id, int x, int y, int width, int height, int layer, boolean isBouncing) {
-        this.id = id; this.x = x; this.y = y;
-        this.width = width; this.height = height;
-        this.layer = layer;
-        this.isBouncing = isBouncing;
+    public MovementsController(String id, Point2D.Double coords, Dimension dimension) {
+        this.id = id;
+        this.coords = coords;
+        this.dimension = dimension;
     }
 
     /**
@@ -44,24 +41,8 @@ public class MovementsController implements IMovementsController {
         return id;
     }
 
-    /**
-     * Set the speed represented by a vector.
-     * @param speed -> the vector's norm
-     * @param direction -> the vector's direction
-     */
     @Override
-    public void setSpeed(int speed, Direction direction) {
-        switch (direction) {
-            case UP -> this.speed.set(this.speed.getX(), -speed);
-            case DOWN -> this.speed.set(this.speed.getX(), speed);
-            case LEFT -> this.speed.set(-speed, this.speed.getY());
-            case RIGHT -> this.speed.set(speed, this.speed.getY());
-            case STAY -> stop();
-        }
-    }
-
-    @Override
-    public void setSpeed(int vx, int vy) {
+    public void setSpeed(double vx, double vy) {
         this.speed.set(vx, vy);
     }
 
@@ -73,52 +54,68 @@ public class MovementsController implements IMovementsController {
     }
 
     @Override
-    public boolean intersects(int x, int y, int width, int height) {
-        return this.x < x + width && this.x + this.width > x && this.y < y + height && this.y + this.height > y;
+    public int getX() {
+        return (int) this.coords.getX();
     }
 
     @Override
-    public Integer getX() {
-        return this.x;
+    public int getY() {
+        return (int) this.coords.getY();
     }
 
     @Override
-    public Integer getY() {
-        return this.y;
+    public int getWidth() {
+        return this.dimension.width;
     }
 
     @Override
-    public Integer getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public Integer getHeight() {
-        return this.height;
-    }
-
-    @Override
-    public Integer getLayer() {
-        return this.layer;
-    }
-
-    @Override
-    public void setCoordinates(int x, int y) {
-        this.x = x; this.y = y;
+    public int getHeight() {
+        return this.dimension.height;
     }
 
     @Override
     public void resize(int width, int height) {
-        this.width = width; this.height = height;
+        this.dimension.setSize(width, height);
     }
 
     @Override
     public Point2D.Double getNextCoordinates() {
-        return new Point2D.Double(this.x + this.speed.getX(), this.y + this.speed.getY());
+        Point2D.Double newCoords = new Point2D.Double(this.getX() + speed.getX(), this.getY() + speed.getY());
+        if (fCtrl == null) return newCoords;
+        if (speed.getX() == 0) {
+            if (this.getX() + this.getWidth() < fCtrl.getX()) newCoords.setLocation(fCtrl.getX() - this.getWidth(), this.getY());
+            if (this.getX() > fCtrl.getX() + fCtrl.getWidth()) newCoords.setLocation(fCtrl.getX() + fCtrl.getWidth(), this.getY());
+        }
+        if (speed.getY() == 0) {
+            if (this.getY() + this.getHeight() < fCtrl.getY()) newCoords.setLocation(this.getX(), fCtrl.getY() - this.getHeight());
+            if (this.getY() > fCtrl.getY() + fCtrl.getHeight()) newCoords.setLocation(this.getX(), fCtrl.getY() + fCtrl.getHeight());
+        }
+        fCtrl = null;
+        return newCoords;
     }
 
     @Override
-    public boolean isBouncing() {
-        return this.isBouncing;
+    public boolean intersectInX(IMovementsController fCtrl) {
+        int nextX = this.getX() + (int) this.speed.getX();
+        boolean isIntersect = nextX + this.getWidth() >= fCtrl.getX() && nextX <= fCtrl.getX() + fCtrl.getWidth();
+
+        boolean isPast = (this.getX() + this.getWidth() < fCtrl.getX() && nextX + this.getWidth() >= fCtrl.getX() + fCtrl.getWidth()) ||
+                         (this.getX() > fCtrl.getX() + fCtrl.getWidth() && nextX <= fCtrl.getX());
+        return isIntersect || isPast;
+    }
+
+    @Override
+    public boolean intersectInY(IMovementsController fCtrl) {
+        int nextY = this.getY() + (int) this.speed.getY();
+        boolean isIntersect = nextY + this.getHeight() >= fCtrl.getY() && nextY <= fCtrl.getY() + fCtrl.getHeight();
+
+        boolean isPast = (this.getY() + this.getHeight() < fCtrl.getY() && nextY + this.getHeight() >= fCtrl.getY() + fCtrl.getHeight()) ||
+                         (this.getY() > fCtrl.getY()  + fCtrl.getHeight() && nextY <= fCtrl.getY());
+        return isIntersect || isPast;
+    }
+
+    @Override
+    public void setNeighbor(IMovementsController fCtrl) {
+        this.fCtrl = fCtrl;
     }
 }

@@ -7,9 +7,9 @@ public interface ISprite {
     BufferedImage getImage();
     void changeImage(String imagePath) throws IOException;
     void resize(int width, int height);
-    Integer getHeight();
-    Integer getWidth();
-    Integer getX();
-    Integer getY();
+    int getHeight();
+    int getWidth();
+    int getX();
+    int getY();
     void setCoordinates(int x, int y);
 }

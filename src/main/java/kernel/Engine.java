@@ -12,4 +12,5 @@ public interface Engine<T> {
     void start();
     void remove(String id);
     void add(String id, T element, int layer);
+    void accept(Visitor visitor);
 }
