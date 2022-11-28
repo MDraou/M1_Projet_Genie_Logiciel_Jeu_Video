@@ -3,11 +3,11 @@ package gameplay;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class InputEngine implements KeyListener{
+public class InputEngine implements KeyListener {
 
     private boolean[] events = new boolean[4];
 
-    public InputEngine(){
+    public InputEngine() {
 
     }
 

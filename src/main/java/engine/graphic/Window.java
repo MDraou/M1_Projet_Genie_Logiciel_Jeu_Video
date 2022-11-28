@@ -37,6 +37,7 @@ public class Window extends JFrame {
      * Make the window visible.
      */
     public void start() {
+        setResizable(false);
         setVisible(true);
     }
 

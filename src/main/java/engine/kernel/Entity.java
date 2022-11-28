@@ -67,6 +67,7 @@ public class Entity {
      * Update the engines between them.
      */
     protected void update() {
+        if (controller == null) return ;
         Point nextCoords = controller.getNextCoordinates();
         this.setCoordinates(nextCoords.getX(), nextCoords.getY());
     }

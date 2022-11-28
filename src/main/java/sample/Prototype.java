@@ -57,7 +57,7 @@ public class Prototype {
         while (true) {
             Point pCoords = penguin.getCoordinates();
             if (pCoords.getX() + 50 >= rightWall.getCoordinates().getX()) {
-                speedX = -speedX;
+                speedX = -(speedX+0.5);
                 penguin.process(new MoveStrategy(speedX, speedY));
                 Thread.sleep(100);
             }

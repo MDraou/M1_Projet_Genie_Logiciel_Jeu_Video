@@ -26,8 +26,8 @@ public class PhysicEngine implements Engine<IMovementsController> {
     }
 
     /**
-     * remove a graphic identity from the window.
-     * @param id the movement controller's id to remove from the window
+     * remove a movement controller from the layer.
+     * @param id the movement controller's id to remove from the layer
      */
     @Override
     public void remove(String id) {

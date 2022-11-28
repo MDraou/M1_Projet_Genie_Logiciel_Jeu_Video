@@ -130,7 +130,7 @@ public class MovementsController implements IMovementsController {
 
     /**
      * Test if the entity intersect another entity on the x
-     * @param fCtrl a movementcontroller of another entity
+     * @param fCtrl a movement controller of another entity
      * @return true if they intersect. else false.
      */
     @Override
