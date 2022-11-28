@@ -6,10 +6,10 @@ import engine.kernel.*;
 
 
 public class Prototype {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Core core = new Core();
         CoreBuilder coreBuilder = new CoreBuilder(core);
-        coreBuilder.buildGraphicEngine("Penguin", 500, 500, 1);
+        coreBuilder.buildGraphicEngine("Penguin", 500+6, 500+28, 1);
         coreBuilder.buildPhysicEngine();
 
         EntityBuilder entityBuilder = new EntityBuilder();
@@ -56,24 +56,25 @@ public class Prototype {
         penguin.process(new MoveStrategy(speedX, speedY));
         while (true) {
             Point pCoords = penguin.getCoordinates();
-            if (pCoords.getX() + 50 == rightWall.getCoordinates().getX()) {
+            if (pCoords.getX() + 50 >= rightWall.getCoordinates().getX()) {
                 speedX = -speedX;
                 penguin.process(new MoveStrategy(speedX, speedY));
-                continue;
+                Thread.sleep(100);
             }
-            if (pCoords.getX() == leftWall.getCoordinates().getX() + 10) {
+            if (pCoords.getX() <= leftWall.getCoordinates().getX() + 10) {
                 speedX = -speedX;
                 penguin.process(new MoveStrategy(speedX, speedY));
-                continue;
+                Thread.sleep(100);
             }
-            if (pCoords.getY() == topWall.getCoordinates().getY() + 10) {
+            if (pCoords.getY() <= topWall.getCoordinates().getY() + 10) {
                 speedY = -speedY;
                 penguin.process(new MoveStrategy(speedX, speedY));
-                continue;
+                Thread.sleep(100);
             }
-            if (pCoords.getY() + 50 == bottomWall.getCoordinates().getY()) {
+            if (pCoords.getY() + 50 >= bottomWall.getCoordinates().getY()) {
                 speedY = -speedY;
                 penguin.process(new MoveStrategy(speedX, speedY));
+                Thread.sleep(100);
             }
         }
 

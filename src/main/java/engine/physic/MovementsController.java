@@ -136,8 +136,8 @@ public class MovementsController implements IMovementsController {
     @Override
     public boolean intersectInX(IMovementsController fCtrl) {
         int nextX = this.getX() + (int) this.speed.getX();
-        return (this.getX() + this.getWidth() < fCtrl.getX() && nextX + this.getWidth() >= fCtrl.getX()) ||
-                (this.getX() > fCtrl.getX() + fCtrl.getWidth() && nextX <= fCtrl.getX() + fCtrl.getWidth());
+        return (this.getX() + this.getWidth() < fCtrl.getX() && nextX + this.getWidth() > fCtrl.getX()) ||
+                (this.getX() > fCtrl.getX() + fCtrl.getWidth() && nextX < fCtrl.getX() + fCtrl.getWidth());
     }
 
     /**
@@ -148,8 +148,8 @@ public class MovementsController implements IMovementsController {
     @Override
     public boolean intersectInY(IMovementsController fCtrl) {
         int nextY = this.getY() + (int) this.speed.getY();
-        return (this.getY() + this.getHeight() < fCtrl.getY() && nextY + this.getHeight() >= fCtrl.getY()) ||
-               (this.getY() > fCtrl.getY()  + fCtrl.getHeight() && nextY <= fCtrl.getY() + fCtrl.getHeight());
+        return (this.getY() + this.getHeight() < fCtrl.getY() && nextY + this.getHeight() > fCtrl.getY()) ||
+               (this.getY() > fCtrl.getY()  + fCtrl.getHeight() && nextY < fCtrl.getY() + fCtrl.getHeight());
     }
 
     /**
