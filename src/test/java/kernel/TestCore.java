@@ -19,7 +19,7 @@ class TestCore {
     void process() {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setController(physicIdentity);
+        entity.setChecker(physicIdentity);
         EngineManager engineManager = new EngineManager();
         EntityManager entityManager = new EntityManager();
         PhysicEngine physicEngine = new PhysicEngine();
@@ -28,14 +28,14 @@ class TestCore {
         engineManager.addEntity(entity);
         Core core = new Core(engineManager,entityManager);
         core.process(new MoveStrategy(Direction.DOWN,3),"id");
-        assertEquals(3, entity.getMovementController().getSpeed().getY());
+        assertEquals(3, entity.getChecker().getSpeed().getY());
     }
 
     @Test
     void addEntity() throws IOException {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setController(physicIdentity);
+        entity.setChecker(physicIdentity);
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
         entity.setSprite(graphicIdentity);
         EngineManager engineManager = new EngineManager();
@@ -47,7 +47,7 @@ class TestCore {
         Core core = new Core(engineManager,entityManager);
         core.addEntity(entity);
         assertEquals(entity, entityManager.get("id"));
-        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getChecker(), physicEngine.getCollection().get("id"));
         assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
     }
 
@@ -55,7 +55,7 @@ class TestCore {
     void removeEntity() throws IOException {
         Entity entity = new Entity("id");
         PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setController(physicIdentity);
+        entity.setChecker(physicIdentity);
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
         entity.setSprite(graphicIdentity);
         EngineManager engineManager = new EngineManager();
@@ -67,7 +67,7 @@ class TestCore {
         Core core = new Core(engineManager,entityManager);
         core.addEntity(entity);
         assertEquals(entity, entityManager.get("id"));
-        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getChecker(), physicEngine.getCollection().get("id"));
         assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
         core.removeEntity("id");
         assertNull(entityManager.get("id"));

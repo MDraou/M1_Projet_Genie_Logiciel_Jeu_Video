@@ -1,7 +1,9 @@
 package engine.graphic;
 
-import engine.kernel.Visitor;
+import engine.kernel.EngineVisitor;
 import engine.kernel.Engine;
+
+import java.awt.event.KeyListener;
 
 /**
  * An engine which update the window.
@@ -9,6 +11,18 @@ import engine.kernel.Engine;
 public class GraphicEngine implements Engine<ISprite> {
 
     private final Window window;
+
+    /**
+     * The graphic engine constructor. Initialize the window with a name, width, height and a number of layers.
+     * @param name the window's name
+     * @param width the window's width
+     * @param height the window's height
+     * @param nbLayer the window's number of layers
+     */
+    public GraphicEngine(String name, int width, int height, int nbLayer, KeyListener listener) {
+        window = new Window(name, width, height, nbLayer);
+        window.addKeyListener(listener);
+    }
 
     /**
      * The graphic engine constructor. Initialize the window with a name, width, height and a number of layers.
@@ -62,7 +76,9 @@ public class GraphicEngine implements Engine<ISprite> {
      * @param visitor
      */
     @Override
-    public void accept(Visitor visitor) {
+    public void accept(EngineVisitor visitor) {
         visitor.visit(this);
     }
+
+
 }

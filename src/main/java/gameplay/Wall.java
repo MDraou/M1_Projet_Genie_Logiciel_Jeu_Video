@@ -9,9 +9,8 @@ public class Wall extends Entity {
      * @param id    the id of the entity
      * @param x
      * @param y
-     * @param layer
      */
-    public Wall(String id, int x, int y, int layer) {
-        super(id, x, y, layer);
+    public Wall(String id, int x, int y) {
+        super(id, x, y, 1);
     }
 }

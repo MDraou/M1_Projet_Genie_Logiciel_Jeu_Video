@@ -22,6 +22,6 @@ public class ResizeStrategy implements IStrategy {
     @Override
     public void execute(Entity entity) {
         entity.getSprite().resize(width, height);
-        entity.getMovementController().resize(width, height);
+        entity.getChecker().resize(width, height);
     }
 }

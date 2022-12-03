@@ -1,7 +1,7 @@
 package engine.physic;
 
 import engine.kernel.Engine;
-import engine.kernel.Visitor;
+import engine.kernel.EngineVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import java.util.HashMap;
 /**
  * A collection of physic controllers.
  */
-public class PhysicEngine implements Engine<IMovementsController> {
+public class PhysicEngine implements Engine<IMovementsChecker> {
 
-    private final ArrayList<HashMap<String, IMovementsController>> layers = new ArrayList<>();
+    private final ArrayList<HashMap<String, IMovementsChecker>> layers = new ArrayList<>();
 
     /**
      * Add a movement controller to the window.
@@ -20,7 +20,7 @@ public class PhysicEngine implements Engine<IMovementsController> {
      * @param layer the layer associate
      */
     @Override
-    public void add(String id, IMovementsController controller, int layer) {
+    public void add(String id, IMovementsChecker controller, int layer) {
         while (layers.size() <= layer) layers.add(new HashMap<>());
         layers.get(layer).put(id, controller);
     }
@@ -31,7 +31,7 @@ public class PhysicEngine implements Engine<IMovementsController> {
      */
     @Override
     public void remove(String id) {
-        for (HashMap<String, IMovementsController> layer : layers)
+        for (HashMap<String, IMovementsChecker> layer : layers)
             if (layer.containsKey(id)) { layer.remove(id); return ; }
     }
 
@@ -40,8 +40,8 @@ public class PhysicEngine implements Engine<IMovementsController> {
      * @param id the graphic identity's id
      * @return the movement controller represented by the id
      */
-    public IMovementsController getController(String id) {
-        for (HashMap<String, IMovementsController> layer : layers)
+    public IMovementsChecker getController(String id) {
+        for (HashMap<String, IMovementsChecker> layer : layers)
             if (layer.containsKey(id)) return layer.get(id);
         return null;
     }
@@ -59,25 +59,25 @@ public class PhysicEngine implements Engine<IMovementsController> {
      */
     @Override
     public void update() {
-        for (HashMap<String, IMovementsController> layer : layers)
-            for (IMovementsController ctrl : layer.values()) {
-                if (ctrl.getSpeed().isNull()) continue;
-                for (IMovementsController fCtrl : layer.values()) {
-                    if (ctrl == fCtrl) continue ;
-                    if (ctrl.intersectInX(fCtrl)) {
-                        ctrl.setSpeed(0, ctrl.getSpeed().getY());
-                        ctrl.setNeighbor(fCtrl);
+        for (HashMap<String, IMovementsChecker> layer : layers)
+            for (IMovementsChecker checker : layer.values()) {
+                if (checker.getSpeed().isNull()) continue;
+                for (IMovementsChecker fChecker : layer.values()) {
+                    if (checker == fChecker) continue ;
+                    if (checker.intersectInX(fChecker)) {
+                        checker.setSpeed(0, checker.getSpeed().getY());
+                        checker.setNeighbor(fChecker);
                     }
-                    if (ctrl.intersectInY(fCtrl)) {
-                        ctrl.setSpeed(ctrl.getSpeed().getX(), 0);
-                        ctrl.setNeighbor(fCtrl);
+                    if (checker.intersectInY(fChecker)) {
+                        checker.setSpeed(checker.getSpeed().getX(), 0);
+                        checker.setNeighbor(fChecker);
                     }
                 }
             }
     }
 
     @Override
-    public void accept(Visitor visitor) {
+    public void accept(EngineVisitor visitor) {
         visitor.visit(this);
     }
 }

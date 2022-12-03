@@ -2,7 +2,7 @@ package engine.kernel;
 
 import engine.Point;
 import engine.graphic.ISprite;
-import engine.physic.IMovementsController;
+import engine.physic.IMovementsChecker;
 
 /**
  * The entity containing the identities needed.
@@ -11,7 +11,7 @@ public class Entity {
 
     private final String id;
     private ISprite sprite = null;
-    private IMovementsController controller = null;
+    private IMovementsChecker checker = null;
     private final Point coords;
     private int layer;
 
@@ -35,8 +35,8 @@ public class Entity {
      * Return the controller identity.
      * @return the controller identity
      */
-    protected IMovementsController getMovementController() {
-        return controller;
+    protected IMovementsChecker getChecker() {
+        return checker;
     }
 
     /**
@@ -49,10 +49,10 @@ public class Entity {
 
     /**
      * Set a controller identity to the entity.
-     * @param controller the new controller identity
+     * @param checker the new controller identity
      */
-    protected void setController(IMovementsController controller) {
-        this.controller = controller;
+    protected void setChecker(IMovementsChecker checker) {
+        this.checker = checker;
     }
 
     /**
@@ -60,15 +60,15 @@ public class Entity {
      */
     public void clear() {
         sprite = null;
-        controller = null;
+        checker = null;
     }
 
     /**
      * Update the engines between them.
      */
     protected void update() {
-        if (controller == null) return ;
-        Point nextCoords = controller.getNextCoordinates();
+        if (checker == null) return ;
+        Point nextCoords = checker.getNextCoordinates();
         this.setCoordinates(nextCoords.getX(), nextCoords.getY());
     }
 

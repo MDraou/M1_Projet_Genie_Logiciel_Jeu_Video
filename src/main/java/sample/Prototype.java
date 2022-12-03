@@ -9,7 +9,7 @@ public class Prototype {
     public static void main(String[] args) throws InterruptedException {
         Core core = new Core();
         CoreBuilder coreBuilder = new CoreBuilder(core);
-        coreBuilder.buildGraphicEngine("Penguin", 500+6, 500+28, 1);
+        coreBuilder.buildGraphicEngine("Penguin", 500+6, 500+28, 1, null);
         coreBuilder.buildPhysicEngine();
 
         EntityBuilder entityBuilder = new EntityBuilder();
@@ -18,31 +18,31 @@ public class Prototype {
 
         entityBuilder.setEntity(penguin);
         entityBuilder.buildSprite("image.png", 50, 50);
-        entityBuilder.buildMovementController(50, 50);
+        entityBuilder.buildMovementChecker(50, 50);
 
         Entity rightWall = new Entity("rightWall", 480,0, 0);
 
         entityBuilder.setEntity(rightWall);
         entityBuilder.buildSprite("wall_v.png",10,500);
-        entityBuilder.buildMovementController(10, 500);
+        entityBuilder.buildMovementChecker(10, 500);
 
         Entity leftWall = new Entity("leftWall", 0,0, 0);
 
         entityBuilder.setEntity(leftWall);
         entityBuilder.buildSprite("wall_v.png",10,500);
-        entityBuilder.buildMovementController(10, 500);
+        entityBuilder.buildMovementChecker(10, 500);
 
         Entity topWall = new Entity("topWall", 0,0, 0);
 
         entityBuilder.setEntity(topWall);
         entityBuilder.buildSprite("wall_h.png",500, 10);
-        entityBuilder.buildMovementController(500, 10);
+        entityBuilder.buildMovementChecker(500, 10);
 
         Entity bottomWall = new Entity("bottomWall", 0,480, 0);
 
         entityBuilder.setEntity(bottomWall);
         entityBuilder.buildSprite("wall_h.png",500, 10);
-        entityBuilder.buildMovementController(500, 10);
+        entityBuilder.buildMovementChecker(500, 10);
 
         core.addEntity(rightWall);
         core.addEntity(leftWall);

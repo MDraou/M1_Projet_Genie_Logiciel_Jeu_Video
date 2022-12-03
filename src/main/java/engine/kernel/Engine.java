@@ -33,5 +33,5 @@ public interface Engine<T> {
      * Accept a visitor
      * @param visitor visitor that visit the engine
      */
-    void accept(Visitor visitor);
+    void accept(EngineVisitor visitor);
 }

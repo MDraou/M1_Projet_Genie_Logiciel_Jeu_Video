@@ -20,7 +20,7 @@ class TestEntity {
     @Test
     void getPhysic() {
         Entity entity = new Entity("id");
-        assertNull(entity.getMovementController());
+        assertNull(entity.getChecker());
     }
 
     @Test
@@ -35,8 +35,8 @@ class TestEntity {
     void setPhysic() {
         Entity entity = new Entity("id");
         PhysicIdentity identity = new PhysicIdentity("id",0,0,10,10,0);
-        entity.setController(identity);
-        assertEquals(identity, entity.getMovementController());
+        entity.setChecker(identity);
+        assertEquals(identity, entity.getChecker());
     }
 
     @Test
@@ -45,9 +45,9 @@ class TestEntity {
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
         entity.setSprite(graphicIdentity);
         PhysicIdentity physicIdentity = new PhysicIdentity("id",0,0,10,10,0);
-        entity.setController(physicIdentity);
+        entity.setChecker(physicIdentity);
         entity.clear();
-        assertNull(entity.getMovementController());
+        assertNull(entity.getChecker());
         assertNull(entity.getSprite());
     }
 
@@ -57,10 +57,10 @@ class TestEntity {
         GraphicIdentity graphicIdentity = new GraphicIdentity("id","",0,0,10,10,0);
         entity.setSprite(graphicIdentity);
         PhysicIdentity physicIdentity = new PhysicIdentity("id",10,20,10,10,0);
-        entity.setController(physicIdentity);
+        entity.setChecker(physicIdentity);
         entity.update();
-        assertEquals(entity.getSprite().getSprite().getX(), entity.getMovementController().getHitbox().getX());
-        assertEquals(entity.getSprite().getSprite().getY(), entity.getMovementController().getHitbox().getY());
+        assertEquals(entity.getSprite().getSprite().getX(), entity.getChecker().getHitbox().getX());
+        assertEquals(entity.getSprite().getSprite().getY(), entity.getChecker().getHitbox().getY());
     }
 
     @Test

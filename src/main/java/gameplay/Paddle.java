@@ -6,12 +6,11 @@ public class Paddle extends Entity {
     /**
      * The entity's constructor.
      *
-     * @param id    the id of the entity
+     * @param id the id of the entity
      * @param x
      * @param y
-     * @param layer
      */
-    public Paddle(String id, int x, int y, int layer) {
-        super(id, x, y, layer);
+    public Paddle(String id, int x, int y) {
+        super(id, x, y, 1);
     }
 }

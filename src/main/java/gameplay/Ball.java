@@ -2,17 +2,24 @@ package gameplay;
 
 import engine.kernel.Entity;
 
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class Ball extends Entity {
-    /**
-     * The entity's constructor.
-     *
-     * @param id    the id of the entity
-     * @param x
-     * @param y
-     * @param layer
-     */
-    public Ball(String id, int x, int y, int layer) {
-        super(id, x, y, layer);
+
+    Random random = new Random();
+    private double vx = random.nextBoolean() ? 5.0 : -5.0, vy = random.nextBoolean() ? 4.5 : -4.;
+
+    public Ball(int x, int y) {
+        super("ball", x, y, 1);
+    }
+
+    public double getXSpeed() {
+        return vx;
+    }
+
+    public double getYSpeed() {
+        return vy;
     }
 
 }

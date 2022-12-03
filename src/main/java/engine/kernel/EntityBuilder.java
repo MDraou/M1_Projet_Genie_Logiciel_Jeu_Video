@@ -1,7 +1,7 @@
 package engine.kernel;
 
 import engine.graphic.Sprite;
-import engine.physic.MovementsController;
+import engine.physic.MovementsChecker;
 
 import java.awt.*;
 import java.io.IOException;
@@ -45,8 +45,8 @@ public class EntityBuilder {
      * @param width the hitbox's width
      * @param height the hitbox's height
      */
-    public void buildMovementController(int width, int height) {
+    public void buildMovementChecker(int width, int height) {
         if (entity == null) return ;
-        entity.setController(new MovementsController(entity.getId(), entity.getCoordinates(), new Dimension(width, height)));
+        entity.setChecker(new MovementsChecker(entity.getId(), entity.getCoordinates(), new Dimension(width, height)));
     }
 }

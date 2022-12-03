@@ -18,7 +18,7 @@ class TestEngineManager {
         engineManager.setPhysic(physicEngine);
         Entity entity = new Entity("id");
         engineManager.addEntity(entity);
-        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getChecker(), physicEngine.getCollection().get("id"));
         assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
     }
 
@@ -31,7 +31,7 @@ class TestEngineManager {
         engineManager.setPhysic(physicEngine);
         Entity entity = new Entity("id");
         engineManager.addEntity(entity);
-        assertEquals(entity.getMovementController(), physicEngine.getCollection().get("id"));
+        assertEquals(entity.getChecker(), physicEngine.getCollection().get("id"));
         assertEquals(entity.getSprite(), graphicEngine.getWindow().getIdentity("id"));
         engineManager.removeEntity("id");
         assertNull(physicEngine.getCollection().get("id"));

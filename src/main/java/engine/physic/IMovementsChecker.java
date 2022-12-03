@@ -5,7 +5,7 @@ import engine.Point;
 /**
  * The interface representing the physic identities.
  */
-public interface IMovementsController {
+public interface IMovementsChecker {
 
     /**
      * Return its speed represented by a vector.
@@ -65,7 +65,7 @@ public interface IMovementsController {
 
     Point getNextCoordinates();
 
-    boolean intersectInX(IMovementsController controller);
-    boolean intersectInY(IMovementsController controller);
-    void setNeighbor(IMovementsController fCtrl);
+    boolean intersectInX(IMovementsChecker controller);
+    boolean intersectInY(IMovementsChecker controller);
+    void setNeighbor(IMovementsChecker fCtrl);
 }

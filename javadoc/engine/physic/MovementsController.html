@@ -72,7 +72,7 @@ loadScripts(document, 'script');</script>
 <h1 title="Class MovementsController" class="title">Class MovementsController</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">engine.physic.MovementsController</div>
+<div class="inheritance">engine.physic.MovementsChecker</div>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
@@ -151,12 +151,12 @@ implements <a href="IMovementsController.html" title="interface in engine.physic
 <div class="block">Return the speed on the y.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#intersectInX(engine.physic.IMovementsController)" class="member-name-link">intersectInX</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#intersectInX(engine.physic.IMovementsChecker)" class="member-name-link">intersectInX</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Test if the entity intersect another entity on the x</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#intersectInY(engine.physic.IMovementsController)" class="member-name-link">intersectInY</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#intersectInY(engine.physic.IMovementsChecker)" class="member-name-link">intersectInY</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Test if the entity intersect another entity on the y</div>
 </div>
@@ -167,7 +167,7 @@ implements <a href="IMovementsController.html" title="interface in engine.physic
 <div class="block">Change the size of the hitbox.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setNeighbor(engine.physic.IMovementsController)" class="member-name-link">setNeighbor</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setNeighbor(engine.physic.IMovementsChecker)" class="member-name-link">setNeighbor</a><wbr>(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Save a movement controller of a neighbor entity</div>
 </div>
@@ -355,13 +355,13 @@ implements <a href="IMovementsController.html" title="interface in engine.physic
 </section>
 </li>
 <li>
-<section class="detail" id="intersectInX(engine.physic.IMovementsController)">
+<section class="detail" id="intersectInX(engine.physic.IMovementsChecker)">
 <h3>intersectInX</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">intersectInX</span><wbr><span class="parameters">(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</span></div>
 <div class="block">Test if the entity intersect another entity on the x</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="IMovementsController.html#intersectInX(engine.physic.IMovementsController)">intersectInX</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
+<dd><code><a href="IMovementsController.html#intersectInX(engine.physic.IMovementsChecker)">intersectInX</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>fCtrl</code> - a movementcontroller of another entity</dd>
 <dt>Returns:</dt>
@@ -370,13 +370,13 @@ implements <a href="IMovementsController.html" title="interface in engine.physic
 </section>
 </li>
 <li>
-<section class="detail" id="intersectInY(engine.physic.IMovementsController)">
+<section class="detail" id="intersectInY(engine.physic.IMovementsChecker)">
 <h3>intersectInY</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">intersectInY</span><wbr><span class="parameters">(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</span></div>
 <div class="block">Test if the entity intersect another entity on the y</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="IMovementsController.html#intersectInY(engine.physic.IMovementsController)">intersectInY</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
+<dd><code><a href="IMovementsController.html#intersectInY(engine.physic.IMovementsChecker)">intersectInY</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>fCtrl</code> - a movement controller of a foreign entity</dd>
 <dt>Returns:</dt>
@@ -385,13 +385,13 @@ implements <a href="IMovementsController.html" title="interface in engine.physic
 </section>
 </li>
 <li>
-<section class="detail" id="setNeighbor(engine.physic.IMovementsController)">
+<section class="detail" id="setNeighbor(engine.physic.IMovementsChecker)">
 <h3>setNeighbor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setNeighbor</span><wbr><span class="parameters">(<a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a>&nbsp;fCtrl)</span></div>
 <div class="block">Save a movement controller of a neighbor entity</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="IMovementsController.html#setNeighbor(engine.physic.IMovementsController)">setNeighbor</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
+<dd><code><a href="IMovementsController.html#setNeighbor(engine.physic.IMovementsChecker)">setNeighbor</a></code>&nbsp;in interface&nbsp;<code><a href="IMovementsController.html" title="interface in engine.physic">IMovementsController</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>fCtrl</code> - a movement controller of a neigbor entity</dd>
 </dl>

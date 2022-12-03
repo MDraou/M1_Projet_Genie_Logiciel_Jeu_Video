@@ -3,6 +3,8 @@ package engine.kernel;
 import engine.graphic.GraphicEngine;
 import engine.physic.PhysicEngine;
 
+import java.awt.event.KeyListener;
+
 /**
  * The engine manager's builder. Create the engines needed.
  */
@@ -32,8 +34,9 @@ public class CoreBuilder {
      * @param height the window's height
      * @param nbLayer the window's number of layers
      */
-    public void buildGraphicEngine(String name, int width, int height, int nbLayer) {
-        core.addEngine(new GraphicEngine(name, width, height, nbLayer));
+    public void buildGraphicEngine(String name, int width, int height, int nbLayer, KeyListener listener) {
+        if (listener == null) core.addEngine(new GraphicEngine(name, width, height, nbLayer));
+        else core.addEngine(new GraphicEngine(name, width, height, nbLayer, listener));
     }
 
     /**
