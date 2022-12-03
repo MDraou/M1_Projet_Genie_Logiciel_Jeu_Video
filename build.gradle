@@ -39,7 +39,7 @@ test {
 }
 
 application {
-    mainClass = 'sample.Prototype'
+    mainClass = 'gameplay.Main'
 }
 
 tasks.named('jar') {
