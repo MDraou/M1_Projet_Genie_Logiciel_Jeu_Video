@@ -96,12 +96,20 @@ public class Pong implements Runnable{
         new Thread(this).start();
     }
 
-    public void reset() {
+    public void resetRightGoal() {
         core.removeEntity("ball");
         ball = new Ball(width/2 - 10, height/2 - 10);
         createBall();
         try { Thread.sleep(1000); } catch (InterruptedException e) { System.exit(1); }
-        ball.process(new MoveStrategy(ball.getXSpeed(), ball.getYSpeed()));
+        ball.process(new MoveStrategy(-5, ball.getYSpeed()));
+    }
+
+    public void resetLeftGoal() {
+        core.removeEntity("ball");
+        ball = new Ball(width/2 - 10, height/2 - 10);
+        createBall();
+        try { Thread.sleep(1000); } catch (InterruptedException e) { System.exit(1); }
+        ball.process(new MoveStrategy(5, ball.getYSpeed()));
     }
 
     public Paddle getLeftPaddle() {
