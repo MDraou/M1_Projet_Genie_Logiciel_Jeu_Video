@@ -4,7 +4,7 @@ import engine.kernel.Entity;
 
 public interface Element {
     Entity getEntity();
-    void accept(ElementVisitor visitor);
+    void accept(IElementVisitor visitor);
 
     int getX();
     int getY();

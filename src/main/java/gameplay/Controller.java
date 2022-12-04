@@ -3,11 +3,11 @@ package gameplay;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class InputEngine implements KeyListener {
+public class Controller implements KeyListener {
 
     private State state;
 
-    public InputEngine(State state) {
+    public Controller(State state) {
         this.state = state;
     }
 

@@ -18,7 +18,7 @@ public class Pong implements Runnable {
 
     public Pong() {
         CoreBuilder coreBuilder = new CoreBuilder(core);
-        coreBuilder.buildGraphicEngine("Pong", width+width/34, height+height/14, 1, new InputEngine(new Player(this)));
+        coreBuilder.buildGraphicEngine("Pong", width+width/34, height+height/14, 1, new Controller(new Player(this)));
         coreBuilder.buildPhysicEngine();
     }
 
@@ -37,7 +37,7 @@ public class Pong implements Runnable {
         builder.setEntity(bar);
         builder.buildSprite("bar.png", 26, 13);
 
-        ElementVisitor visitor = new Visitor(builder);
+        IElementVisitor visitor = new ElementVisitor(builder);
         for (Element element : elements.values()) {
             element.accept(visitor);
             core.addEntity(element.getEntity());

@@ -1,7 +1,6 @@
 package gameplay;
 
 import engine.kernel.Entity;
-import engine.kernel.MoveStrategy;
 
 import java.util.Random;
 
@@ -10,7 +9,7 @@ public class Ball implements Element {
     private int width, height;
     private String imagePath ="ball.png";
 
-    Random random = new Random();
+    private Random random = new Random();
     private double vx = random.nextBoolean() ? 5.0 : -5.0, vy = random.nextBoolean() ? 4. : -4.;
 
     public Ball(int x, int y, int width, int height) {
@@ -53,7 +52,7 @@ public class Ball implements Element {
     }
 
     @Override
-    public void accept(ElementVisitor visitor) {
+    public void accept(IElementVisitor visitor) {
         visitor.visit(this);
     }
 

@@ -17,7 +17,7 @@ public class MovementsChecker implements IMovementsChecker {
 
     private volatile IMovementsChecker fChecker = null;
 
-    private boolean isBouncing = false;
+    private boolean isBouncing;
 
     /**
      * The movement controller's constructor.

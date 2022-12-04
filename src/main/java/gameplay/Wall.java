@@ -25,7 +25,7 @@ public class Wall implements Element {
     }
 
     @Override
-    public void accept(ElementVisitor visitor) {
+    public void accept(IElementVisitor visitor) {
         visitor.visit(this);
     }
 
