@@ -89,7 +89,9 @@ public class Pong implements Runnable {
         try { Thread.sleep(100); } catch (InterruptedException e) { System.exit(1); }
         Entity go = new Entity("gameOver", width/2-100, 2*height/4, 0);
         builder.setEntity(go);
-        builder.buildSprite("game_over.png", 200, height/4);
+        if (((Score) elements.get("leftScore")).getScore() == 7)
+            builder.buildSprite("game_over1.png", 200, height/4);
+        else builder.buildSprite("game_over2.png", 200, height/4);
         core.addEntity(go);
     }
 
