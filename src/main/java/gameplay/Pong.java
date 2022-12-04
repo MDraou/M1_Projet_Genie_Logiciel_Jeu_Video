@@ -85,18 +85,6 @@ public class Pong implements Runnable {
         ball.process(new MoveStrategy(5, ball.getYSpeed()));
     }
 
-    public Paddle getLeftPaddle() {
-        return leftPaddle;
-    }
-
-    public Paddle getRightPaddle() {
-        return rightPaddle;
-    }
-
-    public Ball getBall() {
-        return ball;
-    }
-
     private void end() {
         try { Thread.sleep(100); } catch (InterruptedException e) { System.exit(1); }
         Entity go = new Entity("gameOver", width/2-100, 2*height/4, 0);
