@@ -44,9 +44,10 @@ public class EntityBuilder {
      * Create a movement controller and add it to the entity.
      * @param width the hitbox's width
      * @param height the hitbox's height
+     * @param isBouncing boolean which represent if the entity bounce or not
      */
-    public void buildMovementChecker(int width, int height) {
+    public void buildMovementChecker(int width, int height, boolean isBouncing) {
         if (entity == null) return ;
-        entity.setChecker(new MovementsChecker(entity.getId(), entity.getCoordinates(), new Dimension(width, height)));
+        entity.setChecker(new MovementsChecker(entity.getId(), entity.getCoordinates(), new Dimension(width, height), isBouncing));
     }
 }

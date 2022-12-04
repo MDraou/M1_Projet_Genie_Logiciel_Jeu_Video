@@ -3,6 +3,9 @@ package engine.graphic;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * Sprites' interface
+ */
 public interface ISprite {
 
     /**
@@ -14,9 +17,8 @@ public interface ISprite {
     /**
      * Change the sprite's image. Throws an IOException if the image it's not found.
      * @param imagePath the new image's path
-     * @throws IOException when its can't load image
      */
-    void changeImage(String imagePath) throws IOException;
+    void changeImage(String imagePath);
 
     /**
      * Resize the image.

@@ -1,6 +1,5 @@
 package engine.kernel;
 
-import engine.Point;
 import engine.graphic.ISprite;
 import engine.physic.IMovementsChecker;
 

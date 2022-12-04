@@ -3,6 +3,9 @@ package engine.kernel;
 import engine.graphic.GraphicEngine;
 import engine.physic.PhysicEngine;
 
+/**
+ * The visitor which add Entity to the core and all the engines
+ */
 public class EngineAdder implements EngineVisitor {
 
     private final Entity entity;

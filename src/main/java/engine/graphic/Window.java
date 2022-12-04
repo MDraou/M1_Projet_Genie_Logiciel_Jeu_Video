@@ -42,7 +42,7 @@ public class Window extends JFrame {
     }
 
     /**
-     * Add a spirte to a layer.
+     * Add a sprite to a layer.
      * @param id the id of the entity associate with the sprite
      * @param sprite a sprite to show on the window
      * @param layer the layer of the sprite

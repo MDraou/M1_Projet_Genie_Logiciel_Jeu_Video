@@ -4,6 +4,8 @@ import engine.kernel.Entity;
 
 public class Score extends Entity {
 
+    private static final String[] numberPaths = {"zero", "one", "two", "three", "four", "five", "six", "seven"};
+
     private int score = 0;
 
     /**
@@ -12,13 +14,21 @@ public class Score extends Entity {
      * @param id the id of the entity
      * @param x
      * @param y
-     * @param layer
      */
-    public Score(String id, int x, int y, int layer) {
-        super(id, x, y, layer);
+    public Score(String id, int x, int y) {
+        super(id, x, y, 0);
     }
 
     public void increment() {
         score += 1;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+
+    public String getImagePath() {
+        return numberPaths[score]   + ".png";
     }
 }

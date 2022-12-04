@@ -33,6 +33,7 @@ public class CoreBuilder {
      * @param width the window's width
      * @param height the window's height
      * @param nbLayer the window's number of layers
+     * @param listener the window's listener
      */
     public void buildGraphicEngine(String name, int width, int height, int nbLayer, KeyListener listener) {
         if (listener == null) core.addEngine(new GraphicEngine(name, width, height, nbLayer));

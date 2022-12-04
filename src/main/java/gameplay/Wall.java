@@ -11,6 +11,6 @@ public class Wall extends Entity {
      * @param y
      */
     public Wall(String id, int x, int y) {
-        super(id, x, y, 1);
+        super(id, x, y, 0);
     }
 }

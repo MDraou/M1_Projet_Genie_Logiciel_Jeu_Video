@@ -1,6 +1,6 @@
 package sample;
 
-import engine.Point;
+import engine.kernel.Point;
 import engine.kernel.*;
 
 
@@ -18,31 +18,31 @@ public class Prototype {
 
         entityBuilder.setEntity(penguin);
         entityBuilder.buildSprite("image.png", 50, 50);
-        entityBuilder.buildMovementChecker(50, 50);
+        entityBuilder.buildMovementChecker(50, 50, false);
 
         Entity rightWall = new Entity("rightWall", 480,0, 0);
 
         entityBuilder.setEntity(rightWall);
         entityBuilder.buildSprite("wall_v.png",10,500);
-        entityBuilder.buildMovementChecker(10, 500);
+        entityBuilder.buildMovementChecker(10, 500, false);
 
         Entity leftWall = new Entity("leftWall", 0,0, 0);
 
         entityBuilder.setEntity(leftWall);
         entityBuilder.buildSprite("wall_v.png",10,500);
-        entityBuilder.buildMovementChecker(10, 500);
+        entityBuilder.buildMovementChecker(10, 500, false);
 
         Entity topWall = new Entity("topWall", 0,0, 0);
 
         entityBuilder.setEntity(topWall);
         entityBuilder.buildSprite("wall_h.png",500, 10);
-        entityBuilder.buildMovementChecker(500, 10);
+        entityBuilder.buildMovementChecker(500, 10, false);
 
         Entity bottomWall = new Entity("bottomWall", 0,480, 0);
 
         entityBuilder.setEntity(bottomWall);
         entityBuilder.buildSprite("wall_h.png",500, 10);
-        entityBuilder.buildMovementChecker(500, 10);
+        entityBuilder.buildMovementChecker(500, 10, false);
 
         core.addEntity(rightWall);
         core.addEntity(leftWall);

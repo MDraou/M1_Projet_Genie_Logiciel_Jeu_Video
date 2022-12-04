@@ -1,6 +1,6 @@
 package engine.physic;
 
-import engine.Point;
+import engine.kernel.Point;
 
 /**
  * The interface representing the physic identities.
@@ -68,4 +68,10 @@ public interface IMovementsChecker {
     boolean intersectInX(IMovementsChecker controller);
     boolean intersectInY(IMovementsChecker controller);
     void setNeighbor(IMovementsChecker fCtrl);
+
+    /**
+     * Verify if the entity need to bounce when it intersects
+     * @return true if the entity need to bounce
+     */
+    boolean isBouncing();
 }

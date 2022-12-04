@@ -1,6 +1,6 @@
 package engine.graphic;
 
-import engine.Point;
+import engine.kernel.Point;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -51,11 +51,11 @@ public class Sprite implements ISprite {
     /**
      * Change the sprite's image. Throws an IOException if the image it's not found.
      * @param spritePath the new image's path
-     * @throws IOException when its can't load image
      */
     @Override
-    public void changeImage(String spritePath) throws IOException {
-        this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath)));
+    public void changeImage(String spritePath) {
+        try { this.image = ImageIO.read(Objects.requireNonNull(Sprite.class.getResource(spritePath))); }
+        catch (IOException e) { throw new RuntimeException(e); }
     }
 
     /**

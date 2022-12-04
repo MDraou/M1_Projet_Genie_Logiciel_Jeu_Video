@@ -18,6 +18,7 @@ public class GraphicEngine implements Engine<ISprite> {
      * @param width the window's width
      * @param height the window's height
      * @param nbLayer the window's number of layers
+     * @param listener the window's listener
      */
     public GraphicEngine(String name, int width, int height, int nbLayer, KeyListener listener) {
         window = new Window(name, width, height, nbLayer);
@@ -73,7 +74,7 @@ public class GraphicEngine implements Engine<ISprite> {
 
     /**
      * Accept a visitor
-     * @param visitor
+     * @param visitor the visitor to visit
      */
     @Override
     public void accept(EngineVisitor visitor) {

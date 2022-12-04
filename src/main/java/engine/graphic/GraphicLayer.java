@@ -15,13 +15,6 @@ public class GraphicLayer extends JPanel {
     private final HashMap<String, ISprite> sprites = new HashMap<>();
 
     /**
-     * The layer's constructor. Make the layer background opaque
-     */
-    public GraphicLayer() {
-        this.setOpaque(false);
-    }
-
-    /**
      * Paint the sprites on the layer.
      * @param graphic the <code>Graphics</code> object to protect
      */

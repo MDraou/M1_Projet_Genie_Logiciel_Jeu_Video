@@ -11,6 +11,6 @@ public class Paddle extends Entity {
      * @param y
      */
     public Paddle(String id, int x, int y) {
-        super(id, x, y, 1);
+        super(id, x, y, 0);
     }
 }

@@ -1,7 +1,7 @@
 package engine.physic;
 
 
-import engine.Point;
+import engine.kernel.Point;
 
 import java.awt.*;
 
@@ -17,16 +17,20 @@ public class MovementsChecker implements IMovementsChecker {
 
     private volatile IMovementsChecker fChecker = null;
 
+    private boolean isBouncing = false;
+
     /**
      * The movement controller's constructor.
      * @param id its entity's id
      * @param coords the coordinates of the entity in the physique
      * @param dimension the dimension of the hitbox
+     * @param isBouncing a boolean which represent if the entity must bounce or not
      */
-    public MovementsChecker(String id, Point coords, Dimension dimension) {
+    public MovementsChecker(String id, Point coords, Dimension dimension, boolean isBouncing) {
         this.id = id;
         this.coords = coords;
         this.dimension = dimension;
+        this.isBouncing = isBouncing;
     }
 
     /**
@@ -140,9 +144,9 @@ public class MovementsChecker implements IMovementsChecker {
     @Override
     public boolean intersectInX(IMovementsChecker fChecker) {
         int nextX = this.getX() + (int) this.speed.getX();
-        return (this.getX() + this.getWidth() <= fChecker.getX() && nextX + this.getWidth() >= fChecker.getX()) ||
-                (this.getX() >= fChecker.getX() + fChecker.getWidth() && nextX <= fChecker.getX() + fChecker.getWidth())
-                && !((this.getY() + this.getHeight() <= fChecker.getY()) || (this.getY() >= fChecker.getY() + fChecker.getHeight()));
+        return ((this.getX() + this.getWidth() <= fChecker.getX() && nextX + this.getWidth() >= fChecker.getX()) ||
+               (this.getX() >= fChecker.getX() + fChecker.getWidth() && nextX <= fChecker.getX() + fChecker.getWidth()))
+               && this.getY() + this.getHeight() > fChecker.getY() && this.getY() < fChecker.getY() + fChecker.getHeight();
     }
 
     /**
@@ -155,7 +159,7 @@ public class MovementsChecker implements IMovementsChecker {
         int nextY = this.getY() + (int) this.speed.getY();
         return ((this.getY() + this.getHeight() <= fChecker.getY() && nextY + this.getHeight() >= fChecker.getY()) ||
                (this.getY() >= fChecker.getY() + fChecker.getHeight() && nextY <= fChecker.getY() + fChecker.getHeight()))
-                && !((this.getX() + this.getWidth() <= fChecker.getX()) || (this.getX() >= fChecker.getX() + fChecker.getWidth()));
+               && this.getX() + this.getWidth() > fChecker.getX() && this.getX() < fChecker.getX() + fChecker.getWidth();
     }
 
     /**
@@ -165,5 +169,14 @@ public class MovementsChecker implements IMovementsChecker {
     @Override
     public void setNeighbor(IMovementsChecker fChecker) {
         this.fChecker = fChecker;
+    }
+
+    /**
+     * Verify if the entity need to bounce when it intersects
+     * @return true if the entity need to bounce
+     */
+    @Override
+    public boolean isBouncing() {
+        return isBouncing;
     }
 }
