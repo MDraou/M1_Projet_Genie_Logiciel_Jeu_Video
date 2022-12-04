@@ -65,11 +65,11 @@ public class PhysicEngine implements Engine<IMovementsChecker> {
                 for (IMovementsChecker fChecker : layer.values()) {
                     if (checker == fChecker) continue ;
                     if (checker.intersectInX(fChecker)) {
-                        checker.setSpeed(0, checker.getSpeed().getY());
+                        checker.setSpeed(checker.isBouncing() ? -checker.getSpeed().getX() : 0, checker.getSpeed().getY());
                         checker.setNeighbor(fChecker);
                     }
                     if (checker.intersectInY(fChecker)) {
-                        checker.setSpeed(checker.getSpeed().getX(), 0);
+                        checker.setSpeed(checker.getSpeed().getX(), checker.isBouncing() ? -checker.getSpeed().getY() : 0);
                         checker.setNeighbor(fChecker);
                     }
                 }

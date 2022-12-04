@@ -118,6 +118,17 @@ public class Pong implements Runnable{
 
     @Override
     public void run() {
-        ball.process(new MoveStrategy(ball.getXSpeed(), ball.getYSpeed()));
+        while(rightScore.getScore() < 7 && leftScore.getScore() < 7) {
+            if (ball.getCoordinates().getX() <= walls[2].getCoordinates().getX()+10){
+                leftScore.increment();
+                leftScore.process(new ChangeImageStrategy(leftScore.getImagePath()));
+                reset();
+            }
+            if (ball.getCoordinates().getX()+20 >= walls[3].getCoordinates().getX()-5) {
+                rightScore.increment();
+                rightScore.process(new ChangeImageStrategy(rightScore.getImagePath()));
+                reset();
+            }
+        }
     }
 }
