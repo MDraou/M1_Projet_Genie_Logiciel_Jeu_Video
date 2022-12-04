@@ -12,41 +12,41 @@ public class Player implements State {
 
     @Override
     public void ZPressedAction() {
-        game.getLeftPaddle().process(new MoveStrategy(0, -10));
+        game.getLeftPaddle().getEntity().process(new MoveStrategy(0, -10));
     }
 
     @Override
     public void SPressedAction() {
-        game.getLeftPaddle().process(new MoveStrategy(0, 10));
+        game.getLeftPaddle().getEntity().process(new MoveStrategy(0, 10));
     }
 
     @Override
     public void UpPressedAction() {
-        game.getRightPaddle().process(new MoveStrategy(0, -10));
+        game.getRightPaddle().getEntity().process(new MoveStrategy(0, -10));
     }
 
     @Override
     public void DownPressedAction() {
-        game.getRightPaddle().process(new MoveStrategy(0, 10));
+        game.getRightPaddle().getEntity().process(new MoveStrategy(0, 10));
     }
 
     @Override
     public void ZReleasedAction() {
-        game.getLeftPaddle().process(new MoveStrategy(0, 0));
+        game.getLeftPaddle().getEntity().process(new MoveStrategy(0, 0));
     }
 
     @Override
     public void SReleasedAction() {
-        game.getLeftPaddle().process(new MoveStrategy(0, 0));
+        game.getLeftPaddle().getEntity().process(new MoveStrategy(0, 0));
     }
 
     @Override
     public void UpReleasedAction() {
-        game.getRightPaddle().process(new MoveStrategy(0, 0));
+        game.getRightPaddle().getEntity().process(new MoveStrategy(0, 0));
     }
 
     @Override
     public void DownReleasedAction() {
-        game.getRightPaddle().process(new MoveStrategy(0, 0));
+        game.getRightPaddle().getEntity().process(new MoveStrategy(0, 0));
     }
 }
