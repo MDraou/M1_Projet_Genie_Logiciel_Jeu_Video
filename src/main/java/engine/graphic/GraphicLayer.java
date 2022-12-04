@@ -2,6 +2,7 @@ package engine.graphic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 
 /**
@@ -21,9 +22,12 @@ public class GraphicLayer extends JPanel {
     @Override
     protected void paintComponent(Graphics graphic) {
         super.paintComponent(graphic);
-        for (ISprite sprite : sprites.values()) {
-            graphic.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight(), null);
+        try {
+            for (ISprite sprite : sprites.values()) {
+                graphic.drawImage(sprite.getImage(), sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight(), null);
+            }
         }
+        catch(ConcurrentModificationException ignored) {}
     }
 
     /**

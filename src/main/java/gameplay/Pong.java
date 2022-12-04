@@ -116,19 +116,30 @@ public class Pong implements Runnable{
         return ball;
     }
 
+    private void end() {
+        try { Thread.sleep(100); } catch (InterruptedException e) { System.exit(1); }
+        Entity go = new Entity("gameOver", width/2-100, 2*height/4, 0);
+        builder.setEntity(go);
+        builder.buildSprite("game_over.png", 200, height/4);
+        core.addEntity(go);
+    }
+
     @Override
     public void run() {
-        while(rightScore.getScore() < 7 && leftScore.getScore() < 7) {
+        while(true) {
             if (ball.getCoordinates().getX() <= walls[2].getCoordinates().getX()+10){
                 leftScore.increment();
                 leftScore.process(new ChangeImageStrategy(leftScore.getImagePath()));
-                reset();
+                if (leftScore.getScore() < 7) resetLeftGoal();
+                else { core.removeEntity("ball"); break; }
             }
             if (ball.getCoordinates().getX()+20 >= walls[3].getCoordinates().getX()-5) {
                 rightScore.increment();
                 rightScore.process(new ChangeImageStrategy(rightScore.getImagePath()));
-                reset();
+                if (rightScore.getScore() < 7) resetRightGoal();
+                else { core.removeEntity("ball"); break; }
             }
         }
+        end();
     }
 }
