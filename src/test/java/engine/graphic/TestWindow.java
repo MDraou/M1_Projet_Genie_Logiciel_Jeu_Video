@@ -1,28 +1,31 @@
 package engine.graphic;
 
-import engine.graphic.Window;
+import engine.kernel.Point;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class TestWindow {
 
     @Test
-    void addIdentityAndGetIdentity() throws IOException {
+    void addSpriteAndGetSprite() throws IOException {
         Window window = new Window("test",100,100,5);
-        GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
-        window.addIdentity(identity);
-        assertEquals(identity,window.getSprite("id"));
+        Sprite sprite = new Sprite( "",new Point(0,0),new Dimension(10,10));
+        window.addSprite("id",sprite,0);
+        assertEquals(sprite,window.getSprite("id"));
     }
 
     @Test
     void removeIdentity() throws IOException {
         Window window = new Window("test",100,100,5);
-        GraphicIdentity identity = new GraphicIdentity("id","",0,0,10,10,0);
-        window.addIdentity(identity);
-        assertEquals(identity,window.getSprite("id"));
+        Sprite sprite = new Sprite( "",new Point(0,0),new Dimension(10,10));
+        window.addSprite("id",sprite,0);
+        assertEquals(sprite,window.getSprite("id"));
         window.removeSprite("id");
-        assertNotEquals(identity,window.getSprite("id"));
+        assertNotEquals(sprite,window.getSprite("id"));
     }
 
 }

@@ -63,10 +63,30 @@ public interface IMovementsChecker {
     void resize(int width, int height);
 
 
+    /**
+     * check if the entity can move and return the next coordinates
+     * @return the next coordinates
+     */
     Point getNextCoordinates();
 
+    /**
+     * Test if the entity intersect another entity on the x
+     * @param controller a movement controller of another entity
+     * @return true if they intersect and false otherwise.
+     */
     boolean intersectInX(IMovementsChecker controller);
+
+    /**
+     * Test if the entity intersect another entity on the y
+     * @param controller a movement controller of a foreign entity
+     * @return true if they intersect and false otherwise.
+     */
     boolean intersectInY(IMovementsChecker controller);
+
+    /**
+     * Save a movement controller of a neighbor entity
+     * @param fCtrl a movement controller of a neighbor entity
+     */
     void setNeighbor(IMovementsChecker fCtrl);
 
     /**

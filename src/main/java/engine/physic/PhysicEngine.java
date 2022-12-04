@@ -76,6 +76,10 @@ public class PhysicEngine implements Engine<IMovementsChecker> {
             }
     }
 
+    /**
+     * Accept a visitor
+     * @param visitor visitor that visit the engine
+     */
     @Override
     public void accept(EngineVisitor visitor) {
         visitor.visit(this);

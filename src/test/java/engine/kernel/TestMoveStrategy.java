@@ -1,20 +1,21 @@
 package engine.kernel;
 
-import engine.kernel.Entity;
-import engine.kernel.IStrategy;
-import engine.kernel.MoveStrategy;
+import engine.physic.MovementsChecker;
 import org.junit.jupiter.api.Test;
-import physic.PhysicIdentity;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.awt.*;
 
 class TestMoveStrategy {
 
     @Test
     void execute() {
-        Entity entity = new Entity("id");
-        PhysicIdentity physicIdentity = new PhysicIdentity("id", 0, 0, 10,10, 0);
-        entity.setChecker(physicIdentity);
-        IStrategy strategy = new MoveStrategy(Direction.RIGHT,3);
+        Entity entity = new Entity("id",0,0,0);
+        MovementsChecker checker = new MovementsChecker("id",new Point(0,0),new Dimension(10,10),false);
+        entity.setChecker(checker);
+        IStrategy strategy = new MoveStrategy(3,0);
         strategy.execute(entity);
-        assertEquals(3, physicIdentity.getSpeed().getX());
+        assertEquals(3, checker.getSpeed().getX());
     }
 }
