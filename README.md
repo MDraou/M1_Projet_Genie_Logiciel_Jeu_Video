@@ -23,6 +23,12 @@ Le projet est configuré (via le fichier `.gitlab-ci.yml`) pour produire un jar 
 
 La javadoc est `javadoc/index.html`
 
+## Version de Java à utiliser pour lancer le .jar
+
+openjdk 17.0.5 2022-10-18
+OpenJDK Runtime Environment (build 17.0.5+8-Ubuntu-2ubuntu118.04)
+OpenJDK 64-Bit Server VM (build 17.0.5+8-Ubuntu-2ubuntu118.04, mixed mode, sharing)
+
 ## Copyrights
 
-Projet fait par Cyril ARTAUD, Meryem DRAOU, Alonso MARINAS, Gaspard ROUYER et Adrien VIDAL.
+Projet fait par le groupe 44 : Cyril ARTAUD, Meryem DRAOU, Alonso MARINAS, Gaspard ROUYER et Adrien VIDAL.
