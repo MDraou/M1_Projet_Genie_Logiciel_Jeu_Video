@@ -14,15 +14,6 @@ public class Pong implements Runnable {
 
     private final HashMap<String, Element> elements = new HashMap<>();
 
-    private Ball ball = new Ball(width/2 - 10, height/2 - 10);
-    private final Paddle leftPaddle = new Paddle("leftPaddle", 50, height / 2 - 50);
-    private final Paddle rightPaddle = new Paddle("rightPaddle", width - 50, height / 2 - 50);
-    private final Wall[] walls = new Wall[4];
-
-    private final Score leftScore = new Score("leftScore", width/2-100, height/10 );
-
-
-    private final Score rightScore = new Score("rightScore", width/2+50, height/10);
 
 
     public Pong() {
@@ -54,35 +45,34 @@ public class Pong implements Runnable {
         core.addEntity(bar);
     }
 
-    private void createBall() {
-        builder.setEntity(ball);
+    private void recreateBall() {
+        elements.replace("ball", new Ball(width/2 - 10, height/2 - 10, 20, 20));
+        builder.setEntity(elements.get("ball").getEntity());
         builder.buildSprite("ball.png", 20, 20);
         builder.buildMovementChecker(20, 20, true);
-        core.addEntity(ball);
+        core.addEntity(elements.get("ball").getEntity());
     }
 
 
     public void start() {
         core.launch();
         try { Thread.sleep(1000); } catch (InterruptedException e) { System.exit(1); }
-        ball.process(new MoveStrategy(ball.getXSpeed(), ball.getYSpeed()));
+        elements.get("ball").getEntity().process(new MoveStrategy(((Ball) elements.get("ball")).getXSpeed(), ((Ball) elements.get("ball")).getYSpeed()));
         new Thread(this).start();
     }
 
     public void resetRightGoal() {
         core.removeEntity("ball");
-        ball = new Ball(width/2 - 10, height/2 - 10);
-        createBall();
+        recreateBall();
         try { Thread.sleep(1000); } catch (InterruptedException e) { System.exit(1); }
-        ball.process(new MoveStrategy(-5, ball.getYSpeed()));
+        elements.get("ball").getEntity().process(new MoveStrategy(-5, ((Ball) elements.get("ball")).getYSpeed()));
     }
 
     public void resetLeftGoal() {
         core.removeEntity("ball");
-        ball = new Ball(width/2 - 10, height/2 - 10);
-        createBall();
+        recreateBall();
         try { Thread.sleep(1000); } catch (InterruptedException e) { System.exit(1); }
-        ball.process(new MoveStrategy(5, ball.getYSpeed()));
+        elements.get("ball").getEntity().process(new MoveStrategy(5, ((Ball) elements.get("ball")).getYSpeed()));
     }
 
     private void end() {

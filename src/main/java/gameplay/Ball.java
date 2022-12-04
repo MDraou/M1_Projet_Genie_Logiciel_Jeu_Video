@@ -5,13 +5,18 @@ import engine.kernel.MoveStrategy;
 
 import java.util.Random;
 
-public class Ball extends Entity {
+public class Ball implements Element {
+    private Entity entity;
+    private int width, height;
+    private String imagePath ="ball.png";
 
     Random random = new Random();
     private double vx = random.nextBoolean() ? 5.0 : -5.0, vy = random.nextBoolean() ? 4. : -4.;
 
-    public Ball(int x, int y) {
-        super("ball", x, y, 0);
+    public Ball(int x, int y, int width, int height) {
+        this.entity = new Entity("ball", x, y, 0);
+        this.width = width;
+        this.height = height;
     }
 
     @Override
