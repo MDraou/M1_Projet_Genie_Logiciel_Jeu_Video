@@ -113,6 +113,15 @@ public class MovementsChecker implements IMovementsChecker {
     }
 
     /**
+     * Return the neighbor of this object
+     * @return the property fChecker
+     */
+
+    public IMovementsChecker getFChecker() {
+        return fChecker;
+    }
+
+    /**
      * check if the entity can move and return the next coordinates
      * @return the next coordinates
      */

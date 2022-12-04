@@ -20,4 +20,18 @@ public class TestVector {
         assertEquals(1,vector.getX());
         assertEquals(1,vector.getY());
     }
+
+    @Test
+    public void testIsNull() {
+        Vector test = new Vector(0, 0);
+        Vector test1 = new Vector(1, 2);
+        assertTrue(test.isNull());
+        assertFalse(test1.isNull());
+    }
+
+    @Test
+    public void testToString() {
+        Vector test = new Vector(0, 0);
+        assertEquals(test.toString(), "(" + test.getX() + ", " + test.getY() + ")");
+    }
 }
