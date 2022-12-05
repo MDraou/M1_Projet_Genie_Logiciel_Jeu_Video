@@ -23,6 +23,11 @@ Le projet est configuré (via le fichier `.gitlab-ci.yml`) pour produire un jar 
 
 La javadoc est `javadoc/index.html`
 
+## Commandes du jeu
+
+Z et S pour bouger la raquette gauche. 
+Flèche du haut et flèche du Bas pour bouger la raquette droite. 
+
 ## Version de Java à utiliser pour lancer le .jar
 
 openjdk 17.0.5 2022-10-18
